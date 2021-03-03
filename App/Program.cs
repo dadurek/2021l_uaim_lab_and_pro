@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UAIM
+namespace App
 {
     class Program
     {
