@@ -1,12 +1,25 @@
-﻿using System;
-
-namespace App
+﻿namespace App
 {
-    class Program
+    using System;
+    using System.Diagnostics;
+    using Lib;
+    
+    public class App
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IPersonRepository personRepository = new PersonRepository();
+
+            Debug.Assert(personRepository != null);
+
+            foreach (var shape in personRepository.Find(Sex.Female))
+            {
+                var shapeDescription = shape.GetDescription();
+
+                Console.WriteLine($"Person description = {shapeDescription}");
+            }
+
+            Console.ReadLine();
         }
     }
 }
