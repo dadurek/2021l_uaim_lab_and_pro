@@ -12,7 +12,7 @@
 
             Debug.Assert(personRepository != null);
 
-            foreach (var shape in personRepository.Find(Sex.Female))
+            foreach (var shape in personRepository.Find(Sex.Male))
             {
                 var shapeDescription = shape.GetDescription();
 
