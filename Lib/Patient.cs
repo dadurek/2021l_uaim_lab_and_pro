@@ -11,7 +11,7 @@ namespace Lib
 
         public override string GetDescription()
         {
-            return $"Patient named {FirstName} {LastName}, which is {Sex}";
+            return $"Patient named {FirstName} {LastName}, who is {Sex}";
         }
     }
 }
