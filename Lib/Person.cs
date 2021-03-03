@@ -30,31 +30,31 @@ namespace Lib
 
         protected string FirstName
         {
-            get => firstName;
+            get => _firstName;
 
             set
             {
                 Debug.Assert(!string.IsNullOrWhiteSpace(value));
 
-                firstName = value;
+                _firstName = value;
             }
         }
 
-        private string firstName;
+        private string _firstName;
 
         protected string LastName
         {
-            get => lastName;
+            get => _lastName;
 
             set
             {
                 Debug.Assert(!string.IsNullOrWhiteSpace(value));
 
-                lastName = value;
+                _lastName = value;
             }
         }
 
-        private string lastName;
+        private string _lastName;
 
         #endregion
     }

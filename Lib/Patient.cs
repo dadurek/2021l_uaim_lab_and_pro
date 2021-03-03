@@ -2,12 +2,12 @@ namespace Lib
 {
     public class Patient : Person
     {
-        public Patient(string firstName, string lastName, Sex sex, string pesel) : base(firstName, lastName, sex)
+        public Patient(string firstName, string lastName, Sex sex, string Pesel) : base(firstName, lastName, sex)
         {
-            this.pesel = pesel;
+            this.Pesel = Pesel;
         }
 
-        private string pesel { get; }
+        private string Pesel { get; }
 
         public override string GetDescription()
         {
