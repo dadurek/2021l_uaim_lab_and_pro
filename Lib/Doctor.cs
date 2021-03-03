@@ -4,10 +4,10 @@ namespace Lib
     {
         public Doctor(string firstName, string lastName, Sex sex, string licenseNumber) : base(firstName, lastName, sex)
         {
-            LicenseNumber = licenseNumber;
+            this.licenseNumber = licenseNumber;
         }
 
-        private string LicenseNumber { get; }
+        private string licenseNumber { get; }
 
         public override string GetDescription()
         {
