@@ -1,8 +1,8 @@
-﻿namespace App
+﻿namespace ConsoleApp
 {
     using System;
     using System.Diagnostics;
-    using Lib;
+    using Repository;
     
     public class App
     {
@@ -12,11 +12,12 @@
 
             Debug.Assert(personRepository != null);
 
-            foreach (var shape in personRepository.Find(Sex.Male))
+            foreach (var person in personRepository.Find(Sex.Female))
             {
-                var shapeDescription = shape.GetDescription();
+                var personDescription = person.GetDescription();
+                
 
-                Console.WriteLine($"Person description = {shapeDescription}");
+                Console.WriteLine($"Person description = {personDescription}");
             }
 
             Console.ReadLine();

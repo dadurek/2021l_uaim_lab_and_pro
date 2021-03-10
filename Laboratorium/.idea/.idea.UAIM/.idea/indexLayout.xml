@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelUserStore">
-    <attachedFolders />
+    <attachedFolders>
+      <Path>../../2021l_uaim_lab</Path>
+      <Path>../../2021l_uaim_lab2</Path>
+    </attachedFolders>
     <explicitIncludes />
     <explicitExcludes />
   </component>

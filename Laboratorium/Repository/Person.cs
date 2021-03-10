@@ -1,4 +1,4 @@
-namespace Lib
+namespace Repository
 {
     using System.Diagnostics;
 
@@ -19,7 +19,7 @@ namespace Lib
 
         public virtual string GetDescription()
         {
-            return $"Person named {FirstName} {LastName}, who is {Sex}";
+            return $"Person named {LastName} {FirstName}, who is {Sex}";
         }
 
         #endregion
