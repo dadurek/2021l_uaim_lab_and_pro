@@ -1,6 +1,6 @@
-## To jest repozytorium stworzone na potrzeby lab 1 z przedmiotu UAIM.
+## Repozytorium stworzone na potrzeby laboratorium przedmiotu UAIM.
 
 Autorzy:
-* Marcin Dadura
-* Maciej Włodarczyk
+* Marcin Dadura indeks: 303688
+* Maciej Włodarczyk indeks: 303725
 
