@@ -8,7 +8,7 @@ namespace Repository
         private readonly Person[] shapes =
         {
             new Patient("Weronika", "Koks", Sex.Female, "123123123"),
-            new Doctor("Marcin", "Kowalski", Sex.Male, "321321321"),
+            new Doctor("Wiktoria", "Jakas", Sex.Female, "321321321"),
             new Patient("Wiktor", "Kozacli", Sex.Male, "321321321"),
             new Doctor("Bartłomiej", "Krzysztosofski", Sex.Male, "1234748123"),
             new Patient("Kacper", "Rafał", Sex.Male, "32464371"),
