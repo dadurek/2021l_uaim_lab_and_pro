@@ -1,4 +1,4 @@
-namespace Lib
+namespace Repository
 {
     using System.Diagnostics;
 

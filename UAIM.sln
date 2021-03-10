@@ -1,8 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{C710D6C0-D0D0-45F8-A77F-9D85A403BDD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{C710D6C0-D0D0-45F8-A77F-9D85A403BDD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{242416EE-BEFB-4186-B8B7-A09D139B9BAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{242416EE-BEFB-4186-B8B7-A09D139B9BAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miniprojekty", "Miniprojekty", "{84649A6B-A2B2-47A0-A77E-2D17B0CA0826}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laboratorium", "Laboratorium", "{68AC3B56-E0C0-400E-A648-145C57D9FC77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,9 @@ Global
 		{242416EE-BEFB-4186-B8B7-A09D139B9BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{242416EE-BEFB-4186-B8B7-A09D139B9BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{242416EE-BEFB-4186-B8B7-A09D139B9BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C710D6C0-D0D0-45F8-A77F-9D85A403BDD3} = {84649A6B-A2B2-47A0-A77E-2D17B0CA0826}
+		{242416EE-BEFB-4186-B8B7-A09D139B9BAB} = {84649A6B-A2B2-47A0-A77E-2D17B0CA0826}
 	EndGlobalSection
 EndGlobal

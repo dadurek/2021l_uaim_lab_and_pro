@@ -1,8 +1,8 @@
-﻿namespace App
+﻿namespace ConsoleApp
 {
     using System;
     using System.Diagnostics;
-    using Lib;
+    using Repository;
     
     public class App
     {

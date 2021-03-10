@@ -1,4 +1,4 @@
-namespace Lib
+namespace Repository
 {
     public class Patient : Person
     {
