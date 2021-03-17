@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Doctors.Domain.DoctorsAggregate;
-using Doctors.Web.Application.Mapper;
-
-namespace Doctors.Web.Application
+﻿namespace Doctors.Web.Application
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Doctors.Domain.DoctorsAggregate;
+    using Doctors.Web.Application.Mapper;   
     public class DoctorQueriesHandler : IDoctorQueriesHandler
     {
         private readonly IDoctorRepository doctorRepository;

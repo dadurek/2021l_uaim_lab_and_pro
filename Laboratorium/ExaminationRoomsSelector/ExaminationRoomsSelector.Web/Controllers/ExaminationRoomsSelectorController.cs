@@ -1,13 +1,10 @@
-﻿using ExaminationRoomsSelector.Web.Application.Queries;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ExaminationRoomsSelector.Web.Controllers
+﻿namespace ExaminationRoomsSelector.Web.Controllers
 {
+    using System.Threading.Tasks;
+    using ExaminationRoomsSelector.Web.Application.Queries;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    
     [ApiController]
     public class ExaminationRoomsSelectorController : ControllerBase
     {

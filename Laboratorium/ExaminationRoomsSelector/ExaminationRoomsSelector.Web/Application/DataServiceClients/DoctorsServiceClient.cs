@@ -1,14 +1,11 @@
-﻿using System.Net.Http;
-using System.Text.Json;
-
-namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
+﻿namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 {
     using ExaminationRoomsSelector.Web.Application.Dtos;
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
-
+    using System.Net.Http;
+    using System.Text.Json;
+    
     public class DoctorsServiceClient : IDoctorsServiceClient
     {
         public IHttpClientFactory clientFactory;

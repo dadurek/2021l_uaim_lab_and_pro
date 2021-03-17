@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Doctors.Web.Application
+﻿namespace Doctors.Web.Application
 {
+    using System.Collections.Generic;
     public interface IDoctorQueriesHandler
     {
         IEnumerable<DoctorDto> GetAll();

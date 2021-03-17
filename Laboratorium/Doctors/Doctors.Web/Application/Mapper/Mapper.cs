@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using Doctors.Domain.DoctorsAggregate;
-
-namespace Doctors.Web.Application.Mapper
+﻿namespace Doctors.Web.Application.Mapper
 {
+    using System.Linq;
+    using Doctors.Domain.DoctorsAggregate;
+
     public static class Mapper
     {
         public static DoctorDto Map(this Doctor doctor)
