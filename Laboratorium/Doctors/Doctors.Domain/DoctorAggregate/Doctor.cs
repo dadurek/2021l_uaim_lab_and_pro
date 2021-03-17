@@ -12,7 +12,7 @@ namespace Doctors.Domain.DoctorsAggregate
 
         private string licenseNumber { get; }
 
-        public List<int> Specializations { get; }
+        public List<int> Specializations { get;  }
 
         public override string GetDescription()
         {

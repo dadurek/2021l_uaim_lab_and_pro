@@ -1,10 +1,7 @@
-﻿namespace Doctors.Web.Application
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
+namespace Doctors.Web.Application
+{
     public class DoctorDto
     {
         public string FirstName { get; set; }

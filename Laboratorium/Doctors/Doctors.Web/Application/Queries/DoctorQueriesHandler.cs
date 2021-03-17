@@ -1,12 +1,10 @@
-﻿namespace Doctors.Web.Application
-{
-    using Doctors.Domain.DoctorsAggregate;
-    using Doctors.Web.Application.Mapper;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Doctors.Domain.DoctorsAggregate;
+using Doctors.Web.Application.Mapper;
 
+namespace Doctors.Web.Application
+{
     public class DoctorQueriesHandler : IDoctorQueriesHandler
     {
         private readonly IDoctorRepository doctorRepository;

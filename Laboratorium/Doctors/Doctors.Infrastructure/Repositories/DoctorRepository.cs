@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
+using Doctors.Domain.DoctorsAggregate;
+
 namespace Doctors.Infrastructure
 {
-    using Domain.DoctorsAggregate;
-    using System.Collections.Generic;
-    using System.Linq;
-    
     public class DoctorRepository : IDoctorRepository
     {
         private readonly Doctor[] Doctors =

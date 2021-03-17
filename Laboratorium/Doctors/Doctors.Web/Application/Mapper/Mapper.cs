@@ -1,11 +1,8 @@
-﻿namespace Doctors.Web.Application.Mapper
-{
-    using Doctors.Domain.DoctorsAggregate;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System.Linq;
+using Doctors.Domain.DoctorsAggregate;
 
+namespace Doctors.Web.Application.Mapper
+{
     public static class Mapper
     {
         public static DoctorDto Map(this Doctor doctor)

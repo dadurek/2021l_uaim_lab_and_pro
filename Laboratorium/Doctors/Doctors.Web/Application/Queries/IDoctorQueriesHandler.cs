@@ -1,11 +1,7 @@
-﻿namespace Doctors.Web.Application
-{
-    using Doctors.Domain.DoctorsAggregate;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
+namespace Doctors.Web.Application
+{
     public interface IDoctorQueriesHandler
     {
         IEnumerable<DoctorDto> GetAll();
