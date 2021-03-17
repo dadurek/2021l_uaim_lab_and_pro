@@ -1,4 +1,4 @@
-﻿namespace ExaminationRooms.Web.Controllers
+﻿namespace Doctors.Web.Controllers
 {
     using Doctors.Domain;
     using Doctors.Domain.DoctorsAggregate;
