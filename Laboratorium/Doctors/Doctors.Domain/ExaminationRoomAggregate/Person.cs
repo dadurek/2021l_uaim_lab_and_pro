@@ -1,12 +1,14 @@
-namespace Repository
+﻿using Doctors.Domain.SeedWork;
+
+namespace Doctors.Domain.DoctorsAggregate
 {
     using System.Diagnostics;
 
-    public abstract class Person
+    public abstract class Person : Entity
     {
         #region Constructors
 
-        protected Person(string firstName, string lastName, Sex sex)
+        protected Person(int id,string firstName, string lastName, Sex sex) : base(id)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -28,7 +30,7 @@ namespace Repository
 
         public Sex Sex { get; set; }
 
-        protected string FirstName
+        public string FirstName
         {
             get => firstName;
 
@@ -42,7 +44,7 @@ namespace Repository
 
         private string firstName;
 
-        protected string LastName
+        public string LastName
         {
             get => lastName;
 
