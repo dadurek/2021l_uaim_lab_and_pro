@@ -1,4 +1,6 @@
-﻿namespace ExaminationRoomsSelector.Web.Application.Queries
+﻿using System;
+
+namespace ExaminationRoomsSelector.Web.Application.Queries
 {
     using System.Collections.Generic;
     using ExaminationRoomsSelector.Web.Application.Dtos;
@@ -23,19 +25,60 @@
             commonSetOfDisease = new List<int>();
         }
         
-        public async Task<int> GetExaminationRoomsSelectionAsync()
+        public async Task<List<DoctorRoomDto>> GetExaminationRoomsSelectionAsync()
         {
             doctorList = (await doctorsServiceClient.GetAllDoctorsAsync()).ToList();
             roomList = (await examinationRoomsServiceClient.GetAllExaminationRoomsAsync()).ToList();
 
             await GetCommonSet();
             await MakeList();
-            
 
-            return 5;
+            return await MatchDoctorsWithRooms();
+        }
+
+        private async Task<List<DoctorRoomDto>> MatchDoctorsWithRooms()
+        {
+            var l = new List<DoctorRoomDto>();
+
+            while (doctorList.Any() && roomList.Any())
+            {
+                var bestDoctor = doctorList[0];
+                var bestRoom = roomList[0];
+                var rank = GetRank(bestDoctor,bestRoom);
+                
+                foreach (var doctor in doctorList)
+                {
+                    foreach (var room in roomList)
+                    {
+                        var x = GetRank(doctor, room);
+                        if (x > rank)
+                        {
+                            rank = x;
+                            bestDoctor = doctor;
+                            bestRoom = room;
+                        }
+                    }
+                }
+
+                if (GetRank(bestDoctor, bestRoom) == 0)
+                    break;
+                
+                l.Add(new DoctorRoomDto(bestDoctor,bestRoom));
+                doctorList.Remove(bestDoctor);
+                roomList.Remove(bestRoom);
+            }
+        
+            return l;
+        }
+
+        //return number of specialization that are same
+        private int GetRank(DoctorDto d, ExaminationRoomDto e)
+        {
+            return d.Specializations.ToList().Intersect(e.Certifications.ToList()).Count();
         }
         
-
+        
+        //remake list od doctors and rooms that they contain only specializations witch are common part of all rooms and all doctors
         private async Task MakeList()
         {
             foreach (var doctor in doctorList)
@@ -46,22 +89,26 @@
                     doctor.Specializations = list;
                 }
             }
-            foreach (var room in roomList)
+
+            for (var i = 0; i < roomList.Count; i++)
             {
+                var room = roomList[i];
                 if (room.Certifications.Any(n => commonSetOfDisease.Contains(n)))
                 {
                     var list = (room.Certifications.ToList()).Intersect(commonSetOfDisease).ToList();
                     room.Certifications = list;
                 }
+
                 //TODO remove rooms with no certifications
-                // if (!room.Certifications.Any())
-                // {
-                //     roomList.Remove(room);
-                // }
+                if (!room.Certifications.Any())
+                {
+                    roomList.Remove(room);
+                    i++;
+                }
             }
         }
         
-
+        //Get all specializations that are common part of all rooms and all doctors
         private async Task GetCommonSet()
         {
             commonSetOfDisease.Clear();
