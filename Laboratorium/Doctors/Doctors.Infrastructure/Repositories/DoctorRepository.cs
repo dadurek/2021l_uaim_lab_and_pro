@@ -9,7 +9,7 @@ namespace Doctors.Infrastructure
         private readonly Doctor[] Doctors =
         {
            
-            new Doctor(1,"Ewa", "Jakas", Sex.Female, new List<int>{1,2}),
+            new Doctor(1,"Ewa", "Jakas", Sex.Female, new List<int>{1,3,5,6}),
             new Doctor(2,"Kacper", "Krzysztosofski", Sex.Male, new List<int>{1,3}),
             new Doctor(3,"Agnieszka", "Bodeńko", Sex.Female, new List<int>{4,2,5}),
             new Doctor(4,"Monika", "Bodeńko", Sex.Female,new List<int>{4,2,7,4}),
