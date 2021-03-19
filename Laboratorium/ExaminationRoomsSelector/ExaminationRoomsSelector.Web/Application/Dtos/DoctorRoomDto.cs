@@ -2,8 +2,8 @@
 {
     public class DoctorRoomDto
     {
-        private DoctorDto doctor { get; set; }
-        private ExaminationRoomDto room { get; set; }
+        public DoctorDto doctor { get; set; }
+        public ExaminationRoomDto room { get; set; }
 
         public DoctorRoomDto(DoctorDto doctor, ExaminationRoomDto room)
         {
