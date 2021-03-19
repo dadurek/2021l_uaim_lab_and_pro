@@ -14,7 +14,7 @@
             {
                 FirstName = doctor.FirstName, 
                 LastName = doctor.LastName,
-                Specializations = doctor?.Specializations.Select(s => s.ToString())
+                Specializations = doctor?.Specializations
             };
         }
     }

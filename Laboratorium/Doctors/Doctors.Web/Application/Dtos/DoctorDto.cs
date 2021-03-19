@@ -5,6 +5,6 @@
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public IEnumerable<string> Specializations { get; set; }
+        public IEnumerable<int> Specializations { get; set; }
     }
 }
