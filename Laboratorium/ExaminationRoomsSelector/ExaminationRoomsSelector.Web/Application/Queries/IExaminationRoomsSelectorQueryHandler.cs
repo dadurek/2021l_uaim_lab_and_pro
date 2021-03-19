@@ -1,9 +1,13 @@
-﻿namespace ExaminationRoomsSelector.Web.Application.Queries
+﻿using System;
+using System.Collections.Generic;
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
+namespace ExaminationRoomsSelector.Web.Application.Queries
 {
     using System.Threading.Tasks;
 
     public interface IExaminationRoomsSelectorHandler
     {
-        Task<int> GetExaminationRoomsSelectionAsync();
+        Task<List<DoctorRoomDto>> GetExaminationRoomsSelectionAsync();
     }
 }

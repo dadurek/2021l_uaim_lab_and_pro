@@ -1,4 +1,8 @@
-﻿namespace ExaminationRoomsSelector.Web.Controllers
+﻿using System;
+using System.Collections.Generic;
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
+namespace ExaminationRoomsSelector.Web.Controllers
 {
     using System.Threading.Tasks;
     using ExaminationRoomsSelector.Web.Application.Queries;
@@ -18,7 +22,7 @@
         }
 
         [HttpGet("examination-rooms-selection")]
-        public async Task<int> GetLaboratoryDiagnosticiansDetails()
+        public async Task<List<DoctorRoomDto>> GetLaboratoryDiagnosticiansDetails()
         {
             return await examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
         }
