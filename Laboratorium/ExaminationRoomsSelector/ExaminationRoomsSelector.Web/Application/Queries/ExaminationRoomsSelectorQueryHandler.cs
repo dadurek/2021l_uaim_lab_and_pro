@@ -36,7 +36,7 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
         }
 
         //simple greedy algorithm that mark as best doctor and room when they have most of all groups common specializations
-        private async Task<List<DoctorRoomDto>> MatchDoctorsWithRooms()
+        private Task<List<DoctorRoomDto>> MatchDoctorsWithRooms()
         {
             var l = new List<DoctorRoomDto>();
 
@@ -58,17 +58,16 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
                             bestRoom = room;
                         }
                     }
-
-                    if (GetRank(bestDoctor, bestRoom) == 0) //edge case, if common specialization of doctor and room is 0, break
-                        break;
-
-                    l.Add(new DoctorRoomDto(bestDoctor, bestRoom));
-                    doctorList.Remove(bestDoctor);
-                    roomList.Remove(bestRoom);
                 }
+                if (GetRank(bestDoctor, bestRoom) == 0) //edge case, if common specialization of doctor and room is 0, break
+                    break;
+
+                l.Add(new DoctorRoomDto(bestDoctor, bestRoom));
+                doctorList.Remove(bestDoctor);
+                roomList.Remove(bestRoom);
             }
 
-            return l;
+            return Task.FromResult(l);
         }
 
         //return number of specialization that are same
