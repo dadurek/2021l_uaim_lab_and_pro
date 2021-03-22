@@ -1,12 +1,10 @@
 ﻿namespace ExaminationRooms.Web.Application
 {
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using ExaminationRooms.Web.Application.Mapper;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
-
+    using ExaminationRooms.Domain.ExaminationRoomAggregate;
+    using ExaminationRooms.Web.Application.Mapper;
+    
     public class ExaminationRoomQueriesHandler : IExaminationRoomQueriesHandler
     {
         private readonly IExaminationRoomsRepository examinationRoomsRepository;

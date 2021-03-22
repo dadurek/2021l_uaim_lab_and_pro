@@ -1,9 +1,8 @@
-﻿using Doctors.Domain.SeedWork;
-
-namespace Doctors.Domain.DoctorsAggregate
+﻿namespace Doctors.Domain.DoctorsAggregate
 {
+    
     using System.Diagnostics;
-
+    using Doctors.Domain.SeedWork;
     public abstract class Person : Entity
     {
         #region Constructors

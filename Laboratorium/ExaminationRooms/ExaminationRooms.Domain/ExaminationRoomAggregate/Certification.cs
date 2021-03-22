@@ -1,11 +1,7 @@
 ﻿namespace ExaminationRooms.Domain.ExaminationRoomAggregate
 {
-    using ExaminationRooms.Domain.SeedWork;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
+    using ExaminationRooms.Domain.SeedWork;
     public class Certification : Entity
     {
         public DateTime GrantedAt { get; private set; }

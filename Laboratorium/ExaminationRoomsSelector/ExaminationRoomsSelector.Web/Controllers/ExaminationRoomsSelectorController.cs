@@ -1,13 +1,14 @@
-﻿using ExaminationRoomsSelector.Web.Application.Queries;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ExaminationRoomsSelector.Web.Application.Dtos;
 
 namespace ExaminationRoomsSelector.Web.Controllers
 {
+    using System.Threading.Tasks;
+    using ExaminationRoomsSelector.Web.Application.Queries;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    
     [ApiController]
     public class ExaminationRoomsSelectorController : ControllerBase
     {
@@ -21,7 +22,7 @@ namespace ExaminationRoomsSelector.Web.Controllers
         }
 
         [HttpGet("examination-rooms-selection")]
-        public async Task<int> GetLaboratoryDiagnosticiansDetails()
+        public async Task<List<DoctorRoomDto>> GetLaboratoryDiagnosticiansDetails()
         {
             return await examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
         }

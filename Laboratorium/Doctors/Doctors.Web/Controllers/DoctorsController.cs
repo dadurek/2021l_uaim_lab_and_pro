@@ -1,15 +1,10 @@
-﻿namespace ExaminationRooms.Web.Controllers
-{
-    using Doctors.Domain;
-    using Doctors.Domain.DoctorsAggregate;
-    using Doctors.Web.Application;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Doctors.Web.Application;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
+namespace Doctors.Web.Controllers
+{
     [ApiController]
     public class DoctorsController : ControllerBase
     {
