@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/.idea.ExaminationRoomsSelectorSol.iml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../:\Users\Dadura\RiderProjects\2021l_uaim_lab\Laboratorium\ExaminationRoomsSelectorSol\.idea\.idea.ExaminationRoomsSelectorSol\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
