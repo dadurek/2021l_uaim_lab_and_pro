@@ -18,7 +18,7 @@
         {
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"http://localhost:44392/doctors");
+                $"http://doctors/doctors");
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
