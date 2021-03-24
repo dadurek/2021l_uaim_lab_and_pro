@@ -2,14 +2,18 @@
 services:
   rooms:
     build:
-      context: ./ExaminationRooms/ExaminationRooms
+      context: ./ExaminationRooms
+    ports:
+      - "8081:80"
 
   roomselector:
     build:
-      context: ./ExaminationRoomsSelector/ExaminationRoomsSelector
+      context: ./ExaminationRoomsSelector
     ports:
       - "8080:80"
 
   doctors:
     build:
-      context: ./Doctors/Doctors
+      context: ./Doctors
+    ports:
+      - "8082:80"
