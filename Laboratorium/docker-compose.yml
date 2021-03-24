@@ -2,14 +2,14 @@
 services:
   rooms:
     build:
-      context: ./ExaminationRooms/ExaminationRooms
+      context: ./ExaminationRooms
 
   roomselector:
     build:
-      context: ./ExaminationRoomsSelector/ExaminationRoomsSelector
+      context: ./ExaminationRoomsSelector
     ports:
       - "8080:80"
 
   doctors:
     build:
-      context: ./Doctors/Doctors
+      context: ./Doctors
