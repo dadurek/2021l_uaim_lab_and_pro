@@ -1,19 +1,17 @@
 ﻿version: "3.9"
 services:
+  doctors:
+    build:
+      context: ./Doctors
+    ports:
+      - "8081:80"
   rooms:
     build:
       context: ./ExaminationRooms
     ports:
-      - "8081:80"
-
+      - "8082:80"
   roomselector:
     build:
       context: ./ExaminationRoomsSelector
     ports:
       - "8080:80"
-
-  doctors:
-    build:
-      context: ./Doctors
-    ports:
-      - "8082:80"
