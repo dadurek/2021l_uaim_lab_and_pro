@@ -7,7 +7,7 @@ services:
       - "8082:80"
     depends_on: 
       - "doctors_db"
-       
+
   rooms:
     build:
       context: ./ExaminationRooms
@@ -15,25 +15,30 @@ services:
       - "8081:80"
     depends_on:
       - "rooms_db"
- 
+
   roomselector:
     build:
       context: ./ExaminationRoomsSelector
     ports:
       - "8080:80"
-        
+
   doctors_db:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      SA_PASSWORD: "123"
+      SA_PASSWORD: "Your_password123"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
      
   rooms_db:
     image: "mcr.microsoft.com/mssql/server"
+    restart: always
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./ExaminationRooms/init.sql:/init.sql
+      - ./ExaminationRooms/setup.sh:/setup.sh
     environment:
-      SA_PASSWORD: "123"
+      SA_PASSWORD: "microsoftSucks1!"
       ACCEPT_EULA: "Y"
-
     
