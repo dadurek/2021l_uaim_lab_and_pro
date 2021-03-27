@@ -5,8 +5,8 @@
 
     public class DoctorContext : DbContext
     {
-        public DbSet<Doctor> doctors { get; set; }
-        public DbSet<Specialization> specializations { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Specialization> Specializations { get; set; }
 
         public DoctorContext(DbContextOptions options) : base(options)
         {

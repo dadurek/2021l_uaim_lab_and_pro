@@ -13,12 +13,13 @@ namespace Doctors.Infrastructure
 
         public IEnumerable<Doctor> GetAll(DoctorContext doctorContext)
         {
-            Doctors = doctorContext.doctors.ToArray();
+            Doctors = doctorContext.Doctors.ToArray();
             return Doctors;
         }
 
         public IEnumerable<Doctor> GetBySpecialization(DoctorContext doctorContext, int certificationType)
         {
+            Doctors = doctorContext.Doctors.ToArray();
             return Doctors.Where(ld => ld.Specializations.Any(s => s.Number == certificationType));
         }
     }

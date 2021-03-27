@@ -25,8 +25,8 @@
             var doc2 = new Doctor
                 {FirstName = "xdd", LastName = "xd", Sex = Sex.Male};
             doc2.Specializations = new List<Specialization> {new Specialization {Number = 2}};
-            doctorContext.doctors.Add(doc);
-            doctorContext.doctors.Add(doc2);
+            doctorContext.Doctors.Add(doc);
+            doctorContext.Doctors.Add(doc2);
             doctorContext.SaveChanges(); 
             
             
