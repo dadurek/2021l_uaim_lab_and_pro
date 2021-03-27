@@ -4,6 +4,7 @@
     using ExaminationRooms.Domain.SeedWork;
     public class Certification : Entity
     {
+        
         public DateTime GrantedAt { get; private set; }
         public int Type {get; private set;}
 

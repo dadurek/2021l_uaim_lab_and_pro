@@ -1,8 +1,8 @@
 ﻿namespace ExaminationRooms.Web.Application.Mapper
 {
     using System.Linq;
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    
+    using Domain.ExaminationRoomAggregate;
+
     public static class Mapper
     {
         public static ExaminationRoomDto Map(this ExaminationRoom examinationRoom)

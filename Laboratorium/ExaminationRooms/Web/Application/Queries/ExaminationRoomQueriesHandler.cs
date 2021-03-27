@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using ExaminationRooms.Web.Application.Mapper;
-    
+    using Domain.ExaminationRoomAggregate;
+    using Mapper;
+
     public class ExaminationRoomQueriesHandler : IExaminationRoomQueriesHandler
     {
         private readonly IExaminationRoomsRepository examinationRoomsRepository;
@@ -16,12 +16,12 @@
 
         public IEnumerable<ExaminationRoomDto> GetAll()
         {
-            return examinationRoomsRepository.GetAll().Select(r=>r.Map());
+            return examinationRoomsRepository.GetAll().Select(r => r.Map());
         }
 
         public IEnumerable<ExaminationRoomDto> GetByCertificationType(int certificationType)
         {
-            return examinationRoomsRepository.GetByCertificationType(certificationType)?.Select(ld=>ld.Map());
+            return examinationRoomsRepository.GetByCertificationType(certificationType)?.Select(ld => ld.Map());
         }
     }
 }
