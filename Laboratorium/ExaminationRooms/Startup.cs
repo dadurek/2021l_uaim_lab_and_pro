@@ -10,7 +10,6 @@ namespace ExaminationRooms.Web
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Options;
     using Microsoft.OpenApi.Models;
 
     public class Startup
@@ -32,10 +31,9 @@ namespace ExaminationRooms.Web
             });
             services.AddSingleton<IExaminationRoomsRepository, ExaminationRoomsRepository>();
             services.AddTransient<IExaminationRoomQueriesHandler, ExaminationRoomQueriesHandler>();
-            
+
             services.AddDbContext<ExaminationRoomContext>(options =>
                 options.UseSqlServer("Server=rooms_db;Database=master;User Id=SA;Password=microsoftSucks1!;"));
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

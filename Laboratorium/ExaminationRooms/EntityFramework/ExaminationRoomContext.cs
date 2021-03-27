@@ -6,7 +6,7 @@
     public class ExaminationRoomContext : DbContext
     {
         public DbSet<ExaminationRoom> ExaminationRooms { get; set; }
-        
+
         public DbSet<Certification> Certifications { get; set; }
 
 
@@ -16,7 +16,7 @@
             modelBuilder.Entity<ExaminationRoom>().ToTable("ExaminationRoom");
             modelBuilder.Entity<Certification>().ToTable("Certification");
         }
-        
+
 
         protected ExaminationRoomContext()
         {

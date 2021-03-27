@@ -4,7 +4,7 @@
     {
         private int ID { get; }
 
-        protected Entity(int id) 
+        protected Entity(int id)
         {
             ID = id;
         }

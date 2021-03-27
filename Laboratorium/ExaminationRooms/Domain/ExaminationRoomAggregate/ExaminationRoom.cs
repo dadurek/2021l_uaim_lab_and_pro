@@ -1,7 +1,7 @@
 ﻿namespace ExaminationRooms.Domain.ExaminationRoomAggregate
 {
-    using ExaminationRooms.Domain.SeedWork;
     using System.Collections.Generic;
+    using SeedWork;
 
     public class ExaminationRoom : Entity
     {
