@@ -1,9 +1,4 @@
-namespace Doctors.Domain.DoctorsAggregate
-
-{
-    public enum Sex
-    {
-        Male,
-        Female
-    }
+﻿public enum Sex{
+    Female,
+    Male
 }

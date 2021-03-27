@@ -1,3 +1,6 @@
+using Doctors.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+
 namespace Doctors.Web
 {
     using Doctors.Domain.DoctorsAggregate;
@@ -9,6 +12,7 @@ namespace Doctors.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
+    using Microsoft.EntityFrameworkCore.SqlServer;
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,6 +33,8 @@ namespace Doctors.Web
             });
             services.AddSingleton<IDoctorRepository, DoctorRepository>();
             services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
+            services.AddDbContext<DoctorContext>(
+                options => options.UseSqlServer("Server=localhost,1433;Database=master;User=sa;Password=zaq1@WSX;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

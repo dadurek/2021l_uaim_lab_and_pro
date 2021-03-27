@@ -1,19 +1,19 @@
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure.Design;
+using Doctors.Domain.SeedWork;
 
 namespace Doctors.Domain.DoctorsAggregate
 {
-    public class Doctor : Person
+    public class Doctor
     {
-        public Doctor(int id,string firstName, string lastName, Sex sex, List<int> specializations) : base(id,firstName, lastName, sex)
-        {
-            this.Specializations = specializations;
-        }
+        public int DoctorId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        
+        public Sex Sex { get; set; }
 
-        public List<int> Specializations { get;  }
+        public List<Specialization> Specializations { get; set; } = new List<Specialization>();
 
-        public override string GetDescription()
-        {
-            return $"Doctor named {FirstName} {LastName}, who is {Sex}";
-        }
+
     }
 }
