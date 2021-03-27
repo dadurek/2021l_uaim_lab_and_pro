@@ -11,26 +11,26 @@
     {
         private readonly ILogger<DoctorsController> logger;
         private readonly IDoctorQueriesHandler DoctorQueriesHandler;
-        private readonly DoctorContext _doctorContext;
+        private readonly DoctorContext doctorContext;
 
         public DoctorsController(ILogger<DoctorsController> logger, IDoctorQueriesHandler DoctorQueriesHandler,
             DoctorContext doctorContext)
         {
             this.logger = logger;
             this.DoctorQueriesHandler = DoctorQueriesHandler;
-            this._doctorContext = doctorContext;
+            this.doctorContext = doctorContext;
         }
 
         [HttpGet("doctors")]
         public IEnumerable<DoctorDto> GetAll()
         {
-            return DoctorQueriesHandler.GetAll(_doctorContext);
+            return DoctorQueriesHandler.GetAll(doctorContext);
         }
 
         [HttpGet("doctor")]
         public IEnumerable<DoctorDto> GetBySpecialization([FromQuery] int specialization)
         {
-            return DoctorQueriesHandler.GetBySpecialization(specialization);
+            return DoctorQueriesHandler.GetBySpecialization(doctorContext, specialization);
         }
     }
 }

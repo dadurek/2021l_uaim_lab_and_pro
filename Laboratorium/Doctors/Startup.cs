@@ -31,8 +31,9 @@ namespace Doctors.Web
             });
             services.AddSingleton<IDoctorRepository, DoctorRepository>();
             services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
-            services.AddDbContext<DoctorContext>(
-                options => options.UseSqlServer("Server=localhost,1433;Database=master;User=sa;Password=zaq1@WSX;"));
+            services.AddDbContext<DoctorContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

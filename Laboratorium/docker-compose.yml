@@ -3,6 +3,7 @@ services:
   doctors:
     build:
       context: ./Doctors
+    restart: always
     ports:
       - "8082:80"
     depends_on: 
@@ -25,7 +26,7 @@ services:
   doctors_db:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      SA_PASSWORD: "Your_password123"
+      SA_PASSWORD: "zaq1@WSX"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
@@ -34,7 +35,7 @@ services:
     image: "mcr.microsoft.com/mssql/server"
     restart: always
     ports:
-      - "1433:1433"
+      - "1434:1433"
     volumes:
       - ./ExaminationRooms/init.sql:/init.sql
       - ./ExaminationRooms/setup.sh:/setup.sh

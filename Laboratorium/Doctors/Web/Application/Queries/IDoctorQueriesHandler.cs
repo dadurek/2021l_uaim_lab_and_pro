@@ -6,6 +6,6 @@
     public interface IDoctorQueriesHandler
     {
         IEnumerable<DoctorDto> GetAll(DoctorContext doctorContext);
-        IEnumerable<DoctorDto> GetBySpecialization(int specialization);
+        IEnumerable<DoctorDto> GetBySpecialization(DoctorContext doctorContext, int specialization);
     }
 }
