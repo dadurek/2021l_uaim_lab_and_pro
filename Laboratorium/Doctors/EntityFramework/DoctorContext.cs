@@ -1,14 +1,12 @@
-﻿
-using Doctors.Domain.DoctorsAggregate;
-using Microsoft.EntityFrameworkCore;
-using DbContext = Microsoft.EntityFrameworkCore.DbContext;
-
-namespace Doctors.EntityFramework
+﻿namespace Doctors.EntityFramework
 {
+    using Domain.DoctorsAggregate;
+    using Microsoft.EntityFrameworkCore;
+
     public class DoctorContext : DbContext
     {
-        public Microsoft.EntityFrameworkCore.DbSet<Doctor> doctors { get; set; }
-        public Microsoft.EntityFrameworkCore.DbSet<Specialization> specializations { get; set; }
+        public DbSet<Doctor> doctors { get; set; }
+        public DbSet<Specialization> specializations { get; set; }
 
         public DoctorContext(DbContextOptions options) : base(options)
         {
@@ -19,7 +17,7 @@ namespace Doctors.EntityFramework
             modelBuilder.Entity<Doctor>()
                 .Property(e => e.Sex)
                 .HasConversion<string>();
-            modelBuilder.Entity<Doctor>()    
+            modelBuilder.Entity<Doctor>()
                 .HasMany<Specialization>(s => s.Specializations)
                 .WithMany(c => c.Doctors);
         }

@@ -1,23 +1,15 @@
-﻿
-
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace Doctors.Domain.DoctorsAggregate
+﻿namespace Doctors.Domain.DoctorsAggregate
 {
-    using Doctors.Domain.SeedWork;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class Specialization
     {
-        public int Number { get; set; }
-        [Key]
+        [Key] 
         public int SpecId { get; set; }
-        public List<Doctor> Doctors
-        {
-            get;
-            set;
-        } = new List<Doctor>();
-
-
-
+        
+        public int Number { get; set; }
+        
+        public List<Doctor> Doctors { get; set; } = new List<Doctor>();
     }
 }

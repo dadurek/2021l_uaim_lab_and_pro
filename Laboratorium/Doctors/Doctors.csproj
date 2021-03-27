@@ -5,30 +5,30 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Domain" />
-      <Folder Include="Infrastructure" />
-      <Folder Include="Web" />
+        <Folder Include="Domain" />
+        <Folder Include="Infrastructure" />
+        <Folder Include="Web" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="Properties\appsettings.json">
-        <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      </Content>
-      <Content Update="Properties\appsettings.Development.json">
-        <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      </Content>
+        <Content Update="Properties\appsettings.json">
+            <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        </Content>
+        <Content Update="Properties\appsettings.Development.json">
+            <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="EntityFramework" Version="6.4.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        <PrivateAssets>all</PrivateAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-preview.2.21154.2" />
-      <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
-      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.1" />
+        <PackageReference Include="EntityFramework" Version="6.4.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-preview.2.21154.2" />
+        <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.1" />
     </ItemGroup>
 
 </Project>

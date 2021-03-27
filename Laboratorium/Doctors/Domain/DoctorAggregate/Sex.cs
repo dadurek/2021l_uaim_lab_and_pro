@@ -1,4 +1,5 @@
-﻿public enum Sex{
+﻿public enum Sex
+{
     Female,
     Male
 }

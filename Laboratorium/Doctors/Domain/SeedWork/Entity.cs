@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Doctors.Domain.SeedWork
+﻿namespace Doctors.Domain.SeedWork
 {
+    using System.ComponentModel.DataAnnotations;
+
     public abstract class Entity
     {
-        [Key]
-        private int Id { get; }
+        [Key] private int Id { get; }
 
         protected Entity(int id)
         {

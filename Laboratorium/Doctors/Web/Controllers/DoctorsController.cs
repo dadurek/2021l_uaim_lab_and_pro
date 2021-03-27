@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Doctors.EntityFramework;
-using Doctors.Web.Application;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace Doctors.Web.Controllers
+﻿namespace Doctors.Web.Controllers
 {
+    using System.Collections.Generic;
+    using Application;
+    using EntityFramework;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+
     [ApiController]
     public class DoctorsController : ControllerBase
     {
@@ -13,7 +13,8 @@ namespace Doctors.Web.Controllers
         private readonly IDoctorQueriesHandler DoctorQueriesHandler;
         private readonly DoctorContext _doctorContext;
 
-        public DoctorsController(ILogger<DoctorsController> logger, IDoctorQueriesHandler DoctorQueriesHandler,DoctorContext doctorContext)
+        public DoctorsController(ILogger<DoctorsController> logger, IDoctorQueriesHandler DoctorQueriesHandler,
+            DoctorContext doctorContext)
         {
             this.logger = logger;
             this.DoctorQueriesHandler = DoctorQueriesHandler;

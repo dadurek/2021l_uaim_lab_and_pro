@@ -1,8 +1,8 @@
-﻿using Doctors.EntityFramework;
-
-namespace Doctors.Web.Application
+﻿namespace Doctors.Web.Application
 {
     using System.Collections.Generic;
+    using EntityFramework;
+
     public interface IDoctorQueriesHandler
     {
         IEnumerable<DoctorDto> GetAll(DoctorContext doctorContext);
