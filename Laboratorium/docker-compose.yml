@@ -1,9 +1,9 @@
 ﻿version: "3.9"
 services:
+  
   doctors:
     build:
       context: ./Doctors
-    restart: always
     ports:
       - "8082:80"
     depends_on: 
@@ -46,7 +46,7 @@ services:
       - ./ExaminationRooms/setup.sh:/setup.sh
       - ./ExaminationRooms/entrypoint.sh:/entrypoint.sh
     environment:
-      SA_PASSWORD: "microsoftSucks1!"
+      SA_PASSWORD: "zaq1@WSX"
       ACCEPT_EULA: "Y"
     command: /bin/bash ./entrypoint.sh
     

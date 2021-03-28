@@ -29,11 +29,14 @@ namespace ExaminationRooms.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "ExaminationRooms.Web", Version = "v1"});
             });
-            services.AddSingleton<IExaminationRoomsRepository, ExaminationRoomsRepository>();
+            services.AddScoped<IExaminationRoomsRepository, ExaminationRoomsRepository>();
             services.AddTransient<IExaminationRoomQueriesHandler, ExaminationRoomQueriesHandler>();
 
             services.AddDbContext<ExaminationRoomContext>(options =>
-                options.UseSqlServer("Server=rooms_db;Database=master;User Id=SA;Password=microsoftSucks1!;"));
+            {
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

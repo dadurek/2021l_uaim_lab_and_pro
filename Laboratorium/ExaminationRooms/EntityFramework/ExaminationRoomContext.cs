@@ -5,25 +5,20 @@
 
     public class ExaminationRoomContext : DbContext
     {
-        public DbSet<ExaminationRoom> ExaminationRooms { get; set; }
+        public DbSet<ExaminationRoom> ExaminationRoom { get; set; }
 
-        public DbSet<Certification> Certifications { get; set; }
+        public DbSet<Certification> Certification { get; set; }
 
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<ExaminationRoom>().HasMany(xExaminationRoom => xExaminationRoom.Certifications);
-            modelBuilder.Entity<ExaminationRoom>().ToTable("ExaminationRoom");
-            modelBuilder.Entity<Certification>().ToTable("Certification");
-        }
-
-
-        protected ExaminationRoomContext()
-        {
-        }
 
         public ExaminationRoomContext(DbContextOptions options) : base(options)
         {
+        }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ExaminationRoom>()
+                .HasMany(c => c.Certifications)
+                .WithMany(e => e.ExaminationRooms);
         }
     }
 }

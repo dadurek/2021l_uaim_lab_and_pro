@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Application;
-    using EntityFramework;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -11,20 +10,17 @@
     {
         private readonly ILogger<ExaminationRoomsController> logger;
         private readonly IExaminationRoomQueriesHandler examinationRoomQueriesHandler;
-        private readonly ExaminationRoomContext examinationRoomContext;
 
         public ExaminationRoomsController(ILogger<ExaminationRoomsController> logger,
-            IExaminationRoomQueriesHandler examinationRoomQueriesHandler, ExaminationRoomContext examinationRoomContext)
+            IExaminationRoomQueriesHandler examinationRoomQueriesHandler)
         {
             this.logger = logger;
             this.examinationRoomQueriesHandler = examinationRoomQueriesHandler;
-            this.examinationRoomContext = examinationRoomContext;
         }
 
         [HttpGet("examination-rooms")]
         public IEnumerable<ExaminationRoomDto> GetAll()
         {
-            DbInit.Initialize(examinationRoomContext);
             return examinationRoomQueriesHandler.GetAll();
         }
 
@@ -32,6 +28,12 @@
         public IEnumerable<ExaminationRoomDto> GetBySpecialization([FromQuery] int certificationType)
         {
             return examinationRoomQueriesHandler.GetByCertificationType(certificationType);
+        }
+
+        [HttpPost("addRoom")]
+        public void AddDoctor([FromForm] ExaminationRoomDto examinationRoomDto)
+        {
+            examinationRoomQueriesHandler.Add(examinationRoomDto);
         }
     }
 }

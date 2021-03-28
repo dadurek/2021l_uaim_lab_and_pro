@@ -32,8 +32,7 @@ namespace Doctors.Infrastructure
 
         public void Add(string FirstName, string LastName, Sex Sex, List<Specialization> Specializations)
         {
-            var doc = new Doctor {FirstName = FirstName, LastName = LastName, Sex = Sex};
-            doc.Specializations = Specializations;
+            var doc = new Doctor {FirstName = FirstName, LastName = LastName, Sex = Sex,Specializations = Specializations};
             doctorContext.Doctors.Add(doc);
             doctorContext.SaveChanges();
         }

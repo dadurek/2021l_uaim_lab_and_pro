@@ -6,5 +6,6 @@
     {
         IEnumerable<ExaminationRoom> GetAll();
         IEnumerable<ExaminationRoom> GetByCertificationType(int certificationType);
+        void Add(string Number, List<Certification> Certifications);
     }
 }
