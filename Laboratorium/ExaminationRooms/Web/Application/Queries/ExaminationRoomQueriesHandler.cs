@@ -24,7 +24,7 @@
             return examinationRoomsRepository.GetByCertificationType(certificationType)?.Select(ld => ld.Map());
         }
 
-        public void Add(ExaminationRoomDto examinationRoomDto)
+        public void AddRoom(ExaminationRoomDto examinationRoomDto)
         {
             var room = examinationRoomDto.UnMap();
             examinationRoomsRepository.Add(room.Number, room.Certifications);

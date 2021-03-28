@@ -4,8 +4,8 @@
 
     public class Config
     {
-        public static  string DOCTOR_URL;
-        public static  string ROOM_URL;
+        public static string DOCTOR_URL;
+        public static string ROOM_URL;
 
         public static void Init(IConfiguration Configuration)
         {

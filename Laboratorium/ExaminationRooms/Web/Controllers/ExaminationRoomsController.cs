@@ -30,10 +30,10 @@
             return examinationRoomQueriesHandler.GetByCertificationType(certificationType);
         }
 
-        [HttpPost("addRoom")]
-        public void AddDoctor([FromForm] ExaminationRoomDto examinationRoomDto)
+        [HttpPost("add-room")]
+        public void AddDoctor(ExaminationRoomDto examinationRoomDto)
         {
-            examinationRoomQueriesHandler.Add(examinationRoomDto);
+            examinationRoomQueriesHandler.AddRoom(examinationRoomDto);
         }
     }
 }

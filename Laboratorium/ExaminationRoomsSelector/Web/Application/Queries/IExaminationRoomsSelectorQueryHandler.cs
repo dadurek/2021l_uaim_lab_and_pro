@@ -8,6 +8,8 @@
     {
         Task<List<DoctorRoomDto>> GetExaminationRoomsSelectionAsync();
 
-        void Add(DoctorDto doctorDto);
+        void AddDoctor(DoctorDto doctorDto);
+
+        void AddRoom(ExaminationRoomDto examinationRoomDto);
     }
 }

@@ -35,9 +35,14 @@
             return await MatchDoctorsWithRooms();
         }
 
-        public void Add(DoctorDto doctorDto)
+        public void AddDoctor(DoctorDto doctorDto)
         {
             doctorsServiceClient.AddDoctor(doctorDto);
+        }
+        
+        public void AddRoom(ExaminationRoomDto examinationRoomDto)
+        {
+            examinationRoomsServiceClient.AddRoom(examinationRoomDto);
         }
 
         //simple greedy algorithm that mark as best doctor and room when they have most of all groups common specializations

@@ -29,7 +29,13 @@
         [HttpPost("add-doctor")]
         public async void AddDoctor(DoctorDto doctorDto)
         {
-            examinationRoomsSelectorHandler.Add(doctorDto);
+            examinationRoomsSelectorHandler.AddDoctor(doctorDto);
+        }
+        
+        [HttpPost("add-room")]
+        public async void AddRoom(ExaminationRoomDto examinationRoomDto)
+        {
+            examinationRoomsSelectorHandler.AddRoom(examinationRoomDto);
         }
     }
 }

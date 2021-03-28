@@ -7,5 +7,8 @@
     public interface IExaminationRoomsServiceClient
     {
         Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync();
+        
+        void AddRoom(ExaminationRoomDto examinationRoomDto);
+
     }
 }

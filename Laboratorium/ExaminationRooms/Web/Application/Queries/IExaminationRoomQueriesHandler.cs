@@ -7,6 +7,6 @@
         IEnumerable<ExaminationRoomDto> GetAll();
         IEnumerable<ExaminationRoomDto> GetByCertificationType(int certificationType);
 
-        void Add(ExaminationRoomDto examinationRoomDto);
+        void AddRoom(ExaminationRoomDto examinationRoomDto);
     }
 }

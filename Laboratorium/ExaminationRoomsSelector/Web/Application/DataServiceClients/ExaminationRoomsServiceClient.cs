@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Text;
     using System.Text.Json;
     using System.Threading.Tasks;
     using Dtos;
@@ -9,7 +10,7 @@
 
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
-        public IHttpClientFactory clientFactory;
+        private IHttpClientFactory clientFactory;
 
         public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory)
         {
@@ -36,6 +37,19 @@
             };
 
             return await JsonSerializer.DeserializeAsync<IEnumerable<ExaminationRoomDto>>(responseStream, options);
+        }
+
+        public void AddRoom(ExaminationRoomDto examinationRoomDto)
+        {
+            var jsonString = JsonSerializer.Serialize(examinationRoomDto);
+
+            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            var client = clientFactory.CreateClient();
+
+            var url = Config.ROOM_URL + "add-room";
+
+            var result = client.PostAsync(url, content).Result;
         }
     }
 }
