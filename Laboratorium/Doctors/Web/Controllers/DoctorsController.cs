@@ -1,4 +1,6 @@
-﻿namespace Doctors.Web.Controllers
+﻿using System;
+
+namespace Doctors.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -37,8 +39,11 @@
         }
 
         [HttpPost("add-doctor")]
-        public void AddDoctor([FromForm] DoctorDto doctorDto)
+        public void AddDoctor( DoctorDto doctorDto)
         {
+            Console.WriteLine(doctorDto.FirstName);
+            Console.WriteLine(doctorDto.Sex);
+            Console.WriteLine(doctorDto.Specializations.Count());
             DoctorQueriesHandler.Add(doctorDto);
         }
     }

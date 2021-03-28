@@ -38,8 +38,10 @@
         
         public async void AddDoctor(DoctorDto doctorDto)
         {
-            var content = new StringContent(doctorDto.ToString(), Encoding.UTF8, "application/json");
+            string jsonString = JsonSerializer.Serialize(doctorDto);
 
+            var content = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
+            
             var client = clientFactory.CreateClient();
 
             var result = client.PostAsync("http://localhost:8082/add-doctor", content).Result;
