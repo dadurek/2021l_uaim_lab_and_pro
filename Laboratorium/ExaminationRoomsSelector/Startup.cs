@@ -33,8 +33,7 @@ namespace ExaminationRoomsSelector.Web
             services.AddTransient<IDoctorsServiceClient, DoctorsServiceClient>();
 
             
-            var section = Configuration.GetSection("UrlConnection");
-            var config = section.Get<Config>();
+            var config = Configuration.GetSection("UrlConnection").Get<Config>();
             services.AddSingleton(config);
             
         }
