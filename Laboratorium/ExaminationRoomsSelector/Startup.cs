@@ -31,8 +31,12 @@ namespace ExaminationRoomsSelector.Web
             services.AddTransient<IExaminationRoomsSelectorHandler, ExaminationRoomsSelectorQueryHandler>();
             services.AddTransient<IExaminationRoomsServiceClient, ExaminationRoomsServiceClient>();
             services.AddTransient<IDoctorsServiceClient, DoctorsServiceClient>();
+
             
-            Config.Init(Configuration); //INIT CONFIGURATION
+            var section = Configuration.GetSection("UrlConnection");
+            var config = section.Get<Config>();
+            services.AddSingleton(config);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

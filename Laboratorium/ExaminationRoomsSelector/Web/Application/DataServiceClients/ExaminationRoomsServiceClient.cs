@@ -10,16 +10,18 @@
 
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
-        private IHttpClientFactory clientFactory;
+        private readonly IHttpClientFactory clientFactory;
+        private readonly Config config;
 
-        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory)
+        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory, Config config)
         {
             this.clientFactory = clientFactory;
+            this.config = config;
         }
 
         public async Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync()
         {
-            var url = Config.ROOM_URL + "examination-rooms";
+            var url = config.RoomUrl + "examination-rooms";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             
@@ -47,7 +49,7 @@
 
             var client = clientFactory.CreateClient();
 
-            var url = Config.ROOM_URL + "add-room";
+            var url = config.RoomUrl + "add-room";
 
             var result = client.PostAsync(url, content).Result;
         }

@@ -10,16 +10,18 @@
 
     public class DoctorsServiceClient : IDoctorsServiceClient
     {
-        private IHttpClientFactory clientFactory;
+        private readonly IHttpClientFactory clientFactory;
+        private readonly Config config;
 
-        public DoctorsServiceClient(IHttpClientFactory clientFactory)
+        public DoctorsServiceClient(IHttpClientFactory clientFactory, Config config)
         {
             this.clientFactory = clientFactory;
+            this.config = config;
         }
 
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
         {
-            var url = Config.DOCTOR_URL + "doctors";
+            var url = config.DoctorUrl + "doctors";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             
@@ -47,7 +49,7 @@
 
             var client = clientFactory.CreateClient();
 
-            var url = Config.DOCTOR_URL + "add-doctor";
+            var url = config.DoctorUrl + "add-doctor";
 
             var result = client.PostAsync(url, content).Result;
         }
