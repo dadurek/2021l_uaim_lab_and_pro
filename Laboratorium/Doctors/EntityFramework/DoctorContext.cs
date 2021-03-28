@@ -2,7 +2,6 @@
 {
     using Domain.DoctorsAggregate;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
 
     public class DoctorContext : DbContext
     {
@@ -12,7 +11,7 @@
         public DoctorContext(DbContextOptions options) : base(options)
         {
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Doctor>()

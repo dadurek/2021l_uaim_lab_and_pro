@@ -5,14 +5,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Web" />
+        <Folder Include="Web" />
     </ItemGroup>
 
     <ItemGroup>
-        <Content Update="Properties\appsettings.json">
-            <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        <Content Update="appsettings.Production.json">
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
         </Content>
-        <Content Update="Properties\appsettings.Development.json">
+        <Content Update="appsettings.Development.json">
             <CopyToPublishDirectory>Never</CopyToPublishDirectory>
         </Content>
     </ItemGroup>

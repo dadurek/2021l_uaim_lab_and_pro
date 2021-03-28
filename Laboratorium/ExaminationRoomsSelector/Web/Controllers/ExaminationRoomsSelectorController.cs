@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using ExaminationRoomsSelector.Web.Application.Dtos;
-
-namespace ExaminationRoomsSelector.Web.Controllers
+﻿namespace ExaminationRoomsSelector.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
-    using ExaminationRoomsSelector.Web.Application.Queries;
+    using Application.Dtos;
+    using Application.Queries;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    
+
     [ApiController]
     public class ExaminationRoomsSelectorController : ControllerBase
     {
         private readonly ILogger<ExaminationRoomsSelectorController> logger;
         private readonly IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler;
 
-        public ExaminationRoomsSelectorController(ILogger<ExaminationRoomsSelectorController> logger, IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler)
+        public ExaminationRoomsSelectorController(ILogger<ExaminationRoomsSelectorController> logger,
+            IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler)
         {
             this.logger = logger;
             this.examinationRoomsSelectorHandler = examinationRoomsSelectorHandler;
@@ -28,7 +27,7 @@ namespace ExaminationRoomsSelector.Web.Controllers
         }
 
         [HttpPost("add-doctor")]
-        public async void AddDoctor( DoctorDto doctorDto)
+        public async void AddDoctor(DoctorDto doctorDto)
         {
             examinationRoomsSelectorHandler.Add(doctorDto);
         }

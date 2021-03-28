@@ -1,7 +1,6 @@
 namespace Doctors.Domain.DoctorsAggregate
 {
     using System.Collections.Generic;
-    using EntityFramework;
 
     public interface IDoctorRepository
     {

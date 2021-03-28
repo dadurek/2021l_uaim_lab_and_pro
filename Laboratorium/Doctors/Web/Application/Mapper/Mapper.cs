@@ -14,7 +14,7 @@
             {
                 FirstName = doctor.FirstName,
                 LastName = doctor.LastName,
-                Sex =  doctor.Sex,
+                Sex = doctor.Sex,
                 Specializations = doctor?.Specializations.Select(s => s.Number)
             };
         }
@@ -28,10 +28,9 @@
             {
                 FirstName = doctorDto.FirstName,
                 LastName = doctorDto.LastName,
-                Sex =  doctorDto.Sex,
-                Specializations = doctorDto?.Specializations.Select(s => new Specialization{Number =  s}).ToList()
+                Sex = doctorDto.Sex,
+                Specializations = doctorDto?.Specializations.Select(s => new Specialization {Number = s}).ToList()
             };
-
         }
     }
 }

@@ -1,7 +1,7 @@
 namespace ExaminationRoomsSelector.Web
 {
-    using ExaminationRoomsSelector.Web.Application.DataServiceClients;
-    using ExaminationRoomsSelector.Web.Application.Queries;
+    using Application.DataServiceClients;
+    using Application.Queries;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -21,16 +21,18 @@ namespace ExaminationRoomsSelector.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRoomSelector.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "ExaminationRoomSelector.Web", Version = "v1"});
             });
             services.AddHttpClient();
             services.AddTransient<IExaminationRoomsSelectorHandler, ExaminationRoomsSelectorQueryHandler>();
             services.AddTransient<IExaminationRoomsServiceClient, ExaminationRoomsServiceClient>();
             services.AddTransient<IDoctorsServiceClient, DoctorsServiceClient>();
+            
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,10 +51,7 @@ namespace ExaminationRoomsSelector.Web
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

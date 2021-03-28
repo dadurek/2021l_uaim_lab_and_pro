@@ -31,7 +31,7 @@ namespace Doctors.Web
             });
             services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
-            
+
             services.AddDbContext<DoctorContext>(options =>
             {
                 options.UseSqlServer(

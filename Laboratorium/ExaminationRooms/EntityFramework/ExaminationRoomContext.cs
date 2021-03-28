@@ -13,7 +13,7 @@
         public ExaminationRoomContext(DbContextOptions options) : base(options)
         {
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExaminationRoom>()

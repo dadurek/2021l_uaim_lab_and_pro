@@ -10,4 +10,3 @@
         public IEnumerable<int> Specializations { get; set; }
     }
 }
-

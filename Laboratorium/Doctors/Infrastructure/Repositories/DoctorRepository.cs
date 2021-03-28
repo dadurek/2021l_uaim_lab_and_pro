@@ -8,7 +8,6 @@ namespace Doctors.Infrastructure
 
     public class DoctorRepository : IDoctorRepository
     {
-
         private readonly DoctorContext doctorContext;
 
         public DoctorRepository(DoctorContext doctorContext)
@@ -32,7 +31,8 @@ namespace Doctors.Infrastructure
 
         public void Add(string FirstName, string LastName, string Sex, List<Specialization> Specializations)
         {
-            var doc = new Doctor {FirstName = FirstName, LastName = LastName, Sex = Sex,Specializations = Specializations};
+            var doc = new Doctor
+                {FirstName = FirstName, LastName = LastName, Sex = Sex, Specializations = Specializations};
             doctorContext.Doctors.Add(doc);
             doctorContext.SaveChanges();
         }

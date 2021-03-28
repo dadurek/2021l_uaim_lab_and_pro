@@ -27,7 +27,7 @@
         public void Add(ExaminationRoomDto examinationRoomDto)
         {
             var room = examinationRoomDto.UnMap();
-            examinationRoomsRepository.Add(room.Number,room.Certifications);
+            examinationRoomsRepository.Add(room.Number, room.Certifications);
         }
     }
 }

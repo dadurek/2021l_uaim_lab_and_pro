@@ -1,15 +1,10 @@
-﻿using System;
-
-namespace Doctors.Web.Controllers
+﻿namespace Doctors.Web.Controllers
 {
     using System.Collections.Generic;
-    using System.Linq;
     using Application;
-    using Domain.DoctorsAggregate;
     using EntityFramework;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using Microsoft.VisualBasic.CompilerServices;
 
     [ApiController]
     public class DoctorsController : ControllerBase
@@ -39,11 +34,8 @@ namespace Doctors.Web.Controllers
         }
 
         [HttpPost("add-doctor")]
-        public void AddDoctor( DoctorDto doctorDto)
+        public void AddDoctor(DoctorDto doctorDto)
         {
-            Console.WriteLine(doctorDto.FirstName);
-            Console.WriteLine(doctorDto.Sex);
-            Console.WriteLine(doctorDto.Specializations.Count());
             DoctorQueriesHandler.Add(doctorDto);
         }
     }

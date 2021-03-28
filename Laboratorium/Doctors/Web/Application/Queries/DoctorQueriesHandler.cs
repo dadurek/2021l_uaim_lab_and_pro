@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using Domain.DoctorsAggregate;
-    using EntityFramework;
     using Mapper;
 
     public class DoctorQueriesHandler : IDoctorQueriesHandler
@@ -28,7 +27,7 @@
         public void Add(DoctorDto doctorDto)
         {
             var doctor = doctorDto.UnMap();
-            doctorRepository.Add(doctor.FirstName, doctor.LastName, doctor.Sex,doctor.Specializations);
+            doctorRepository.Add(doctor.FirstName, doctor.LastName, doctor.Sex, doctor.Specializations);
         }
     }
 }

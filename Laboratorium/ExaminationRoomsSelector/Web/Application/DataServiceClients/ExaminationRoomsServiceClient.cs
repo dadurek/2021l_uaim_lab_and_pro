@@ -1,14 +1,15 @@
 ﻿namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 {
-    using ExaminationRoomsSelector.Web.Application.Dtos;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Text.Json;
     using System.Threading.Tasks;
+    using Dtos;
 
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
         public IHttpClientFactory clientFactory;
+
         public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory)
         {
             this.clientFactory = clientFactory;
@@ -16,9 +17,8 @@
 
         public async Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync()
         {
-
             var request = new HttpRequestMessage(HttpMethod.Get,
-            $"http://localhost:8081/examination-rooms");
+                $"http://localhost:8081/examination-rooms");
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
@@ -36,4 +36,3 @@
         }
     }
 }
-

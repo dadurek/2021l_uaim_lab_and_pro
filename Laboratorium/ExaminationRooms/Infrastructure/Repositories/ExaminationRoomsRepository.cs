@@ -1,6 +1,5 @@
 ﻿namespace ExaminationRooms.Infrastructure
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Domain.ExaminationRoomAggregate;
@@ -9,7 +8,6 @@
 
     public class ExaminationRoomsRepository : IExaminationRoomsRepository
     {
-
         private readonly ExaminationRoomContext examinationRoomContext;
 
         public ExaminationRoomsRepository(ExaminationRoomContext examinationRoomContext)
@@ -30,7 +28,7 @@
                 .ToList()
                 .Where(ld => ld.Certifications.Any(s => s.Type == certificationType));
         }
-        
+
         public void Add(string Number, List<Certification> Certifications)
         {
             var room = new ExaminationRoom {Number = Number, Certifications = Certifications};

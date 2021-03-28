@@ -5,8 +5,7 @@
 
     public class Specialization
     {
-        [Key]
-        public int SpecId { get; set; }
+        [Key] public int SpecId { get; set; }
 
         public int Number { get; set; }
 
