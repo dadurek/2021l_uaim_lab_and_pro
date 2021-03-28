@@ -8,6 +8,7 @@ namespace ExaminationRoomsSelector.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
+    using Web.Application;
 
     public class Startup
     {
@@ -31,8 +32,7 @@ namespace ExaminationRoomsSelector.Web
             services.AddTransient<IExaminationRoomsServiceClient, ExaminationRoomsServiceClient>();
             services.AddTransient<IDoctorsServiceClient, DoctorsServiceClient>();
             
-            
-            
+            Config.Init(Configuration); //INIT CONFIGURATION
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

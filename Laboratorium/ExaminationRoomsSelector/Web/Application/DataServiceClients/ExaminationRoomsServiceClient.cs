@@ -5,6 +5,7 @@
     using System.Text.Json;
     using System.Threading.Tasks;
     using Dtos;
+    using Web.Application;
 
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
@@ -17,8 +18,10 @@
 
         public async Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get,
-                $"http://localhost:8081/examination-rooms");
+            var url = Config.ROOM_URL + "examination-rooms";
+
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();

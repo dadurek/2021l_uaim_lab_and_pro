@@ -6,10 +6,11 @@
     using System.Text.Json;
     using System.Threading.Tasks;
     using Dtos;
+    using Web.Application;
 
     public class DoctorsServiceClient : IDoctorsServiceClient
     {
-        public IHttpClientFactory clientFactory;
+        private IHttpClientFactory clientFactory;
 
         public DoctorsServiceClient(IHttpClientFactory clientFactory)
         {
@@ -18,7 +19,10 @@
 
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"http://localhost:8082/doctors");
+            var url = Config.DOCTOR_URL + "doctors";
+
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
@@ -43,7 +47,9 @@
 
             var client = clientFactory.CreateClient();
 
-            var result = client.PostAsync("http://localhost:8082/add-doctor", content).Result;
+            var url = Config.DOCTOR_URL + "add-doctor";
+
+            var result = client.PostAsync(url, content).Result;
         }
     }
 }
