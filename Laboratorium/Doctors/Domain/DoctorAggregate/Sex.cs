@@ -1,5 +1,5 @@
-﻿public enum Sex
-{
-    Female,
-    Male
-}
+﻿// public enum Sex
+// {
+//     Female,
+//     Male
+// }

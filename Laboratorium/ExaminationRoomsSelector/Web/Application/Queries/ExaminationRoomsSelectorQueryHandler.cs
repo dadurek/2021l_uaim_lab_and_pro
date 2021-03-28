@@ -35,6 +35,11 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
             return await MatchDoctorsWithRooms();
         }
 
+        public void Add(DoctorDto doctorDto)
+        {
+            doctorsServiceClient.AddDoctor(doctorDto);
+        }
+
         //simple greedy algorithm that mark as best doctor and room when they have most of all groups common specializations
         private Task<List<DoctorRoomDto>> MatchDoctorsWithRooms()
         {

@@ -30,7 +30,7 @@ namespace Doctors.Infrastructure
                     .Any(s => s.Number == certificationType));
         }
 
-        public void Add(string FirstName, string LastName, Sex Sex, List<Specialization> Specializations)
+        public void Add(string FirstName, string LastName, string Sex, List<Specialization> Specializations)
         {
             var doc = new Doctor {FirstName = FirstName, LastName = LastName, Sex = Sex,Specializations = Specializations};
             doctorContext.Doctors.Add(doc);

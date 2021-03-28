@@ -36,7 +36,7 @@
             return DoctorQueriesHandler.GetBySpecialization(specialization);
         }
 
-        [HttpPost("addDoctor")]
+        [HttpPost("add-doctor")]
         public void AddDoctor([FromForm] DoctorDto doctorDto)
         {
             DoctorQueriesHandler.Add(doctorDto);

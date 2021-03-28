@@ -18,7 +18,7 @@
         {
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-            $"http://rooms/examination-rooms");
+            $"http://localhost:8081/examination-rooms");
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();

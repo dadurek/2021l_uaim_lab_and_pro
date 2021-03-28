@@ -9,5 +9,7 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
     public interface IExaminationRoomsSelectorHandler
     {
         Task<List<DoctorRoomDto>> GetExaminationRoomsSelectionAsync();
+        
+        void Add(DoctorDto doctorDto);
     }
 }

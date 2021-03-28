@@ -7,5 +7,7 @@
     public interface IDoctorsServiceClient
     {
         Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync();
+        
+        void AddDoctor(DoctorDto doctorDto);
     }
 }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Net.Http;
+    using System.Text;
     using System.Text.Json;
     
     public class DoctorsServiceClient : IDoctorsServiceClient
@@ -18,7 +19,7 @@
         {
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"http://doctors/doctors");
+                $"http://localhost:8082/doctors");
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
@@ -34,6 +35,19 @@
 
             return await JsonSerializer.DeserializeAsync<IEnumerable<DoctorDto>>(responseStream, options);
         }
+        
+        public async void AddDoctor(DoctorDto doctorDto)
+        {
+            var content = new StringContent(doctorDto.ToString(), Encoding.UTF8, "application/json");
+
+            var client = clientFactory.CreateClient();
+
+            var result = client.PostAsync("http://localhost:8082/add-doctor", content).Result;
+            
+            
+        }
+        
+        
     }
-    }
+}
 

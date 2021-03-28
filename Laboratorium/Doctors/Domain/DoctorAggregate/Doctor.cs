@@ -8,7 +8,7 @@ namespace Doctors.Domain.DoctorsAggregate
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public Sex Sex { get; set; }
+        public string Sex { get; set; }
 
         public List<Specialization> Specializations { get; set; }
     }

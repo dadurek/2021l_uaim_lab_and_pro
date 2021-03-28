@@ -25,7 +25,7 @@ namespace ExaminationRoomsSelector.Web
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LaboratoriesInventory.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRoomSelector.Web", Version = "v1" });
             });
             services.AddHttpClient();
             services.AddTransient<IExaminationRoomsSelectorHandler, ExaminationRoomsSelectorQueryHandler>();
