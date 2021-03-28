@@ -14,8 +14,24 @@
             {
                 FirstName = doctor.FirstName,
                 LastName = doctor.LastName,
+                Sex =  doctor.Sex,
                 Specializations = doctor?.Specializations.Select(s => s.Number)
             };
+        }
+
+        public static Doctor UnMap(this DoctorDto doctorDto)
+        {
+            if (doctorDto == null)
+                return null;
+
+            return new Doctor
+            {
+                FirstName = doctorDto.FirstName,
+                LastName = doctorDto.LastName,
+                Sex =  doctorDto.Sex,
+                Specializations = doctorDto?.Specializations.Select(s => new Specialization{Number =  s}).ToList()
+            };
+
         }
     }
 }

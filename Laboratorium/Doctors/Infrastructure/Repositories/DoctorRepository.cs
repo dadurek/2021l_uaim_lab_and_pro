@@ -4,23 +4,38 @@ namespace Doctors.Infrastructure
     using System.Linq;
     using Domain.DoctorsAggregate;
     using EntityFramework;
+    using Microsoft.EntityFrameworkCore;
 
     public class DoctorRepository : IDoctorRepository
     {
 
+        private readonly DoctorContext doctorContext;
 
-        private Doctor[] Doctors;
-
-        public IEnumerable<Doctor> GetAll(DoctorContext doctorContext)
+        public DoctorRepository(DoctorContext doctorContext)
         {
-            Doctors = doctorContext.Doctors.ToArray();
-            return Doctors;
+            this.doctorContext = doctorContext;
         }
 
-        public IEnumerable<Doctor> GetBySpecialization(DoctorContext doctorContext, int certificationType)
+        public IEnumerable<Doctor> GetAll()
         {
-            Doctors = doctorContext.Doctors.ToArray();
-            return Doctors.Where(ld => ld.Specializations.Any(s => s.Number == certificationType));
+            return doctorContext.Doctors.Include(x => x.Specializations).ToList();
+        }
+
+        public IEnumerable<Doctor> GetBySpecialization(int certificationType)
+        {
+            return doctorContext.Doctors
+                .Include(x => x.Specializations)
+                .ToList()
+                .Where(ld => ld.Specializations
+                    .Any(s => s.Number == certificationType));
+        }
+
+        public void Add(string FirstName, string LastName, Sex Sex, List<Specialization> Specializations)
+        {
+            var doc = new Doctor {FirstName = FirstName, LastName = LastName, Sex = Sex};
+            doc.Specializations = Specializations;
+            doctorContext.Doctors.Add(doc);
+            doctorContext.SaveChanges();
         }
     }
 }

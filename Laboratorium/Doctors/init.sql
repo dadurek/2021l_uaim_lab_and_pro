@@ -64,6 +64,8 @@ insert into Specializations (Number) VALUES (20)
 
 insert into Doctors (FirstName, LastName, Sex) values ('Marcin','Dadura','Male')
 insert into Doctors (FirstName, LastName, Sex) values ('Maciej','Wlodarczyk','Female')
+insert into Doctors (FirstName, LastName, Sex) values ('Krzosztof','Zdulski','Female')
+insert into Doctors (FirstName, LastName, Sex) values ('Bartosz','Walusiak','Male')
 
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (1,1)
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (1,2)
@@ -75,6 +77,13 @@ insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (2,5)
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (2,11)
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (2,12)
+
+insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (3,5)
+insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (3,7)
+insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (3,13)
+
+insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (4,15)
+insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (5,17)
 
 COMMIT;
 GO

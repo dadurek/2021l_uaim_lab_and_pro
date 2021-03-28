@@ -10,6 +10,6 @@ namespace Doctors.Domain.DoctorsAggregate
 
         public Sex Sex { get; set; }
 
-        public List<Specialization> Specializations { get; set; } = new List<Specialization>();
+        public List<Specialization> Specializations { get; set; }
     }
 }

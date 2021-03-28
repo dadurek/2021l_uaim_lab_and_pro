@@ -15,27 +15,20 @@
             this.doctorRepository = doctorRepository;
         }
 
-        public IEnumerable<DoctorDto> GetAll(DoctorContext doctorContext)
+        public IEnumerable<DoctorDto> GetAll()
         {
-            
-            doctorContext.Database.EnsureCreated();
-            var doc = new Doctor
-                {FirstName = "xd", LastName = "xd", Sex = Sex.Female};
-            doc.Specializations = new List<Specialization> {new Specialization {Number = 1}};
-            var doc2 = new Doctor
-                {FirstName = "xdd", LastName = "xd", Sex = Sex.Male};
-            doc2.Specializations = new List<Specialization> {new Specialization {Number = 2}};
-            doctorContext.Doctors.Add(doc);
-            doctorContext.Doctors.Add(doc2);
-            doctorContext.SaveChanges(); 
-            
-            
-            return doctorRepository.GetAll(doctorContext).Select(r => r.Map());
+            return doctorRepository.GetAll().Select(r => r.Map());
         }
 
-        public IEnumerable<DoctorDto> GetBySpecialization(DoctorContext doctorContext, int specialization)
+        public IEnumerable<DoctorDto> GetBySpecialization(int specialization)
         {
-            return doctorRepository.GetBySpecialization(doctorContext, specialization)?.Select(ld => ld.Map());
+            return doctorRepository.GetBySpecialization(specialization)?.Select(ld => ld.Map());
+        }
+
+        public void Add(DoctorDto doctorDto)
+        {
+            var doctor = doctorDto.UnMap();
+            doctorRepository.Add(doctor.FirstName, doctor.LastName, doctor.Sex,doctor.Specializations);
         }
     }
 }

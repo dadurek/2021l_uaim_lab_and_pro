@@ -2,6 +2,7 @@
 {
     using Domain.DoctorsAggregate;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
 
     public class DoctorContext : DbContext
     {
@@ -11,14 +12,14 @@
         public DoctorContext(DbContextOptions options) : base(options)
         {
         }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Doctor>()
                 .Property(e => e.Sex)
                 .HasConversion<string>();
             modelBuilder.Entity<Doctor>()
-                .HasMany<Specialization>(s => s.Specializations)
+                .HasMany(s => s.Specializations)
                 .WithMany(c => c.Doctors);
         }
     }

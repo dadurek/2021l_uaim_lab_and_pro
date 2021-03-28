@@ -1,11 +1,14 @@
 ﻿namespace Doctors.Web.Application
 {
     using System.Collections.Generic;
+    using Domain.DoctorsAggregate;
     using EntityFramework;
 
     public interface IDoctorQueriesHandler
     {
-        IEnumerable<DoctorDto> GetAll(DoctorContext doctorContext);
-        IEnumerable<DoctorDto> GetBySpecialization(DoctorContext doctorContext, int specialization);
+        IEnumerable<DoctorDto> GetAll();
+        IEnumerable<DoctorDto> GetBySpecialization(int specialization);
+        void Add(DoctorDto doctorDto);
+
     }
 }

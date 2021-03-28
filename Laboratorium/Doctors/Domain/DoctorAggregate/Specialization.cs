@@ -5,11 +5,11 @@
 
     public class Specialization
     {
-        [Key] 
+        [Key]
         public int SpecId { get; set; }
-        
+
         public int Number { get; set; }
-        
-        public List<Doctor> Doctors { get; set; } = new List<Doctor>();
+
+        public List<Doctor> Doctors { get; set; }
     }
 }

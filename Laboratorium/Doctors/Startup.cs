@@ -29,10 +29,13 @@ namespace Doctors.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Doctors.Web", Version = "v1"});
             });
-            services.AddSingleton<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
-            services.AddDbContext<DoctorContext>(options => {
-                options.UseSqlServer(Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
+            
+            services.AddDbContext<DoctorContext>(options =>
+            {
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
             });
         }
 
