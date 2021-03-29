@@ -15,5 +15,6 @@ In order to run project use docker-compose.yml. This will create:
 In order to run project you have to run databases from docker-compose.yml (`doctos_db` and `rooms_db` ). Next compile all micro services in DEBUG and everything should work.
 
 
-![](https://i.ibb.co/hsGRQFb/pobrane.jpg)
-
+<p align="center" width="100%">
+    <img width="33%" src="https://i.ibb.co/TRGLDXJ/ddd.jpg"> 
+</p>
