@@ -1,8 +1,8 @@
 ﻿namespace ExaminationRooms.Web.Application.Mapper
 {
     using System.Linq;
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    
+    using Domain.ExaminationRoomAggregate;
+
     public static class Mapper
     {
         public static ExaminationRoomDto Map(this ExaminationRoom examinationRoom)
@@ -14,6 +14,18 @@
             {
                 Number = examinationRoom.Number,
                 Certifications = examinationRoom?.Certifications.Select(s => s.Type)
+            };
+        }
+
+        public static ExaminationRoom UnMap(this ExaminationRoomDto examinationRoomDto)
+        {
+            if (examinationRoomDto == null)
+                return null;
+
+            return new ExaminationRoom
+            {
+                Number = examinationRoomDto.Number,
+                Certifications = examinationRoomDto?.Certifications.Select(s => new Certification {Type = s}).ToList()
             };
         }
     }

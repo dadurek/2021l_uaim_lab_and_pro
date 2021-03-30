@@ -1,7 +1,7 @@
 ﻿namespace Doctors.Web.Application.Mapper
 {
     using System.Linq;
-    using Doctors.Domain.DoctorsAggregate;
+    using Domain.DoctorsAggregate;
 
     public static class Mapper
     {
@@ -12,9 +12,24 @@
 
             return new DoctorDto
             {
-                FirstName = doctor.FirstName, 
+                FirstName = doctor.FirstName,
                 LastName = doctor.LastName,
-                Specializations = doctor?.Specializations
+                Sex = doctor.Sex,
+                Specializations = doctor?.Specializations.Select(s => s.Number)
+            };
+        }
+
+        public static Doctor UnMap(this DoctorDto doctorDto)
+        {
+            if (doctorDto == null)
+                return null;
+
+            return new Doctor
+            {
+                FirstName = doctorDto.FirstName,
+                LastName = doctorDto.LastName,
+                Sex = doctorDto.Sex,
+                Specializations = doctorDto?.Specializations.Select(s => new Specialization {Number = s}).ToList()
             };
         }
     }

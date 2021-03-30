@@ -1,14 +1,17 @@
 namespace Doctors.Web
 {
-    using Doctors.Domain.DoctorsAggregate;
-    using Doctors.Infrastructure;
-    using Doctors.Web.Application;
+    using Application;
+    using Domain.DoctorsAggregate;
+    using EntityFramework;
+    using Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -21,14 +24,19 @@ namespace Doctors.Web
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-           
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRooms.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Doctors.Web", Version = "v1"});
             });
-            services.AddSingleton<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
+
+            services.AddDbContext<DoctorContext>(options =>
+            {
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("MyConnection"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,10 +55,7 @@ namespace Doctors.Web
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

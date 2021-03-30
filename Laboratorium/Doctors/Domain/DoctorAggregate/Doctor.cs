@@ -1,19 +1,15 @@
-using System.Collections.Generic;
-
 namespace Doctors.Domain.DoctorsAggregate
 {
-    public class Doctor : Person
+    using System.Collections.Generic;
+
+    public class Doctor
     {
-        public Doctor(int id,string firstName, string lastName, Sex sex, List<int> specializations) : base(id,firstName, lastName, sex)
-        {
-            this.Specializations = specializations;
-        }
+        public int DoctorId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public List<int> Specializations { get;  }
+        public string Sex { get; set; }
 
-        public override string GetDescription()
-        {
-            return $"Doctor named {FirstName} {LastName}, who is {Sex}";
-        }
+        public List<Specialization> Specializations { get; set; }
     }
 }

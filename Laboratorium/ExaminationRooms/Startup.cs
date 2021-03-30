@@ -1,15 +1,17 @@
 namespace ExaminationRooms.Web
 {
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using ExaminationRooms.Infrastructure;
-    using ExaminationRooms.Web.Application;
+    using Application;
+    using Domain.ExaminationRoomAggregate;
+    using EntityFramework;
+    using Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -22,14 +24,19 @@ namespace ExaminationRooms.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRooms.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "ExaminationRooms.Web", Version = "v1"});
             });
-            services.AddSingleton<IExaminationRoomsRepository, ExaminationRoomsRepository>();
+            services.AddScoped<IExaminationRoomsRepository, ExaminationRoomsRepository>();
             services.AddTransient<IExaminationRoomQueriesHandler, ExaminationRoomQueriesHandler>();
+
+            services.AddDbContext<ExaminationRoomContext>(options =>
+            {
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,10 +55,7 @@ namespace ExaminationRooms.Web
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ExaminationRoomsSelector.Web.Application.DataServiceClients;
-using ExaminationRoomsSelector.Web.Application.Dtos;
-
-namespace ExaminationRoomsSelector.Web.Application.Queries
+﻿namespace ExaminationRoomsSelector.Web.Application.Queries
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using DataServiceClients;
+    using Dtos;
+
     public class ExaminationRoomsSelectorQueryHandler : IExaminationRoomsSelectorHandler
     {
         private readonly List<int> commonSetOfDisease;
@@ -35,6 +35,16 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
             return await MatchDoctorsWithRooms();
         }
 
+        public void AddDoctor(DoctorDto doctorDto)
+        {
+            doctorsServiceClient.AddDoctor(doctorDto);
+        }
+        
+        public void AddRoom(ExaminationRoomDto examinationRoomDto)
+        {
+            examinationRoomsServiceClient.AddRoom(examinationRoomDto);
+        }
+
         //simple greedy algorithm that mark as best doctor and room when they have most of all groups common specializations
         private Task<List<DoctorRoomDto>> MatchDoctorsWithRooms()
         {
@@ -59,7 +69,9 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
                         }
                     }
                 }
-                if (GetRank(bestDoctor, bestRoom) == 0) //edge case, if common specialization of doctor and room is 0, break
+
+                if (GetRank(bestDoctor, bestRoom) == 0
+                ) //edge case, if common specialization of doctor and room is 0, break
                     break;
 
                 l.Add(new DoctorRoomDto(bestDoctor, bestRoom));
