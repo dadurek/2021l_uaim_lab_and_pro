@@ -22,14 +22,17 @@ services:
       context: ./ExaminationRoomsSelector
     ports:
       - "8080:80"
+    environment:
+      EXM_ROOM_SEL_ServiceConfiguration__DoctorUrl: "http://doctors/"
+      EXM_ROOM_SEL_ServiceConfiguration__RoomUrl: "http://rooms/"
 
   doctors_db:
     image: "mcr.microsoft.com/mssql/server"
     environment:
       SA_PASSWORD: "zaq1@WSX"
       ACCEPT_EULA: "Y"
-    ports:
-      - "1433:1433"
+#    ports:
+#      - "1433:1433"
     volumes:
       - ./Doctors/init.sql:/init.sql
       - ./Doctors/setup.sh:/setup.sh
@@ -39,8 +42,8 @@ services:
   rooms_db:
     image: "mcr.microsoft.com/mssql/server"
     restart: always
-    ports:
-      - "1434:1433"
+#    ports:
+#      - "1434:1433"
     volumes:
       - ./ExaminationRooms/init.sql:/init.sql
       - ./ExaminationRooms/setup.sh:/setup.sh

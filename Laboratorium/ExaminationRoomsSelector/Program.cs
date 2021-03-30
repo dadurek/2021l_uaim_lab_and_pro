@@ -1,6 +1,7 @@
 namespace ExaminationRoomsSelector.Web
 {
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Hosting;
 
     public class Program
@@ -12,6 +13,7 @@ namespace ExaminationRoomsSelector.Web
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((_, config) => { config.AddEnvironmentVariables("EXM_ROOM_SEL_"); })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
