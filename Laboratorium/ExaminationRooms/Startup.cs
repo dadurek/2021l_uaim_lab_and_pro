@@ -11,7 +11,6 @@ namespace ExaminationRooms.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using Web.Application.Configuration;
 
     public class Startup
     {
@@ -38,9 +37,6 @@ namespace ExaminationRooms.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
             });
-            
-            var config = Configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>();
-            services.AddSingleton(config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

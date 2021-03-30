@@ -2,7 +2,7 @@
 
 ## Docker
 
-In order to run project use docker-compose.yml. This will create:
+In order to run project use `docker-compose.yml`. This will create:
 
 * `doctors_db`  -  database for doctors
 * `rooms_db` - database for examination-rooms
@@ -12,7 +12,7 @@ In order to run project use docker-compose.yml. This will create:
 
 ## Local (not fully)
 
-In order to run project you have to run databases from docker-compose.yml (`doctos_db` and `rooms_db` ). Next compile all micro services in DEBUG and everything should work.
+In order to run project you have to uncomment ports in database entries and then start databases from `docker-compose.yml` (`doctos_db` and `rooms_db` ). Next compile all micro services in DEBUG and everything should work.
 
 
 <p align="center" width="100%">

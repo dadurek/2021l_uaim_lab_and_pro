@@ -35,7 +35,7 @@ namespace Doctors.Web
             services.AddDbContext<DoctorContext>(options =>
             {
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("MyConnection")); //connection string in appsettings.json
+                    Configuration.GetConnectionString("MyConnection"));
             });
         }
 
