@@ -17,7 +17,7 @@
 
         public IEnumerable<ExaminationRoom> GetAll()
         {
-            // examinationRoomContext.Database.EnsureCreated();
+            // using(var examinationRoomContext = new ExaminationRoomContext())
             return examinationRoomContext.ExaminationRoom.Include(x => x.Certifications).ToList();
         }
 

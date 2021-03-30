@@ -16,6 +16,8 @@ services:
       - "8081:80"
     depends_on:
       - "rooms_db"
+    environment:
+      EXM_ROOM_ConnectionStrings__MyConnection: "Server=rooms_db;Database=master;User=sa;Password=zaq1@WSX;"
 
   roomselector:
     build:
@@ -42,8 +44,8 @@ services:
   rooms_db:
     image: "mcr.microsoft.com/mssql/server"
     restart: always
-#    ports:
-#      - "1434:1433"
+    ports:
+      - "1434:1433"
     volumes:
       - ./ExaminationRooms/init.sql:/init.sql
       - ./ExaminationRooms/setup.sh:/setup.sh
