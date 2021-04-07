@@ -25,7 +25,8 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
+                    new DoctorDto
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
                 },
                 null
             };
@@ -37,7 +38,8 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
+                    new DoctorDto
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
                 },
                 new List<ExaminationRoomDto>
                 {
@@ -48,7 +50,10 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male",  Specializations = new[] {3, 4, 5}},
+                    new DoctorDto
+                    {
+                        FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3, 4, 5}
+                    },
                 },
                 new List<ExaminationRoomDto>
                 {
@@ -59,7 +64,10 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male",  Specializations = new[] {1, 2, 5}},
+                    new DoctorDto
+                    {
+                        FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1, 2, 5}
+                    },
                 },
                 new List<ExaminationRoomDto>
                 {
@@ -75,10 +83,20 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Marcin", LastName = "Dadura", Sex = "Male",  Specializations = new[] {1, 2, 3}},
-                    new DoctorDto {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male",  Specializations = new[] {3, 4, 5}},
-                    new DoctorDto {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male",  Specializations = new[] {1, 2, 5}},
-                    new DoctorDto {FirstName = "Krzysztof", LastName = "Walusiak",  Sex = "Male", Specializations = new[] {6, 7, 8}}
+                    new DoctorDto
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
+                    new DoctorDto
+                    {
+                        FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3, 4, 5}
+                    },
+                    new DoctorDto
+                    {
+                        FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1, 2, 5}
+                    },
+                    new DoctorDto
+                    {
+                        FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {6, 7, 8}
+                    }
                 },
                 new List<ExaminationRoomDto>()
                 {
@@ -94,10 +112,14 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Marcin", LastName = "Dadura", Sex = "Male",  Specializations = new[] {1}},
-                    new DoctorDto {FirstName = "Maciej", LastName = "Włodarczyk",  Sex = "Male", Specializations = new[] {3}},
-                    new DoctorDto {FirstName = "Zbigniew", LastName = "Ktosowski",  Sex = "Male", Specializations = new[] {1}},
-                    new DoctorDto {FirstName = "Krzysztof", LastName = "Walusiak",  Sex = "Male", Specializations = new[] {6}}
+                    new DoctorDto
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1}},
+                    new DoctorDto
+                        {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3}},
+                    new DoctorDto
+                        {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1}},
+                    new DoctorDto
+                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {6}}
                 },
                 new List<ExaminationRoomDto>
                 {
@@ -113,11 +135,16 @@
             {
                 new List<DoctorDto>
                 {
-                    new DoctorDto {FirstName = "Marcin", LastName = "Dadura", Sex = "Male",  Specializations = new[] {1, 2}},
-                    new DoctorDto {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male",  Specializations = new[] {3, 4}},
-                    new DoctorDto {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male",  Specializations = new[] {1, 3}},
-                    new DoctorDto {FirstName = "Krzysztof", LastName = "Walusiak",  Sex = "Male", Specializations = new[] {2, 3}},
-                    new DoctorDto {FirstName = "Krzysztof", LastName = "Walusiak",  Sex = "Male", Specializations = new[] {6}}
+                    new DoctorDto
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2}},
+                    new DoctorDto
+                        {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3, 4}},
+                    new DoctorDto
+                        {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1, 3}},
+                    new DoctorDto
+                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {2, 3}},
+                    new DoctorDto
+                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {6}}
                 },
                 new List<ExaminationRoomDto>
                 {

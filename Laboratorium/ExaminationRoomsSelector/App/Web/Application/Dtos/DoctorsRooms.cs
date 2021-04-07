@@ -6,8 +6,7 @@
 
     public class Root
     {
-        [JsonPropertyName("DoctorDtos")]
-        public List<DoctorDto> DoctorDtos { get; set; }
+        [JsonPropertyName("DoctorDtos")] public List<DoctorDto> DoctorDtos { get; set; }
 
         [JsonPropertyName("ExaminationRoomDtos")]
         public List<ExaminationRoomDto> ExaminationRoomDtos { get; set; }

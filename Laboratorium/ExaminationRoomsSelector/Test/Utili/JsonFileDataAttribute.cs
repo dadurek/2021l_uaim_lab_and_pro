@@ -5,14 +5,12 @@
     using System.IO;
     using System.Reflection;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using Web.Application.Dtos;
     using Xunit.Sdk;
 
-   public class JsonFileDataAttribute : DataAttribute
+    public class JsonFileDataAttribute : DataAttribute
     {
         private readonly string _filePath;
-        
+
 
         public JsonFileDataAttribute(string filePath)
         {
@@ -25,6 +23,7 @@
             {
                 throw new ArgumentNullException(nameof(testMethod));
             }
+
             // Get the absolute path to the JSON file
             var path = Path.IsPathRooted(_filePath)
                 ? _filePath
@@ -37,14 +36,14 @@
 
             // Load the file
             var fileData = File.ReadAllText(_filePath);
-            
+
             return GetData(fileData);
         }
 
         private IEnumerable<object[]> GetData(string jsonData)
         {
             Root datalist = JsonConvert.DeserializeObject<Root>(jsonData);
-            
+
             yield return new object[]
             {
                 datalist.DoctorDtos,
