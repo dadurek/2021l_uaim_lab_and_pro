@@ -6,6 +6,6 @@ namespace Doctors.Domain.DoctorsAggregate
     {
         IEnumerable<Doctor> GetAll();
         IEnumerable<Doctor> GetBySpecialization(int specialization);
-        void Add(string FirstName, string LastName, string Sex, List<Specialization> Specializations);
+        void Add(string FirstName, string LastName, Sex Sex, List<Specialization> Specializations);
     }
 }

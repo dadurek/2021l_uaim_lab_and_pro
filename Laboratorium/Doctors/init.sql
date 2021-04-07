@@ -9,7 +9,7 @@ create table Doctors
             primary key,
     FirstName nvarchar(max),
     LastName  nvarchar(max),
-    Sex       nvarchar(max) not null
+    Sex       nvarchar(max) not null check (Sex in ('male', 'female'))
 )
 go
 
@@ -62,10 +62,10 @@ insert into Specializations (Number) VALUES (18)
 insert into Specializations (Number) VALUES (19)
 insert into Specializations (Number) VALUES (20)
 
-insert into Doctors (FirstName, LastName, Sex) values ('Marcin','Dadura','Male')
-insert into Doctors (FirstName, LastName, Sex) values ('Maciej','Wlodarczyk','Female')
-insert into Doctors (FirstName, LastName, Sex) values ('Krzosztof','Zdulski','Female')
-insert into Doctors (FirstName, LastName, Sex) values ('Bartosz','Walusiak','Male')
+insert into Doctors (FirstName, LastName, Sex) values ('Marcin','Dadura','male')
+insert into Doctors (FirstName, LastName, Sex) values ('Maciej','Wlodarczyk','female')
+insert into Doctors (FirstName, LastName, Sex) values ('Krzosztof','Zdulski','female')
+insert into Doctors (FirstName, LastName, Sex) values ('Bartosz','Walusiak','male')
 
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (1,1)
 insert into DoctorSpecialization (DoctorsDoctorId, SpecializationsSpecId) values (1,2)
