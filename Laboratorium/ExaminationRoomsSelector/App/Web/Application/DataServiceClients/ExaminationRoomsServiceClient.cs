@@ -13,7 +13,8 @@
         private readonly IHttpClientFactory clientFactory;
         private readonly ServiceConfiguration _serviceConfiguration;
 
-        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory, ServiceConfiguration serviceConfiguration)
+        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory,
+            ServiceConfiguration serviceConfiguration)
         {
             this.clientFactory = clientFactory;
             this._serviceConfiguration = serviceConfiguration;
@@ -24,7 +25,7 @@
             var url = _serviceConfiguration.RoomUrl + "examination-rooms";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-            
+
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();

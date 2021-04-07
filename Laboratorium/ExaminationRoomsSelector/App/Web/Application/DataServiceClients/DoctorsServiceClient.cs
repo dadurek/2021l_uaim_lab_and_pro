@@ -24,7 +24,7 @@
             var url = _serviceConfiguration.DoctorUrl + "doctors";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-            
+
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
