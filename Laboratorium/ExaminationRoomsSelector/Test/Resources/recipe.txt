@@ -1,0 +1,23 @@
+﻿PAGE    :   https://www.json-generator.com/
+
+
+  {
+    DoctorDtos:['{{repeat(10000)}}',
+      {
+        FirstName: '{{firstName()}}',
+        LastName: '{{surname()}}',
+        Sex : '{{gender()}}',
+        Specializations: [ '{{repeat(2,5)}}',   '{{integer(1, 30)}}']
+      }
+    ],
+    
+    ExaminationRoomDtos:['{{repeat(10000)}}',
+      {
+        Number: function(tags){
+            var fruits = ['', 'a', 'b', 'c'];
+            return tags.integer(1, 499) + fruits[tags.integer(0, fruits.length - 1)];
+        },
+        Certifications: [ '{{repeat(2,5)}}',  '{{integer(1, 30)}}']
+      }
+    ]
+  }
