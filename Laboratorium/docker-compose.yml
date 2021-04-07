@@ -23,7 +23,7 @@ services:
 
   roomselector:
     build:
-      context: ./ExaminationRoomsSelector
+      context: ./ExaminationRoomsSelector/App
     ports:
       - "8080:80"
     environment:
