@@ -26,8 +26,8 @@ namespace ExaminationRoomsSelector.Test
             Action action = () => handler.MatchDoctorsWithRooms(doctorList, roomList);
             action.Should().ThrowExactly<ArgumentNullException>().WithMessage("*examinationRoomsDto*");
         }
-
-
+        
+        
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorNullRoomOne), MemberType = typeof(DataGenerator))]
         public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctorsIEnumerable(List<DoctorDto> doctorList,
@@ -36,8 +36,8 @@ namespace ExaminationRoomsSelector.Test
             Action action = () => handler.MatchDoctorsWithRooms(doctorList, roomList);
             action.Should().ThrowExactly<ArgumentNullException>().WithMessage("*doctorsDto*");
         }
-
-
+        
+        
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorOneRoomOne), MemberType = typeof(DataGenerator))]
         public void ShouldMatchDoctorWithExaminationRoomWhenPassingOneDoctorAndOneExaminationRoom
@@ -56,8 +56,11 @@ namespace ExaminationRoomsSelector.Test
             res.Should().NotBeEmpty().And.HaveCount(count);
         }
         
-      
-        
-        
+        [Theory]
+        [JsonFileData("Resources/data.json")]
+        public void BIGONE(List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+        {
+            Assert.Equal(1,1);
+        }
     }
 }
