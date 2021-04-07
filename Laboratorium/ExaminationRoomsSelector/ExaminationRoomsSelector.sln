@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExaminationRoomsSelector", "App\ExaminationRoomsSelector.csproj", "{749C1623-28AC-47DC-9B1D-C116ECC372F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{9E519755-7C7D-4BDD-9607-437D3E09B706}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{3FD7CCD8-A153-4E09-A655-19CA95A081C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,9 @@ Global
 		{749C1623-28AC-47DC-9B1D-C116ECC372F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749C1623-28AC-47DC-9B1D-C116ECC372F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749C1623-28AC-47DC-9B1D-C116ECC372F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E519755-7C7D-4BDD-9607-437D3E09B706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E519755-7C7D-4BDD-9607-437D3E09B706}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E519755-7C7D-4BDD-9607-437D3E09B706}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E519755-7C7D-4BDD-9607-437D3E09B706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FD7CCD8-A153-4E09-A655-19CA95A081C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD7CCD8-A153-4E09-A655-19CA95A081C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD7CCD8-A153-4E09-A655-19CA95A081C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD7CCD8-A153-4E09-A655-19CA95A081C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

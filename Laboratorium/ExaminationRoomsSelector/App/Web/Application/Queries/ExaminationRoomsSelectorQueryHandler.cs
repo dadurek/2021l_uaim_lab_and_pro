@@ -10,13 +10,9 @@
     {
         private readonly IDoctorsServiceClient _doctorsServiceClient;
         private readonly IExaminationRoomsServiceClient _examinationRoomsServiceClient;
-        private List<DoctorDto> _doctorList = new List<DoctorDto>();
-        private List<ExaminationRoomDto> _roomList = new List<ExaminationRoomDto>();
-
-        public ExaminationRoomsSelectorQueryHandler()
-        {
-        }
-
+        private List<DoctorDto> _doctorList = new();
+        private List<ExaminationRoomDto> _roomList = new();
+        
 
         public ExaminationRoomsSelectorQueryHandler(IExaminationRoomsServiceClient examinationRoomsServiceClient,
             IDoctorsServiceClient doctorsServiceClient)
