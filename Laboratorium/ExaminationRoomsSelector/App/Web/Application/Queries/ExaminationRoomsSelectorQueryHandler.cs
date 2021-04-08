@@ -44,99 +44,53 @@
             return await Task.FromResult(bestMatch);
         }
 
-        public List<DoctorRoomDto> MatchDoctorsWithRooms(List<DoctorDto> doctorsDto,
+        //simple greedy algorithm that match best room for each doctor
+        public static List<DoctorRoomDto> MatchDoctorsWithRooms(List<DoctorDto> doctorsDto,
             List<ExaminationRoomDto> examinationRoomsDto)
         {
             var doctors = doctorsDto ?? throw new ArgumentNullException(nameof(doctorsDto));
             var rooms = examinationRoomsDto ?? throw new ArgumentNullException(nameof(examinationRoomsDto));
 
-            (doctors, rooms) = RemakeLists(doctors, rooms);
-
             var list = new List<DoctorRoomDto>();
-
-            while (doctors.Any() && rooms.Any())
+            
+            foreach (var doctor in doctors)
             {
-                var bestDoctor = doctors[0];
-                var bestRoom = rooms[0];
-                var rank = GetRank(bestDoctor, bestRoom);
-
-                foreach (var doctor in doctors)
+                var bestRoom = rooms.First();
+                var rank = GetRank(doctor, bestRoom);
+                
+                foreach (var room in rooms)
                 {
-                    foreach (var room in rooms)
-                    {
-                        var x = GetRank(doctor, room);
-                        if (x <= rank) continue;
-                        rank = x;
-                        bestDoctor = doctor;
-                        bestRoom = room;
-                    }
+                    var x = GetRank(doctor, room);
+                    if (x <= rank) continue;
+                    rank = x;
+                    bestRoom = room;
                 }
 
-                if (GetRank(bestDoctor, bestRoom) == 0
-                ) //edge case, if common specialization of doctor and room is 0, break
-                    break;
+                if (GetRank(doctor, bestRoom) == 0)
+                    return list;
 
-                list.Add(new DoctorRoomDto(bestDoctor, bestRoom));
-                doctors.Remove(bestDoctor);
+                list.Add(new DoctorRoomDto(doctor, bestRoom));
                 rooms.Remove(bestRoom);
             }
 
             return list;
         }
 
-        //return number of specialization that are same
-        protected virtual int GetRank(DoctorDto d, ExaminationRoomDto e)
+        //Get rank, iterating over the loop is faster than using Intersect
+        private static int GetRank(DoctorDto doctorDto, ExaminationRoomDto examinationRoomDto)
         {
-            return d.Specializations.ToList().Intersect(e.Certifications.ToList()).Count();
-        }
-
-
-        //remake list od doctors and rooms that they contain only specializations witch are common part of all rooms and all doctors
-        private (List<DoctorDto> doctors, List<ExaminationRoomDto> rooms) RemakeLists(List<DoctorDto> doctors,
-            List<ExaminationRoomDto> rooms)
-        {
-            var commonSetOfDisease = GetCommonSet(doctors, rooms);
-
-            foreach (var doctor in doctors)
-                if (doctor.Specializations.Any(n => commonSetOfDisease.Contains(n)))
-                {
-                    var list = doctor.Specializations.ToList().Intersect(commonSetOfDisease).ToList();
-                    doctor.Specializations = list;
-                }
-
-            for (var i = 0; i < rooms.Count; i++)
+            var count = 0;
+            foreach (var s in doctorDto.Specializations)
             {
-                var room = rooms[i];
-                if (room.Certifications.Any(n => commonSetOfDisease.Contains(n)))
+                foreach (var c in examinationRoomDto.Certifications)
                 {
-                    var list = room.Certifications.ToList().Intersect(commonSetOfDisease).ToList();
-                    room.Certifications = list;
+                    if (s == c)
+                        count++;
                 }
-
-                if (room.Certifications.Any()) continue;
-                rooms.Remove(room);
-                i++;
             }
 
-            return (doctors, rooms);
-        }
-
-        //Get all specializations that are common part of all rooms and all doctors
-        private List<int> GetCommonSet(List<DoctorDto> doctors, List<ExaminationRoomDto> rooms)
-        {
-            var commonDoctors = new List<int>();
-            var commonRooms = new List<int>();
-            var hashSet = new HashSet<int>();
-
-            foreach (var n in doctors)
-                commonDoctors.AddRange(n.Specializations.Where(x => hashSet.Add(x)));
-
-            hashSet.Clear(); //clear next itteration
-
-            foreach (var n in rooms)
-                commonRooms.AddRange(n.Certifications.Where(x => hashSet.Add(x)));
-
-            return commonDoctors.Intersect(commonRooms).ToList();
+            return count;
+            // return doctorDto.Specializations.Intersect(examinationRoomDto.Certifications).Count(); //slower option
         }
     }
 }

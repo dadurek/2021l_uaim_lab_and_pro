@@ -10,20 +10,13 @@ namespace ExaminationRoomsSelector.Test
 
     public class ExaminationRoomsSelectorTest
     {
-        private ExaminationRoomsSelectorQueryHandler handler;
-
-        public ExaminationRoomsSelectorTest()
-        {
-            handler = new ExaminationRoomsSelectorQueryHandler();
-        }
-
-
+        
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorOneRoomNull), MemberType = typeof(DataGenerator))]
         public void ShouldThrowArgumentNullExceptionWhenPassingNullExaminationRoomsIEnumerable
             (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
         {
-            Action action = () => handler.MatchDoctorsWithRooms(doctorList, roomList);
+            Action action = () => ExaminationRoomsSelectorQueryHandler.MatchDoctorsWithRooms(doctorList, roomList);
             action.Should().ThrowExactly<ArgumentNullException>().WithMessage("*examinationRoomsDto*");
         }
 
@@ -33,7 +26,7 @@ namespace ExaminationRoomsSelector.Test
         public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctorsIEnumerable(List<DoctorDto> doctorList,
             List<ExaminationRoomDto> roomList)
         {
-            Action action = () => handler.MatchDoctorsWithRooms(doctorList, roomList);
+            Action action = () => ExaminationRoomsSelectorQueryHandler.MatchDoctorsWithRooms(doctorList, roomList);
             action.Should().ThrowExactly<ArgumentNullException>().WithMessage("*doctorsDto*");
         }
 
@@ -43,7 +36,7 @@ namespace ExaminationRoomsSelector.Test
         public void ShouldMatchDoctorWithExaminationRoomWhenPassingOneDoctorAndOneExaminationRoom
             (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
         {
-            var res = handler.MatchDoctorsWithRooms(doctorList, roomList);
+            var res = ExaminationRoomsSelectorQueryHandler.MatchDoctorsWithRooms(doctorList, roomList);
             res.Should().NotBeEmpty().And.HaveCount(1);
         }
 
@@ -52,21 +45,22 @@ namespace ExaminationRoomsSelector.Test
         public void ShouldMatchAllDoctorsWithExaminationRoomsAndCountShouldEqualsTheSpecifiedNumber
             (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList, int count)
         {
-            var res = handler.MatchDoctorsWithRooms(doctorList, roomList);
+            var res = ExaminationRoomsSelectorQueryHandler.MatchDoctorsWithRooms(doctorList, roomList);
             res.Should().NotBeEmpty().And.HaveCount(count);
         }
 
+        // Data is 10k Doctors and 10k ExaminationRooms
         [Theory]
         [JsonFileData("Resources/data.json")]
         public void BIGONE(List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             
             sw.Start();
-            handler.MatchDoctorsWithRooms(doctorList, roomList);
+            ExaminationRoomsSelectorQueryHandler.MatchDoctorsWithRooms(doctorList, roomList);
             sw.Stop();
             
-            Assert.True(sw.Elapsed.Seconds<1);
+            sw.Elapsed.Seconds.Should().BeLessThan(20); //less than one minute 
         }
     }
 }
