@@ -4,7 +4,7 @@
     using System.Text.Json.Serialization;
     using Web.Application.Dtos;
 
-    public class Root
+    public class DoctorsRooms
     {
         [JsonPropertyName("DoctorDtos")] public List<DoctorDto> DoctorDtos { get; set; }
 

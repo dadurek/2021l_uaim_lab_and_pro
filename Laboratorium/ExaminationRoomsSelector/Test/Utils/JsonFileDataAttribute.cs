@@ -42,7 +42,7 @@
 
         private IEnumerable<object[]> GetData(string jsonData)
         {
-            Root datalist = JsonConvert.DeserializeObject<Root>(jsonData);
+            var datalist = JsonConvert.DeserializeObject<DoctorsRooms>(jsonData);
 
             yield return new object[]
             {
