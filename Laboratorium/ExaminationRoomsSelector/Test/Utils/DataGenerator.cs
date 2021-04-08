@@ -14,7 +14,7 @@
                 null,
                 new List<ExaminationRoomDto>
                 {
-                    new ExaminationRoomDto {Number = "69b", Certifications = new[] {1, 2, 4}}
+                    new ExaminationRoomDto {Number = "69b", Certifications = new List<int>{1, 2, 4}},
                 }
             };
         }
@@ -26,7 +26,7 @@
                 new List<DoctorDto>
                 {
                     new DoctorDto
-                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new List<int> {1, 2, 3}},
                 },
                 null
             };
@@ -39,11 +39,11 @@
                 new List<DoctorDto>
                 {
                     new DoctorDto
-                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new List<int> {1, 2, 3}},
                 },
                 new List<ExaminationRoomDto>
                 {
-                    new ExaminationRoomDto {Number = "69b", Certifications = new[] {1, 2, 4}}
+                    new ExaminationRoomDto {Number = "69b", Certifications = new List<int> {1, 2, 4}}
                 }
             };
             yield return new object[]
@@ -52,12 +52,12 @@
                 {
                     new DoctorDto
                     {
-                        FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3, 4, 5}
+                        FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new List<int> {3, 4, 5}
                     },
                 },
                 new List<ExaminationRoomDto>
                 {
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1, 2, 5, 6}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {1, 2, 5, 6}},
                 }
             };
             yield return new object[]
@@ -66,12 +66,12 @@
                 {
                     new DoctorDto
                     {
-                        FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1, 2, 5}
+                        FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new List<int> {1, 2, 5}
                     },
                 },
                 new List<ExaminationRoomDto>
                 {
-                    new ExaminationRoomDto {Number = "321a", Certifications = new[] {1, 2, 3, 4, 5, 6, 7}}
+                    new ExaminationRoomDto {Number = "321a", Certifications = new List<int> {1, 2, 3, 4, 5, 6, 7}}
                 }
             };
         }
@@ -84,27 +84,27 @@
                 new List<DoctorDto>
                 {
                     new DoctorDto
-                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2, 3}},
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new List<int> {1, 2, 3}},
                     new DoctorDto
                     {
-                        FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3, 4, 5}
+                        FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new List<int> {3, 4, 5}
                     },
                     new DoctorDto
                     {
-                        FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1, 2, 5}
+                        FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations =new List<int> {1, 2, 5}
                     },
                     new DoctorDto
                     {
-                        FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {6, 7, 8}
+                        FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new List<int>{6, 7, 8}
                     }
                 },
                 new List<ExaminationRoomDto>()
                 {
-                    new ExaminationRoomDto {Number = "69b", Certifications = new[] {1, 6, 4}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1, 2, 5, 6}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {8, 8, 5, 6}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1, 2, 4, 6}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1, 123, 5, 6}},
+                    new ExaminationRoomDto {Number = "69b", Certifications = new List<int> {1, 6, 4}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {1, 2, 5, 6}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {8, 8, 5, 6}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int>{1, 2, 4, 6}},
+                    new ExaminationRoomDto {Number = "112", Certifications =new List<int>{1, 123, 5, 6}},
                 },
                 4
             };
@@ -113,21 +113,21 @@
                 new List<DoctorDto>
                 {
                     new DoctorDto
-                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1}},
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new List<int> {1}},
                     new DoctorDto
-                        {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3}},
+                        {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new List<int>{3}},
                     new DoctorDto
-                        {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1}},
+                        {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new List<int>{1}},
                     new DoctorDto
-                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {6}}
+                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new List<int> {6}}
                 },
                 new List<ExaminationRoomDto>
                 {
-                    new ExaminationRoomDto {Number = "69b", Certifications = new[] {1}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {3}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1}},
+                    new ExaminationRoomDto {Number = "69b", Certifications = new List<int> {1}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {1}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {3}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int>{1}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {1}},
                 },
                 3
             };
@@ -136,25 +136,25 @@
                 new List<DoctorDto>
                 {
                     new DoctorDto
-                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new[] {1, 2}},
+                        {FirstName = "Marcin", LastName = "Dadura", Sex = "Male", Specializations = new List<int> {1, 2}},
                     new DoctorDto
-                        {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new[] {3, 4}},
+                        {FirstName = "Maciej", LastName = "Włodarczyk", Sex = "Male", Specializations = new List<int> {3, 4}},
                     new DoctorDto
-                        {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new[] {1, 3}},
+                        {FirstName = "Zbigniew", LastName = "Ktosowski", Sex = "Male", Specializations = new List<int> {1, 3}},
                     new DoctorDto
-                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {2, 3}},
+                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new List<int> {2, 3}},
                     new DoctorDto
-                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new[] {6}}
+                        {FirstName = "Krzysztof", LastName = "Walusiak", Sex = "Male", Specializations = new List<int> {6}}
                 },
                 new List<ExaminationRoomDto>
                 {
-                    new ExaminationRoomDto {Number = "69b", Certifications = new[] {1, 3}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {1, 2}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {3, 1}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {6}},
-                    new ExaminationRoomDto {Number = "112", Certifications = new[] {9}}
+                    new ExaminationRoomDto {Number = "69b", Certifications = new List<int> {1, 3}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {1, 2}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {3, 1}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {6}},
+                    new ExaminationRoomDto {Number = "112", Certifications = new List<int> {9}}
                 },
-                4
+                3
             };
         }
 

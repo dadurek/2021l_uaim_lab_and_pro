@@ -7,6 +7,6 @@
     {
         [JsonPropertyName("Number")] public string Number { get; set; }
 
-        [JsonPropertyName("Certifications")] public IEnumerable<int> Certifications { get; set; }
+        [JsonPropertyName("Certifications")] public List<int> Certifications { get; set; }
     }
 }

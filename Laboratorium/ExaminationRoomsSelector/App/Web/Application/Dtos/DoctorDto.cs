@@ -11,6 +11,6 @@
 
         [JsonPropertyName("Sex")] public string Sex { get; set; }
 
-        [JsonPropertyName("Specializations")] public IEnumerable<int> Specializations { get; set; }
+        [JsonPropertyName("Specializations")] public List<int> Specializations { get; set; }
     }
 }
