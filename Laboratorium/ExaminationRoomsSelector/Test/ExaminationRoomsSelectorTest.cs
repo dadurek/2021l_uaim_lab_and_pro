@@ -2,6 +2,7 @@ namespace ExaminationRoomsSelector.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using FluentAssertions;
     using Web.Application.Dtos;
     using Web.Application.Queries;
@@ -59,7 +60,13 @@ namespace ExaminationRoomsSelector.Test
         [JsonFileData("Resources/data.json")]
         public void BIGONE(List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
         {
-            Assert.Equal(1, 1);
+            Stopwatch sw = new Stopwatch();
+            
+            sw.Start();
+            handler.MatchDoctorsWithRooms(doctorList, roomList);
+            sw.Stop();
+            
+            Assert.True(sw.Elapsed.Seconds<1);
         }
     }
 }
