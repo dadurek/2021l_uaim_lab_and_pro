@@ -10,12 +10,22 @@ namespace ExaminationRoomsSelector.Test
 
     public class ExaminationRoomsSelectorTest
     {
-        private readonly ExaminationRoomsSelector _selector =  new();
+        private readonly ExaminationRoomsSelector _selector = new();
+
+        // Point 1.
+        [Theory]
+        [MemberData(nameof(DataGenerator.DoctorNullRoomNull), MemberType = typeof(DataGenerator))]
+        public void ShouldThrowArgumentNullExceptionWhenPassingNullArguments
+            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+        {
+            Action action = () => _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            action.Should().ThrowExactly<ArgumentNullException>();
+        }
 
 
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorOneRoomNull), MemberType = typeof(DataGenerator))]
-        public void ShouldThrowArgumentNullExceptionWhenPassingNullExaminationRoomsIEnumerable
+        public void ShouldThrowArgumentNullExceptionWhenPassingNullExaminationRooms
             (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
         {
             Action action = () => _selector.MatchDoctorsWithRooms(doctorList, roomList);
@@ -25,7 +35,7 @@ namespace ExaminationRoomsSelector.Test
 
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorNullRoomOne), MemberType = typeof(DataGenerator))]
-        public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctorsIEnumerable(List<DoctorDto> doctorList,
+        public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctors(List<DoctorDto> doctorList,
             List<ExaminationRoomDto> roomList)
         {
             Action action = () => _selector.MatchDoctorsWithRooms(doctorList, roomList);
@@ -33,6 +43,17 @@ namespace ExaminationRoomsSelector.Test
         }
 
 
+        [Theory]
+        [MemberData(nameof(DataGenerator.DoctorEmptyRoomEmpty), MemberType = typeof(DataGenerator))]
+        public void ShouldThrowArgumentNullExceptionWhenPassingEmptyDoctorsAndEmptyRooms
+            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+        {
+            var res = _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            res.Should().BeEmpty().And.HaveCount(0);
+        }
+
+
+        // Point 2.
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorOneRoomOne), MemberType = typeof(DataGenerator))]
         public void ShouldMatchDoctorWithExaminationRoomWhenPassingOneDoctorAndOneExaminationRoom
@@ -42,6 +63,8 @@ namespace ExaminationRoomsSelector.Test
             res.Should().NotBeEmpty().And.HaveCount(1);
         }
 
+
+        // Point 3.
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorManyRoomsMany), MemberType = typeof(DataGenerator))]
         public void ShouldMatchAllDoctorsWithExaminationRoomsAndCountShouldEqualsTheSpecifiedNumber
@@ -51,10 +74,13 @@ namespace ExaminationRoomsSelector.Test
             res.Should().NotBeEmpty().And.HaveCount(count);
         }
 
+
+        // Point 4.
         // Data is 10k Doctors and 10k ExaminationRooms
         [Theory]
         [JsonFileData("Resources/data.json")]
-        public void BIGONE(List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+        public void ShouldMatchManyDoctorsWithManyExaminationRoomsInShortTime(List<DoctorDto> doctorList,
+            List<ExaminationRoomDto> roomList)
         {
             var sw = new Stopwatch();
 
@@ -62,7 +88,7 @@ namespace ExaminationRoomsSelector.Test
             _selector.MatchDoctorsWithRooms(doctorList, roomList);
             sw.Stop();
 
-            sw.Elapsed.Seconds.Should().BeLessThan(20); //less than one minute 
+            sw.Elapsed.Seconds.Should().BeLessThan(30); //less than 30s
         }
     }
 }

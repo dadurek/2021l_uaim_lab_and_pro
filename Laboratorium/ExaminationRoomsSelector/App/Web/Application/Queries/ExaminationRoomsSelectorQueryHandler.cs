@@ -40,7 +40,7 @@
             var doctors = (await _doctorsServiceClient.GetAllDoctorsAsync()).ToList();
             var rooms = (await _examinationRoomsServiceClient.GetAllExaminationRoomsAsync()).ToList();
 
-            var bestMatch = new ExaminationRoomsSelector().MatchDoctorsWithRooms(doctors,rooms);
+            var bestMatch = new ExaminationRoomsSelector().MatchDoctorsWithRooms(doctors, rooms);
 
             return await Task.FromResult(bestMatch);
         }

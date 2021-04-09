@@ -7,6 +7,15 @@
 
     public class DataGenerator : IEnumerable<object[]>
     {
+        public static IEnumerable<object[]> DoctorNullRoomNull()
+        {
+            yield return new object[]
+            {
+                null,
+                null
+            };
+        }
+
         public static IEnumerable<object[]> DoctorNullRoomOne()
         {
             yield return new object[]
@@ -32,6 +41,15 @@
                     },
                 },
                 null
+            };
+        }
+
+        public static IEnumerable<object[]> DoctorEmptyRoomEmpty()
+        {
+            yield return new object[]
+            {
+                new List<DoctorDto>(),
+                new List<ExaminationRoomDto>()
             };
         }
 

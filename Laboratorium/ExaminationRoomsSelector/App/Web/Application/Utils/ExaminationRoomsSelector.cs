@@ -7,11 +7,9 @@
 
     public class ExaminationRoomsSelector
     {
-        
-
-
         //simple greedy algorithm that match best room for each doctor
-        public List<DoctorRoomDto> MatchDoctorsWithRooms(List<DoctorDto> doctorsDto, List<ExaminationRoomDto> examinationRoomsDto)
+        public List<DoctorRoomDto> MatchDoctorsWithRooms(List<DoctorDto> doctorsDto,
+            List<ExaminationRoomDto> examinationRoomsDto)
         {
             var doctors = doctorsDto ?? throw new ArgumentNullException(nameof(doctorsDto));
             var rooms = examinationRoomsDto ?? throw new ArgumentNullException(nameof(examinationRoomsDto));
