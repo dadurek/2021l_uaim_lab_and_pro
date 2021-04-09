@@ -14,26 +14,6 @@
                 null,
                 null
             };
-            yield return new object[]
-            {
-                null,
-                new List<ExaminationRoomDto>
-                {
-                    new ExaminationRoomDto {Number = "69b", Certifications = new List<int> {1, 2, 4}},
-                }
-            };
-            yield return new object[]
-            {
-                new List<DoctorDto>
-                {
-                    new DoctorDto
-                    {
-                        FirstName = "Marcin", LastName = "Dadura", Sex = "Male",
-                        Specializations = new List<int> {1, 2, 3}
-                    },
-                },
-                null
-            };
         }
 
         public static IEnumerable<object[]> DoctorNullRoomOne()
