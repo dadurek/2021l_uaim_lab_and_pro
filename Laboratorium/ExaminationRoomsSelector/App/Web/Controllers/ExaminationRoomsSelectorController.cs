@@ -31,7 +31,7 @@
         {
             examinationRoomsSelectorHandler.AddDoctor(doctorDto);
         }
-        
+
         [HttpPost("add-room")]
         public async void AddRoom(ExaminationRoomDto examinationRoomDto)
         {

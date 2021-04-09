@@ -1,5 +1,6 @@
 ﻿namespace Doctors.Web.Application.Mapper
 {
+    using System;
     using System.Linq;
     using Domain.DoctorsAggregate;
 
@@ -14,7 +15,7 @@
             {
                 FirstName = doctor.FirstName,
                 LastName = doctor.LastName,
-                Sex = doctor.Sex,
+                Sex = doctor.Sex.ToString(),
                 Specializations = doctor?.Specializations.Select(s => s.Number)
             };
         }
@@ -28,7 +29,7 @@
             {
                 FirstName = doctorDto.FirstName,
                 LastName = doctorDto.LastName,
-                Sex = doctorDto.Sex,
+                Sex = (Sex) Enum.Parse(typeof(Sex), doctorDto.Sex),
                 Specializations = doctorDto?.Specializations.Select(s => new Specialization {Number = s}).ToList()
             };
         }

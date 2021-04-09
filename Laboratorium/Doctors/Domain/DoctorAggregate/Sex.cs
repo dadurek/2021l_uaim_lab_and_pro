@@ -1,6 +1,8 @@
-﻿// public enum Sex
-// {
-//     Female,
-//     Male
-// }
-
+﻿namespace Doctors.Domain.DoctorsAggregate
+{
+    public enum Sex
+    {
+        female,
+        male
+    }
+}

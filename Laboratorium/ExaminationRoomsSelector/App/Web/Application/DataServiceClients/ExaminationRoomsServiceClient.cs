@@ -8,48 +8,49 @@
     using Dtos;
     using Web.Application;
 
-    public class DoctorsServiceClient : IDoctorsServiceClient
+    public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
         private readonly IHttpClientFactory clientFactory;
         private readonly ServiceConfiguration _serviceConfiguration;
 
-        public DoctorsServiceClient(IHttpClientFactory clientFactory, ServiceConfiguration serviceConfiguration)
+        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory,
+            ServiceConfiguration serviceConfiguration)
         {
             this.clientFactory = clientFactory;
             this._serviceConfiguration = serviceConfiguration;
         }
 
-        public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
+        public async Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync()
         {
-            var url = _serviceConfiguration.DoctorUrl + "doctors";
+            var url = _serviceConfiguration.RoomUrl + "examination-rooms";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-            
+
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
 
             var response = await client.SendAsync(request);
 
-            await using var responseStream = await response.Content.ReadAsStreamAsync();
+            using var responseStream = await response.Content.ReadAsStreamAsync();
 
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
             };
 
-            return await JsonSerializer.DeserializeAsync<IEnumerable<DoctorDto>>(responseStream, options);
+            return await JsonSerializer.DeserializeAsync<IEnumerable<ExaminationRoomDto>>(responseStream, options);
         }
 
-        public async void AddDoctor(DoctorDto doctorDto)
+        public void AddRoom(ExaminationRoomDto examinationRoomDto)
         {
-            var jsonString = JsonSerializer.Serialize(doctorDto);
+            var jsonString = JsonSerializer.Serialize(examinationRoomDto);
 
             var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
             var client = clientFactory.CreateClient();
 
-            var url = _serviceConfiguration.DoctorUrl + "add-doctor";
+            var url = _serviceConfiguration.RoomUrl + "add-room";
 
             var result = client.PostAsync(url, content).Result;
         }
