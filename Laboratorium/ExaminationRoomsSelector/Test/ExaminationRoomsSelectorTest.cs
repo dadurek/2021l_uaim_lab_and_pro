@@ -15,10 +15,10 @@ namespace ExaminationRoomsSelector.Test
         // Point 1.
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorNullRoomNull), MemberType = typeof(DataGenerator))]
-        public void ShouldThrowArgumentNullExceptionWhenPassingNullArguments
-            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+        public void ShouldThrowArgumentNullExceptionWhenPassingIllegaPozwlArguments
+            (List<DoctorDto> doctorsDto, List<ExaminationRoomDto> examinationRoomsDto)
         {
-            Action action = () => _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            Action action = () => _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             action.Should().ThrowExactly<ArgumentNullException>();
         }
 
@@ -26,19 +26,19 @@ namespace ExaminationRoomsSelector.Test
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorOneRoomNull), MemberType = typeof(DataGenerator))]
         public void ShouldThrowArgumentNullExceptionWhenPassingNullExaminationRooms
-            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+            (List<DoctorDto> doctorsDto, List<ExaminationRoomDto> examinationRoomsDto)
         {
-            Action action = () => _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            Action action = () => _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             action.Should().ThrowExactly<ArgumentNullException>().WithMessage("*examinationRoomsDto*");
         }
 
 
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorNullRoomOne), MemberType = typeof(DataGenerator))]
-        public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctors(List<DoctorDto> doctorList,
-            List<ExaminationRoomDto> roomList)
+        public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctors(List<DoctorDto> doctorsDto,
+            List<ExaminationRoomDto> examinationRoomsDto)
         {
-            Action action = () => _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            Action action = () => _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             action.Should().ThrowExactly<ArgumentNullException>().WithMessage("*doctorsDto*");
         }
 
@@ -46,9 +46,9 @@ namespace ExaminationRoomsSelector.Test
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorEmptyRoomEmpty), MemberType = typeof(DataGenerator))]
         public void ShouldThrowArgumentNullExceptionWhenPassingEmptyDoctorsAndEmptyRooms
-            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+            (List<DoctorDto> doctorsDto, List<ExaminationRoomDto> examinationRoomsDto)
         {
-            var res = _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            var res = _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             res.Should().BeEmpty().And.HaveCount(0);
         }
 
@@ -57,9 +57,9 @@ namespace ExaminationRoomsSelector.Test
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorOneRoomOne), MemberType = typeof(DataGenerator))]
         public void ShouldMatchDoctorWithExaminationRoomWhenPassingOneDoctorAndOneExaminationRoom
-            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList)
+            (List<DoctorDto> doctorsDto, List<ExaminationRoomDto> examinationRoomsDto)
         {
-            var res = _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            var res = _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             res.Should().NotBeEmpty().And.HaveCount(1);
         }
 
@@ -68,9 +68,9 @@ namespace ExaminationRoomsSelector.Test
         [Theory]
         [MemberData(nameof(DataGenerator.DoctorManyRoomsMany), MemberType = typeof(DataGenerator))]
         public void ShouldMatchAllDoctorsWithExaminationRoomsAndCountShouldEqualsTheSpecifiedNumber
-            (List<DoctorDto> doctorList, List<ExaminationRoomDto> roomList, int count)
+            (List<DoctorDto> doctorsDto, List<ExaminationRoomDto> examinationRoomsDto, int count)
         {
-            var res = _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            var res = _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             res.Should().NotBeEmpty().And.HaveCount(count);
         }
 
@@ -79,13 +79,13 @@ namespace ExaminationRoomsSelector.Test
         // Data is 10k Doctors and 10k ExaminationRooms
         [Theory]
         [JsonFileData("Resources/data.json")]
-        public void ShouldMatchManyDoctorsWithManyExaminationRoomsInShortTime(List<DoctorDto> doctorList,
-            List<ExaminationRoomDto> roomList)
+        public void ShouldMatchManyDoctorsWithManyExaminationRoomsInRelevantTime(List<DoctorDto> doctorsDto,
+            List<ExaminationRoomDto> examinationRoomsDto)
         {
             var sw = new Stopwatch();
 
             sw.Start();
-            _selector.MatchDoctorsWithRooms(doctorList, roomList);
+            _selector.MatchDoctorsWithRooms(doctorsDto, examinationRoomsDto);
             sw.Stop();
 
             sw.Elapsed.Seconds.Should().BeLessThan(30); //less than 30s
