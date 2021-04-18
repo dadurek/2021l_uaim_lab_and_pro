@@ -1,5 +1,6 @@
-namespace PatientsData.Web
+namespace DoctorsData
 {
+    using Application.Queries;
     using Infrastructure.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -7,7 +8,6 @@ namespace PatientsData.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using Application.Queries;
 
     public class Startup
     {
@@ -24,10 +24,10 @@ namespace PatientsData.Web
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "PatientData.Web", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DoctorData.Web", Version = "v1" });
             });
-            services.AddSingleton<IPatientRepository, PatientRepository>();
-            services.AddTransient<IPatientQueriesHandler, PatientQueriesHandler>();
+            services.AddSingleton<IDoctorRepository, DoctorRepository>();
+            services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
             services.AddControllersWithViews().AddNewtonsoftJson();
         }
 

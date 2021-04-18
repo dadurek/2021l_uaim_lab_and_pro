@@ -1,13 +1,14 @@
-namespace PatientsData.Web
+namespace PatientsApp.Web
 {
-    using Infrastructure.Repositories;
+    using Application.DataServiceClients;
+    using Application.Queries;
+    using Configuration;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using Application.Queries;
 
     public class Startup
     {
@@ -24,11 +25,14 @@ namespace PatientsData.Web
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "PatientData.Web", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PatientsApp.Web", Version = "v1" });
             });
-            services.AddSingleton<IPatientRepository, PatientRepository>();
-            services.AddTransient<IPatientQueriesHandler, PatientQueriesHandler>();
-            services.AddControllersWithViews().AddNewtonsoftJson();
+            services.AddHttpClient();
+            services.AddTransient<IPatientsQueryHandler, PatientsQueryHandler>();
+            services.AddTransient<IPatientsDataServiceClient, PatientsDataServiceClient>();
+            services.AddTransient<IDoctorsDataServiceClient, DoctorsDataServiceClient>();
+
+            services.AddSingleton(Configuration.GetSection("ServiceConfiguration").Get<ServiceConfiguration>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +42,7 @@ namespace PatientsData.Web
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Laboratories.Web v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PatientsApp.Web v1"));
             }
 
             app.UseHttpsRedirection();
