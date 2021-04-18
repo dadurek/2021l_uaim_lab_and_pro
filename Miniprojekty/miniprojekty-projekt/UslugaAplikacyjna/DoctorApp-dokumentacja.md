@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+## Dokumentacja mikrousługi aplikacyjnej DoctorsApp
+=======
 ## Dokumentacja mikrousługi aplikacyjnej DoctorApp
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
 --------------------------------------
 
@@ -22,6 +26,24 @@ Usługa wystawia interfejs z którego można korzystać za pomocą HTTP REST.
 Usługa wystawia następujące metody na punktach końcowych:
 
 * metody `GET`:
+<<<<<<< HEAD
+    * `/patients` - zwraca listę wszyskich pacjentów dostępnych w repozytorium danych, nie przyjmuje argumentów
+    * `/patient/{id}` - metoda zwracająca pacjenta o danym id, przyjmuje liczbę całkowitą jako ID pacjenta
+    * `/patient/condition/{condition}` - metoda zwracająca listę pacjentów z danymi schorzeniami, przyjmuje liczbę całkowitą, jako typ schorzenia
+    * `/patient/pesel/{pesel}` - metoda zwracająca pacjenta o danym peselu, przyjmuje stringa jako Pesel
+     * `/doctors` - zwraca listę wszyskich doktorów dostępnych w repozytorium danych, nie przyjmuje argumentów
+    * `/doctor/{id}` - metoda zwracająca doktora o danym id, przyjmuje liczbę całkowitą jako ID doktora
+    * `/doctor/specialization/{specialization}` - metoda zwracająca listę doktora z danymi specjalizacjami, przyjmuje liczbę całkowitą, jako specjalizację
+    * `/doctor/pesel/{pesel}` - metoda zwracająca doktora o danym peselu, przyjmuje stringa jako Pesel
+    * `/doctor/{id}/can-treat` - metoda zwracająca pacjentów, których może wyleczyć dany pacjent, pprzyjmuje id doktora
+    * `/doctor-patient-matches` - metoda zwracająca najlepsze przypisanie doktorów do pacjentów
+       
+
+
+* metoda `POST`:
+    * `/patient` - wysyłając obiekt json metoda ta pozwala na dodanie pacjenta
+    * `/doctor` - wysyłając obiekt json metoda ta pozwala na dodanie doktora
+=======
   * `/patients` - zwraca listę wszyskich pacjentów dostępnych w repozytorium danych, nie przyjmuje argumentów
   * `/patient/{id}` - metoda zwracająca pacjenta o danym id, przyjmuje liczbę całkowitą jako ID pacjenta
   * `/patient/condition/{condition}` - metoda zwracająca listę pacjentów z danymi schorzeniami, przyjmuje liczbę całkowitą, jako typ schorzenia
@@ -38,6 +60,7 @@ Usługa wystawia następujące metody na punktach końcowych:
 * metoda `POST`:
   * `/patient` - wysyłając obiekt json metoda ta pozwala na dodanie pacjenta
   * `/doctor` - wysyłając obiekt json metoda ta pozwala na dodanie doktora
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
 
 
@@ -46,6 +69,44 @@ Usługa wystawia następujące metody na punktach końcowych:
 
 
 ```
+<<<<<<< HEAD
+DoctorsApp - projekt
+├── DoctorsApp.Web
+│   ├── Application
+│   │   ├── DataServiceClients
+│   │   │   ├── DoctorsDataServiceClient.cs - klasa komunikująca sie z API mikrousługi danych lekarzy
+│   │   │   ├── IDoctorsDataServiceClient.cs - interfejs, który implementuje metody zapytań do mikrousługi danych lekarzy
+│   │   │   ├── IPatientsDataServiceClient.cs - interfejs, który implementuje metody zapytań do mikrousługi danych pacjentów
+│   │   │   └── PatientsDataServiceClient.cs - klasa komunikująca sie z API mikrousługi danych pacjentów
+│   │   ├── Dtos
+│   │   │   ├── ConditionDto.cs -  model do wysyłania danych o schorzeniach
+│   │   │   ├── DoctorDto.cs -  model do wysyłania danych o lekarzach
+│   │   │   ├── PatientDoctorDto.cs - model do przytrzymawania par doktor-pacjent
+│   │   │   ├── PatientDto.cs - model do wysyłania danych o pacjentach
+│   │   │   └── SpecializationDto.cs -  model do wysyłania danych o specjalizacjach
+│   │   └── Queries
+│   │       ├── DoctorQueryHandler.cs - obsługa zapytań dotyczących doktorów - przekazuje zapytania klienta http.
+│   │       ├── IDoctorsQueryHandler.cs - interfejs, implementuje obsługę zapytań dla lekarzy.
+│   │       ├── IPatientsQueryHandler.cs - interfejs, implementuje obsługę zapytań dla pacjentów.
+│   │       ├── ISelectorQueryHandler.cs - interfejs, implementuje obsługę złożonych zapytań dotyczących lekarzy i pacjentów.
+│   │       ├── PatientsQueryHandler.cs - obsługa zapytań dotyczących pacjentów - przekazuje ona zapytania do klienta http.
+│   │       └── SelectorQueryHandler.cs - obsługa złożonych zapytań pacjentów i lekarzy, używa logiki z PatientSelector
+│   ├── Configuration
+│   │   └── ServiceConfiguration.cs - klasa zapewniająca url potrzebne dla klienta http
+│   ├── Controllers
+│   │   └── DoctorsAppController.cs - kontroler odpowiedzialny za obsługę end-pointów - wywołuje on metody z QueriesHandler
+│   ├── DoctorsApp.Web.csproj - plik zawierający wszystkie informacje o projekcie, w tym używane pakiety
+│   ├── Logic
+│   │   └── Selector
+│   │       └── PatientSelector.cs - klasa zapewniająca metody wykonujące obliczenia na danych 
+│   ├── Program.cs - znajduje się tutaj funkcja wejściowa do programu
+│   ├── Properties
+│   │   └── launchSettings.json  - plik JSON z ustawieniami łądowanymi przy uruchomieniu aplikacji
+│   ├── Startup.cs - klasa zajmująca cię wstepną konfiguracją mikrousługi przy uruchomieniu
+│   ├── appsettings.Development.json - ustawienia aplikacji dla stanu Development
+│   └── appsettings.json - ustawienia aplikacji dla stanu Release
+└── DoctorsApp.sln - plik opisujący rozwiązanie
+=======
 DoctorsApp
 ├── App
 │   ├── .dockerignore - plik mówiący dokerowi o plikach które należy pominąc przy budowaniu obrazu
@@ -89,6 +150,7 @@ DoctorsApp
 └── Test
 ├── DoctorsAppTests.bat - skrypt testujący dla windowsa
 └── DoctorsAppTests.sh - skrypt testujacy dla linuxa
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 ```
 
 
@@ -98,17 +160,29 @@ DoctorsApp
 Zapytania obsługiwane są w następującym schemacie. Zapytanie przechwytuje `controller` i przekazuje je do `QueryHandlera`.  `QueryHandler` pobiera dane za pośrednictwem `DataService` i działa na obiektach `Data Transfer Object` oraz zwraca je do `Controllera`, który wystawia dane na wyjście.
 
 
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 ### 3. Diagram sekwencji wiadomości
 
 
 #### metody `GET`:
+<<<<<<< HEAD
+#####    `/patients` 
+=======
 #####    `/patients`
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
 ![get-patients](https://user-images.githubusercontent.com/56841909/114302128-fe447200-9ac7-11eb-8adc-00a7b6d33764.PNG)
 
 
+<<<<<<< HEAD
+##### `/patient/{id}` 
+=======
 ##### `/patient/{id}`
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
 ![get-patient-id](https://user-images.githubusercontent.com/56841909/114302137-08ff0700-9ac8-11eb-8c1b-4fc3759a6207.PNG)
 
@@ -151,6 +225,15 @@ Zapytania obsługiwane są w następującym schemacie. Zapytanie przechwytuje `c
 ##### `/doctor-patient-matches`
 
 
+<<<<<<< HEAD
+![get-doctor-patient-matches](https://user-images.githubusercontent.com/56841909/114873448-95c50000-9dfb-11eb-9cff-84fd0fa0b9b0.PNG)
+
+
+
+
+
+       
+=======
 ```mermaid
 sequenceDiagram
   App->DoctorsApp: GET doctor-patient-matches
@@ -163,6 +246,7 @@ sequenceDiagram
 ```
 
 
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 <br/><br/><br/>
 
 #### metoda `POST`:
@@ -180,6 +264,12 @@ sequenceDiagram
 
 
 
+<<<<<<< HEAD
+### 4. Testy
+
+
+Do mikrousługi zostały dostarczone również testy w postaci skryptu `curl`. Aplikacja przechodzi testy i spełnia swoją funkcjonalność. Testy można odnaleźć pod ścieżką `Projekt/Testy/DoctorsApp`
+=======
 
 
 
@@ -187,3 +277,4 @@ sequenceDiagram
 
 
 Do mikrousługi zostały dostarczone również testy w postaci skryptu `curl`. Aplikacja przechodzi testy i spełnia swoją funkcjonalność. Testy można odnaleźc w `DoctorsApp/Test/PatientDataTests.bat`.
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec

@@ -33,17 +33,29 @@ Każda instancja schorzenia - `Condition` przechowuje:
 
 #### 2.1 Plik .xsd - formalny model danych
 
+<<<<<<< HEAD
+Plik definiujący bazę danych to `schema.xsd`. Zawierają się w nim wsyztskie informacje opisujące bazy danych, jej struktura oraz możliwe wartości przechowywane w pliku `database.xml`. Plik można odnaleźć w katalogu `PatientsData/PatientsData.Web/Utility/Resources/schema.xsd`.
+
+#### 2.2 Plik bazy danych - przykładowe dane
+
+Cały plik można odnaleźć w katalogu `PatientsData/PatientsData.Web/Utility/Resources/database.xml`. Stworzyliśmy również generator pliku `.xml`, który pozwala nam wygenerować dowolną ilość pacjentów w bazie danych.
+=======
 Plik definiujący bazę danych to `schema.xsd`. Zawierają się w nim wsyztskie informacje opisujące bazy danych, jej struktura oraz możliwe wartości przechowywane w pliku `database.xml`. Plik można odnaleźć w katalogu `PatientsData/Resources/schema.xsd`.
 
 #### 2.2 Plik bazy danych - przykładowe dane
 
 Cały plik można odnaleźć w katalogu `PatientsData/Resources/database.xml`. Stworzyliśmy również generator pliku `.xml`, który pozwala nam wygenerować dowolną ilość pacjentów w bazie danych.
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
 Przykładowy zestaw danych jednego pacjenta w bazie danych w formacie pliku XML:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<PatientsList  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+=======
 <Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 	<Patients>
         <Patient>
         	<Id>1</Id>
@@ -58,7 +70,11 @@ Przykładowy zestaw danych jednego pacjenta w bazie danych w formacie pliku XML:
         	</Conditions>
         </Patient>
 	</Patients>
+<<<<<<< HEAD
+</PatientsList >
+=======
 </Database>
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 ```
 
 #### 2.3 UML
@@ -76,6 +92,48 @@ Poniżej znajduje się diagram UML bazy danych. Można na nim zaobserwować nast
 
 ```
 PatientsData
+<<<<<<< HEAD
+├── PatientsData.Domain
+│   ├── Models
+│   │   ├── Condition.cs - model do przetrzymywania schorzeń
+│   │   ├── Patient.cs - model do przetrzymywania danych pacjenta
+│   │   ├── PatientsList.cs - model pomocniczy do czytania bazy danych w xml
+│   │   └── Sex.cs - model do przetrzymywania danych o płci
+│   └── PatientsData.Domain.csproj - plik opisujący projekt
+├── PatientsData.Infractructure
+│   ├── PatientsData.Infractructure.csproj - plik opisujący projekt
+│   └── Repositories
+│       ├── IPatientRepository.cs - interfejs do repozytorium pacjentów
+│       └── PatientRepository.cs - repozytorium pacjentów odpowiedzialne za wszystkie operacje na bazie danych w XML.
+├── PatientsData.Web
+│   ├── Applictaion
+│   │   ├── Dtos
+│   │   │   ├── ConditionDto.cs - model do wysyłania danych o schorzeniach
+│   │   │   └── PatientDto.cs - model do wysyłania danych o pacjentach
+│   │   ├── Mapper
+│   │   │   └── Mapper.cs - klasa zawierająca statyczne metody do mappowania dto na model
+│   │   └── Queries
+│   │       ├── IPatientQueriesHandler.cs - obsługa zapytań dotyczących pacjentów - przekazuje zapytanie do repozytorium
+│   │       └── PatientQueriesHandler.cs - interfejs, który implementuje obsługę zapytań dla pacjentów
+│   ├── Controllers
+│   │   └── PatientController.cs - kontroler odpowiedzialny za obsługę end-pointów - wywołuje metody z PatientQueriesHandler
+│   ├── PatientsData.Web.csproj - plik opisujący projekt
+│   ├── Program.cs - znajduje się tutaj funkcja wejściowa do programu
+│   ├── Properties
+│   │   └── launchSettings.json - plik JSON z ustawieniami ładowany przy uruchomieniu aplikacji
+│   ├── Startup.cs - klasa zajmująca cię wstepną konfiguracją mikrousługi przy uruchomieniu
+│   ├── Resources - katalog z plikiem bazy danych oraz schema bazy
+│   │   ├── database.xml
+│   │   └── schema.xsd
+│   ├── Utility
+│   │   └── GenEntries - w katalogu znajduje się generator przykładowych danych w pliku database.xml
+│   │       ├── generateEntires.py
+│   │       ├── imiona.txt
+│   │       └── nazwiska.txt
+│   ├── appsettings.Development.json - ustawienia aplikacji dla stanu Development
+│   └── appsettings.json - ustawienia aplikacji dla stanu Production
+└── PatientsData.sln - plik opisujący rozwiązanie
+=======
 ├── App
 │   ├── .gitignore
 │   ├── Dockerfile - plik umożliwiający konteneryzację
@@ -118,6 +176,7 @@ PatientsData
 ├── PatientsData.sln - plik opisujący rozwiązanie
 └── Test
     └── PatientDataTests.bat - skrypt testujacy 
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 ```
 
 
@@ -159,5 +218,9 @@ Przykładowy obiekt `Patient` w pliku Json. W metodach `GET` dostajemy listę ty
 
 ### 5. Testy
 
+<<<<<<< HEAD
+Do mikrousługi zostały dostarczone również testy w postaci skryptu `curl`. Aplikacja przechodzi testy i spełnia swoją funkcjonalność. Testy można odnaleźć pod ścieżką `Projekt/Testy/PatientsData`.
+=======
 Do mikrousługi zostały dostarczone również testy w postaci skryptu `curl`. Aplikacja przechodzi testy i spełnia swoją funkcjonalność. Testy można odnaleźc w `PatientsData/Tests/PatientDataTests.bat`.
+>>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
