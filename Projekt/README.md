@@ -6,3 +6,6 @@
 * Krzysztof Zdulski - `01149393`
 * Marcin Dadura - `01149350` <- pracuje w tym repo
 * Maciej Włodarczyk - `01149387` <- pracuje w tym repo
+
+
+Marcin Dadura i Maciej Włodarczyk stworzyli `PatientsData` i `DoctorsApp`.
