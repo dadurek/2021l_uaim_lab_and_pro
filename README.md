@@ -8,5 +8,7 @@ Autorzy:
 
 Znajduje się w katalogu `Laboratorium/ExaminationRoomsSelector/Test/uaim_lab_5_sprawodzanie.pdf`.
 
+## Sprawozdanie z laboratorium z Windows Application
 
+Znajduje się w katalogu `Klient/Dokumentacja-laboratorium-Klient.pdf`.
 

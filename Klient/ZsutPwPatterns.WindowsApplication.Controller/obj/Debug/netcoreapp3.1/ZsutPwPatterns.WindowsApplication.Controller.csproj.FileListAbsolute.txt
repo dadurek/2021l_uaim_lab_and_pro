@@ -1,0 +1,14 @@
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.deps.json
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.dll
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.pdb
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.dll
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Utilities.dll
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.pdb
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Utilities.pdb
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.csprojAssemblyReference.cache
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.AssemblyInfoInputs.cache
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.AssemblyInfo.cs
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.csproj.CoreCompileInputs.cache
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.csproj.CopyComplete
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.dll
+C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.pdb
