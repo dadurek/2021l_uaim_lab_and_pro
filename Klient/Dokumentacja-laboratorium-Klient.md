@@ -1,3 +1,4 @@
+
 # Dokumentacja laboratorium Klient
 
 ---
@@ -20,7 +21,7 @@ Kiedy skompilowaliśmy kod przedstawiony na wykładzie na własne personalne kom
 
 Tak właśnie prezentuje się aplikacja u nas.
 
-Zdecydowaliśmy sięna modyfikacje tej palety barw, gdyż interfejs nie jest zbyt prosty do użytkowania w takiej postaci.
+Zdecydowaliśmy sięna modyfikacje tej palety barw, gdyż interfejs nie jest zbyt prosty do użytkowania w takiej postaci. Zmieniliśmy również icony w aplikacji, zmieniony został przycisk `search`, a także został zmieniony hyperlink.
 
 ### 3. Demonstracja zmiany w interfejsie
 
@@ -29,13 +30,12 @@ Tak prezentują się dwie przygotowane przez nas zmiany dla każdego motywu. sys
 
 <img src="https://i.imgur.com/WO3tBkl.png" height="500" />
 
-Dodaliśmy też ważne hiperłącze.
+Dodaliśmy też ważne hiperłącze przekierowujące na stronę w domenie `pw.edu.pl`. Znajduje się tam odpowiedź na pytanie nurtujące wszystkich studentów. Poprawiliśmy również pozycje przycisku `search` oraz jego ikonę.
 
-Kolejną zmianą było zastosowanie lepszej ikony aplikacji. Nadpisaliśmy istniejące pliki `.png` lepszymi nowymi.
+Zmieniona została również ikona aplikacji. Nadpisaliśmy istniejące pliki `.png` nowymi, które nawiązują do zadanego pytania.
 
 <img src="https://i.imgur.com/dh9hM3L.png" height="500" />
 
 ### 4 Zakończenie
 
-Dzięki laboratoriom zapoznaliśmy się z technologią UWP i mamy nadzieję, że wykorzystanie jej w projekcie, nie bedzie już dla nas przeszkodą w dalszym rozwijaniu naszego projektu.
-
+Dzięki laboratoriom zapoznaliśmy się z technologią UWP i mamy nadzieję, że wykorzystanie jej w projekcie, nie bedzie już dla nas przeszkodą. Liczymy również że praca z tą technologią będzie czystą przyjemnością.
