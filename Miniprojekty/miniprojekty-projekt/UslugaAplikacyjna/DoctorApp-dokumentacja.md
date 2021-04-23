@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-## Dokumentacja mikrousługi aplikacyjnej DoctorsApp
-=======
-## Dokumentacja mikrousługi aplikacyjnej DoctorApp
->>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 
---------------------------------------
+## Dokumentacja mikrousługi aplikacyjnej DoctorsApp
 
 ##### Autorzy:
 
@@ -26,7 +21,6 @@ Usługa wystawia interfejs z którego można korzystać za pomocą HTTP REST.
 Usługa wystawia następujące metody na punktach końcowych:
 
 * metody `GET`:
-<<<<<<< HEAD
     * `/patients` - zwraca listę wszyskich pacjentów dostępnych w repozytorium danych, nie przyjmuje argumentów
     * `/patient/{id}` - metoda zwracająca pacjenta o danym id, przyjmuje liczbę całkowitą jako ID pacjenta
     * `/patient/condition/{condition}` - metoda zwracająca listę pacjentów z danymi schorzeniami, przyjmuje liczbę całkowitą, jako typ schorzenia
@@ -43,7 +37,6 @@ Usługa wystawia następujące metody na punktach końcowych:
 * metoda `POST`:
     * `/patient` - wysyłając obiekt json metoda ta pozwala na dodanie pacjenta
     * `/doctor` - wysyłając obiekt json metoda ta pozwala na dodanie doktora
-=======
   * `/patients` - zwraca listę wszyskich pacjentów dostępnych w repozytorium danych, nie przyjmuje argumentów
   * `/patient/{id}` - metoda zwracająca pacjenta o danym id, przyjmuje liczbę całkowitą jako ID pacjenta
   * `/patient/condition/{condition}` - metoda zwracająca listę pacjentów z danymi schorzeniami, przyjmuje liczbę całkowitą, jako typ schorzenia
