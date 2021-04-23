@@ -13,10 +13,7 @@
 ### 1. Funkcjonalność
 
 Aplikacja powinna pozwalać:
-<<<<<<< HEAD
 
-=======
->>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
 * dodawać pacjentów,
 * dodawać doktorów,
 * wyświetlać grupy pacjentów na podstawie wszystkich ich danych,
@@ -26,10 +23,7 @@ Aplikacja powinna pozwalać:
 ### 2. Widok aplikacji
 
 Zdefiniowaliśmy dwa widoki aplikacji:
-<<<<<<< HEAD
 
-=======
->>>>>>> e50f008c4cb30215815527140b8b1ea6336d49ec
  * **Widok główny** - widok pokazujący wszystkie możliwe akcje dla użytkownika.
  * **Widok danych** - widok pojedyńczej akcji.
 
