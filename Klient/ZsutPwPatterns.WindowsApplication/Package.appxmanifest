@@ -40,10 +40,16 @@
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Type="include" Match="http://localhost:44328/examination-rooms-selection" WindowsRuntimeAccess="none"/>
+      </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
 
   <Capabilities>
-    <Capability Name="internetClient" />
+    <uap:Capability Name="sharedUserCertificates"/>
+    <Capability Name="internetClient"/>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="privateNetworkClientServer"/>
   </Capabilities>
 </Package>

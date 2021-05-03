@@ -11,30 +11,24 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Controller
+namespace ZsutPwPatterns.WindowsApplication.Logic.Controller
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using Model;
+    using Utilities;
 
-  using ZsutPw.Patterns.WindowsApplication.Model;
-  using ZsutPw.Patterns.WindowsApplication.Utilities;
-
-  public partial class Controller : PropertyContainerBase, IController
-  {
-    public IModel Model { get; private set; }
-
-    public Controller( IEventDispatcher dispatcher, IModel model ) : base( dispatcher )
+    public partial class Controller : PropertyContainerBase, IController
     {
-      this.Model = model;
+        public Controller(IEventDispatcher dispatcher, IModel model) : base(dispatcher)
+        {
+            Model = model;
 
-      this.SearchNodesCommand = new ControllerCommand( this.SearchNodes );
+            SearchMatchesCommand = new ControllerCommand(SearchMatches);
 
-      this.ShowListCommand = new ControllerCommand( this.ShowList );
+            ShowListCommand = new ControllerCommand(ShowList);
 
-      this.ShowMapCommand = new ControllerCommand( this.ShowMap );
+            ShowMapCommand = new ControllerCommand(ShowMap);
+        }
+
+        public IModel Model { get; }
     }
-  }
 }

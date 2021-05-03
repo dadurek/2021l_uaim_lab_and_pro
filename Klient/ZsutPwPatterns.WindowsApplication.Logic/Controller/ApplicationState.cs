@@ -11,17 +11,11 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Controller
+namespace ZsutPwPatterns.WindowsApplication.Logic.Controller
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
-
-  public enum ApplicationState
-  {
-    List,
-    Map
-  }
-}  
+    public enum ApplicationState
+    {
+        List,
+        Map
+    }
+}

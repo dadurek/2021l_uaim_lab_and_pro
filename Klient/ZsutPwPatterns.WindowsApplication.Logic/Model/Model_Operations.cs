@@ -11,37 +11,33 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Service;
 
-  public partial class Model : IOperations
-  {
-    public void LoadNodeList( )
+    public partial class Model : IOperations
     {
-      /* AT
-      this.LoadNodesTask( );
-      */
-      Task.Run( ( ) => this.LoadNodesTask( ) );
+        public void LoadMatchList()
+        {
+            Task.Run(() => LoadMatchTask());
+        }
+
+        private void LoadMatchTask()
+        {
+            var networkClient = NetworkClientFactory.GetNetworkClient();
+
+            try
+            {
+                var matchList = networkClient.GetMatchSelection();
+
+                MatchDataList = matchList.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
-
-    private void LoadNodesTask( )
-    {
-      INetwork networkClient = NetworkClientFactory.GetNetworkClient( );
-
-      try
-      {
-        NodeData[ ] nodes = networkClient.GetNodes( this.SearchText );
-
-        this.NodeList = nodes.ToList( );
-      }
-      catch( Exception )
-      {
-      }
-    }
-  }
 }

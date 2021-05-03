@@ -11,9 +11,12 @@
 //
 //===============================================================================
 
-namespace ZsutPwPatterns.WindowsApplication.Logic.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model.Service
 {
-    public interface IModel : IData, IOperations
+    using Data;
+
+    public interface IMatchData
     {
+        MatchData[] GetMatchSelection();
     }
 }

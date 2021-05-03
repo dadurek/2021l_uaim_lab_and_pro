@@ -1,2 +1,0 @@
-C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication.Logic\ZsutPwPatterns.WindowsApplication.Logic.csproj;neutral
-C:\Users\Dadura\RiderProjects\2021l_uaim_lab\Klient\ZsutPwPatterns.WindowsApplication\ZsutPwPatterns.WindowsApplication.csproj;x86

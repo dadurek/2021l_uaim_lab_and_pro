@@ -11,34 +11,28 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model.Service
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System.Net.Http;
+    using Data;
+    using Utilities;
 
-  using System.Net.Http;
-  
-  public class NetworkClient : INetwork
-  {
-    private readonly ServiceClient serviceClient;
-
-    public NetworkClient( string serviceHost, int servicePort )
+    public class NetworkClient : IMatchData
     {
-      Debug.Assert( condition: !String.IsNullOrEmpty( serviceHost ) && servicePort > 0 );
+        private readonly ServiceClient serviceClient;
 
-      this.serviceClient = new ServiceClient( serviceHost, servicePort );
+        public NetworkClient(string serviceHost, int servicePort)
+        {
+            serviceClient = new ServiceClient(serviceHost, servicePort);
+        }
+
+        public MatchData[] GetMatchSelection()
+        {
+            const string callUri = "examination-rooms-selection";
+
+            var matchData = serviceClient.CallWebService<MatchData[]>(HttpMethod.Get, callUri);
+
+            return matchData;
+        }
     }
-
-    public NodeData[ ] GetNodes( string searchText )
-    {
-      string callUri = String.Format( "Network/GetNodes?searchText={0}", searchText );
-
-      NodeData[ ] nodes = this.serviceClient.CallWebService<NodeData[ ]>( HttpMethod.Get, callUri );
-
-      return nodes;
-    }
-  }
 }

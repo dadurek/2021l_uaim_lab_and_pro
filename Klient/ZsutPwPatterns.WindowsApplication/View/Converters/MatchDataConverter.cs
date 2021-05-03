@@ -15,26 +15,21 @@ namespace ZsutPwPatterns.WindowsApplication.View.Converters
 {
     using System;
     using Windows.UI.Xaml.Data;
-    using Logic.Controller;
+    using Logic.Model.Data;
 
-    public class ApplicationStateConverter : IValueConverter
+    public class MatchDataConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var applicationState = (ApplicationState) value;
+            var matchData = (MatchData) value;
 
-            var applicationStateName = applicationState.ToString();
-
-            return applicationStateName;
+            return string.Format("Doctor {0} in room {1}", matchData.doctor.FirstName + " " + matchData.doctor.LastName,
+                matchData.room.Number);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            var applicationStateName = (string) value;
-
-            var applicationState = (ApplicationState) Enum.Parse(typeof(ApplicationState), applicationStateName);
-
-            return applicationState;
+            throw new NotImplementedException();
         }
     }
 }

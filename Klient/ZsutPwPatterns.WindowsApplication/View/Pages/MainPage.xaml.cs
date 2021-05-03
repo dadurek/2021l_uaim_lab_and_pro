@@ -11,47 +11,31 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.View
+namespace ZsutPwPatterns.WindowsApplication.View.Pages
 {
-  using System;
-  using System.Collections.Generic;
-  using System.IO;
-  using System.Linq;
-  using System.Runtime.InteropServices.WindowsRuntime;
+    using Windows.UI.Xaml.Controls;
+    using Logic.Controller;
+    using Logic.Model;
+    using Logic.Utilities;
+    using Utilities;
 
-  using System.ComponentModel;
-
-  using Windows.Foundation;
-  using Windows.Foundation.Collections;
-  using Windows.UI.Xaml;
-  using Windows.UI.Xaml.Controls;
-  using Windows.UI.Xaml.Controls.Primitives;
-  using Windows.UI.Xaml.Data;
-  using Windows.UI.Xaml.Input;
-  using Windows.UI.Xaml.Media;
-  using Windows.UI.Xaml.Navigation;
-
-  using ZsutPw.Patterns.WindowsApplication.Controller;
-  using ZsutPw.Patterns.WindowsApplication.Model;
-  using ZsutPw.Patterns.WindowsApplication.Utilities;
-
-  public sealed partial class MainPage : Page
-  {
-    public IData Model { get; private set; }
-
-    public IController Controller { get; private set; }
-
-    public MainPage( )
+    public sealed partial class MainPage : Page
     {
-      this.InitializeComponent();
+        public MainPage()
+        {
+            InitializeComponent();
 
-      IEventDispatcher dispatcher = new EventDispatcher( ) as IEventDispatcher;
+            IEventDispatcher dispatcher = new EventDispatcher();
 
-      this.Controller = ControllerFactory.GetController( dispatcher );
+            Controller = ControllerFactory.GetController(dispatcher);
 
-      this.Model = this.Controller.Model as IData;
+            Model = Controller.Model;
 
-      this.DataContext = this.Controller;
+            DataContext = Controller;
+        }
+
+        public IData Model { get; }
+
+        public IController Controller { get; }
     }
-  }
 }

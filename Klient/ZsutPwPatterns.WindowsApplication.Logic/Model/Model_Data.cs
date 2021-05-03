@@ -11,50 +11,37 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using Data;
 
-  public partial class Model : IData
-  {
-    public string SearchText
+    public partial class Model : IData
     {
-      get { return this.searchText; }
-      set
-      {
-        this.searchText = value;
+        private List<MatchData> roomList = new List<MatchData>();
 
-        this.RaisePropertyChanged( "SearchText" );
-      }
+        private MatchData selectedRoom;
+
+        public List<MatchData> MatchDataList
+        {
+            get => roomList;
+            private set
+            {
+                roomList = value;
+
+                RaisePropertyChanged("MatchDataList");
+            }
+        }
+
+        public MatchData SelectedMatch
+        {
+            get => selectedRoom;
+            set
+            {
+                selectedRoom = value;
+
+                RaisePropertyChanged("SelectedMatch");
+            }
+        }
     }
-    private string searchText;
-
-    public List<NodeData> NodeList
-    {
-      get { return this.nodeList; }
-      private set
-      {
-        this.nodeList = value;
-
-        this.RaisePropertyChanged( "NodeList" );
-      }
-    }
-    private List<NodeData> nodeList = new List<NodeData>( );
-
-    public NodeData SelectedNode
-    {
-      get { return this.selectedNode; }
-      set
-      {
-        this.selectedNode = value;
-
-        this.RaisePropertyChanged( "SelectedNode" );
-      }
-    }
-    private NodeData selectedNode;
-  }
 }
