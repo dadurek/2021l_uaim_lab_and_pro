@@ -11,29 +11,22 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Controller
+namespace ZsutPwPatterns.WindowsApplication.Logic.Controller
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System.ComponentModel;
+    using System.Windows.Input;
+    using Model;
 
-  using System.ComponentModel;
-  using System.Windows.Input;
+    public interface IController : INotifyPropertyChanged
+    {
+        IModel Model { get; }
 
-  using ZsutPw.Patterns.WindowsApplication.Model;
+        ApplicationState CurrentState { get; }
 
-  public interface IController : INotifyPropertyChanged
-  {
-    IModel Model { get; }
+        ICommand SearchMatchesCommand { get; }
 
-    ApplicationState CurrentState { get; }
+        ICommand ShowListCommand { get; }
 
-    ICommand SearchMatchesCommand { get; }
-
-    ICommand ShowListCommand { get; }
-
-    ICommand ShowMapCommand { get; }
-  }
+        ICommand ShowMapCommand { get; }
+    }
 }

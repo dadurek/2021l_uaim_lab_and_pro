@@ -11,16 +11,12 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Utilities
+namespace ZsutPwPatterns.WindowsApplication.Logic.Utilities
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System;
 
-  public interface IEventDispatcher
-  {
-    void Dispatch( Action eventAction );
-  }
+    public interface IEventDispatcher
+    {
+        void Dispatch(Action eventAction);
+    }
 }

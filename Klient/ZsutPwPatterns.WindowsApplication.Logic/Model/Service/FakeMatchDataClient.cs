@@ -11,28 +11,38 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model.Service
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
-  using Logic.Model.Data;
+    using System.Collections.Generic;
+    using Data;
 
-  public class FakeMatchDataClient : IMatchData
-  {
-
-      private static readonly MatchData[] matchDataList = new MatchData[]
+    public class FakeMatchDataClient : IMatchData
     {
-        new MatchData( ) { DoctorName = "Marcin", RoomNumber = "99"},
-        new MatchData( ) { DoctorName = "Maciej", RoomNumber = "88"}
-    };
+        private static readonly MatchData[] matchDataList =
+        {
+            new MatchData
+            {
+                doctor = new DoctorData
+                {
+                    FirstName = "Marcin", LastName = "Dadura", Sex = "male", Specializations = new List<int> {1, 2, 4}
+                },
+                room = new ExaminationRoomData {Number = "69b", Certifications = new List<int> {1, 2, 4}}
+            },
+            new MatchData
+            {
+                doctor = new DoctorData
+                {
+                    FirstName = "Maciej", LastName = "Włodarczyk", Sex = "female",
+                    Specializations = new List<int> {1, 2, 3}
+                },
+                room = new ExaminationRoomData {Number = "69b", Certifications = new List<int> {1, 2, 5}}
+            }
+        };
 
 
-    public MatchData[] GetMatchSelection()
-    {
-        return FakeMatchDataClient.matchDataList;
+        public MatchData[] GetMatchSelection()
+        {
+            return matchDataList;
+        }
     }
-  }
 }

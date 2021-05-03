@@ -11,38 +11,28 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model.Service
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System.Net.Http;
+    using Data;
+    using Utilities;
 
-  using System.Net.Http;
-  using ZsutPw.Patterns.WindowsApplication.Logic.Model.Data;
-
-  public class NetworkClient : IMatchData
-  {
-    private readonly ServiceClient serviceClient;
-
-    public NetworkClient( string serviceHost, int servicePort )
+    public class NetworkClient : IMatchData
     {
-        this.serviceClient = new ServiceClient( serviceHost, servicePort );
-    }
+        private readonly ServiceClient serviceClient;
+
+        public NetworkClient(string serviceHost, int servicePort)
+        {
+            serviceClient = new ServiceClient(serviceHost, servicePort);
+        }
 
         public MatchData[] GetMatchSelection()
         {
-            string callUri = "examination-rooms-selection";
-            var roomsSelectionDict = this.serviceClient.CallWebService<Dictionary<string, string>>(HttpMethod.Get, callUri);
-            MatchData[] rooms = new MatchData[roomsSelectionDict.Count];
-            int i = 0;
-            foreach (string doctorName in roomsSelectionDict.Keys)
-            {
-                rooms[i] = new MatchData(doctorName, roomsSelectionDict[doctorName]);
-                i++;
-            }
-            return rooms;
+            const string callUri = "examination-rooms-selection";
+
+            var matchData = serviceClient.CallWebService<MatchData[]>(HttpMethod.Get, callUri);
+
+            return matchData;
         }
     }
 }

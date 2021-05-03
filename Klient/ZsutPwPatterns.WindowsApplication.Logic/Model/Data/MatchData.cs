@@ -1,19 +1,8 @@
-﻿namespace ZsutPw.Patterns.WindowsApplication.Logic.Model.Data
+﻿namespace ZsutPwPatterns.WindowsApplication.Logic.Model.Data
 {
-   public class MatchData
+    public class MatchData
     {
-        public MatchData()
-        {
-
-        }
-
-        public MatchData(string doctorName, string roomNumber)
-        {
-            DoctorName = doctorName;
-            RoomNumber = roomNumber;
-        }
-        public string DoctorName { get; set; }
-        public string RoomNumber { get; set; }
+        public DoctorData doctor { get; set; }
+        public ExaminationRoomData room { get; set; }
     }
 }
-

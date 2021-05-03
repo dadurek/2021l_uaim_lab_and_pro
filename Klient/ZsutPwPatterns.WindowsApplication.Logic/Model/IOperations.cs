@@ -11,16 +11,10 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
-
-  public interface IOperations
-  {
-    void LoadMatchList( );
-  }
+    public interface IOperations
+    {
+        void LoadMatchList();
+    }
 }

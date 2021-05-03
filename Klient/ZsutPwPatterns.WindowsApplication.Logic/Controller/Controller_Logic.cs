@@ -11,65 +11,60 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Controller
+namespace ZsutPwPatterns.WindowsApplication.Logic.Controller
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System.Windows.Input;
 
-  using System.Windows.Input;
-
-  public partial class Controller : IController
-  {
-    public ApplicationState CurrentState
+    public partial class Controller : IController
     {
-      get { return this.currentState; }
-      set
-      {
-        this.currentState = value;
+        private ApplicationState currentState = ApplicationState.List;
 
-        this.RaisePropertyChanged( "CurrentState" );
-      }
+        public ApplicationState CurrentState
+        {
+            get => currentState;
+            set
+            {
+                currentState = value;
+
+                RaisePropertyChanged("CurrentState");
+            }
+        }
+
+        public ICommand SearchMatchesCommand { get; }
+
+        public ICommand ShowListCommand { get; }
+
+        public ICommand ShowMapCommand { get; }
+
+        private void SearchMatches()
+        {
+            Model.LoadMatchList();
+        }
+
+        private void ShowList()
+        {
+            switch (CurrentState)
+            {
+                case ApplicationState.List:
+                    break;
+
+                default:
+                    CurrentState = ApplicationState.List;
+                    break;
+            }
+        }
+
+        private void ShowMap()
+        {
+            switch (CurrentState)
+            {
+                case ApplicationState.Map:
+                    break;
+
+                default:
+                    CurrentState = ApplicationState.Map;
+                    break;
+            }
+        }
     }
-    private ApplicationState currentState = ApplicationState.List;
-
-    public ICommand SearchMatchesCommand { get; private set; }
-
-    public ICommand ShowListCommand { get; private set; }
-
-    public ICommand ShowMapCommand { get; private set; }
-
-    private void SearchMatches( )
-    {
-      this.Model.LoadMatchList( );
-    }
-
-    private void ShowList( )
-    {
-      switch( this.CurrentState )
-      {
-        case ApplicationState.List:
-          break;
-
-        default:
-          this.CurrentState = ApplicationState.List;
-          break;
-      }
-    }
-
-    private void ShowMap( )
-    {
-      switch( this.CurrentState )
-      {
-        case ApplicationState.Map:
-          break;
-
-        default:
-          this.CurrentState = ApplicationState.Map;
-          break;
-      }
-    }
-  }
 }

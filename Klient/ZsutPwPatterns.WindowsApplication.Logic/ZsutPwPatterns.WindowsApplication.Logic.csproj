@@ -125,11 +125,9 @@
     <Compile Include="Controller\ControllerFactory.cs" />
     <Compile Include="Controller\Controller_Logic.cs" />
     <Compile Include="Controller\IController.cs" />
-    <Compile Include="Model\Data\DoctorDto.cs" />
-    <Compile Include="Model\Data\ExaminationRoomDto.cs" />
+    <Compile Include="Model\Data\DoctorData.cs" />
+    <Compile Include="Model\Data\ExaminationRoomData.cs" />
     <Compile Include="Model\Data\MatchData.cs" />
-    <Compile Include="Model\Data\NodeData.cs" />
-    <Compile Include="Model\Data\PointData.cs" />
     <Compile Include="Model\IData.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\IOperations.cs" />
@@ -150,6 +148,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
       <Version>5.0.2</Version>

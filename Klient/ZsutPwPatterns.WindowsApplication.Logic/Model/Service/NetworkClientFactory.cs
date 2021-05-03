@@ -11,33 +11,19 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model.Service
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
-
-  public static class NetworkClientFactory
-  {
-    public static IMatchData GetNetworkClient( )
+    public static class NetworkClientFactory
     {
+        public static IMatchData GetNetworkClient()
+        {
 #if DEBUG
-            /*  MD
-             * return new FakeMatchDataClient( );
-            */
+            return new FakeMatchDataClient();
+#else
             const string serviceHost = "localhost";
             const int servicePort = 44328;
-
             return new NetworkClient(serviceHost, servicePort);
-#else
-      const string serviceHost = "localhost";
-      const int servicePort = 44328;
-
-      return new NetworkClient( serviceHost, servicePort );
-
 #endif
         }
-  }
+    }
 }

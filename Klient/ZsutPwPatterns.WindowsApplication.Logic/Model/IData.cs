@@ -11,21 +11,16 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Model
+namespace ZsutPwPatterns.WindowsApplication.Logic.Model
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
-  using System.ComponentModel;
-  using Logic.Model.Data;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using Data;
 
-  public interface IData : INotifyPropertyChanged
-  {
+    public interface IData : INotifyPropertyChanged
+    {
+        List<MatchData> MatchDataList { get; }
 
-    List<MatchData> MatchDataList { get; }
-
-    MatchData SelectedMatch { get; set; }
-  }
+        MatchData SelectedMatch { get; set; }
+    }
 }

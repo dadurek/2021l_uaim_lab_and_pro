@@ -11,30 +11,25 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.View
+namespace ZsutPwPatterns.WindowsApplication.View.Converters
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System;
+    using Windows.UI.Xaml.Data;
+    using Logic.Model.Data;
 
-  using Windows.UI.Xaml.Data;
-  using Logic.Model.Data;
-  using ZsutPw.Patterns.WindowsApplication.Model;
-
-  public class MatchDataConverter : IValueConverter
-  {
-    public object Convert( object value, Type targetType, object parameter, string language )
+    public class MatchDataConverter : IValueConverter
     {
-      MatchData matchData = (MatchData)value;
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            var matchData = (MatchData) value;
 
-      return String.Format( "Doctor {0} in room {1}", matchData.DoctorName, matchData.RoomNumber );
-    }
+            return string.Format("Doctor {0} in room {1}", matchData.doctor.FirstName + " " + matchData.doctor.LastName,
+                matchData.room.Number);
+        }
 
-    public object ConvertBack( object value, Type targetType, object parameter, string language )
-    {
-      throw new NotImplementedException( );
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
     }
-  }
 }

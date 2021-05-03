@@ -11,34 +11,30 @@
 //
 //===============================================================================
 
-namespace ZsutPw.Patterns.WindowsApplication.Controller
+namespace ZsutPwPatterns.WindowsApplication.View.Converters
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System;
+    using Windows.UI.Xaml.Data;
+    using Logic.Controller;
 
-  using Windows.UI.Xaml.Data;
-
-  public class ApplicationStateConverter : IValueConverter
-  {
-    public object Convert( object value, Type targetType, object parameter, string language )
+    public class ApplicationStateConverter : IValueConverter
     {
-      ApplicationState applicationState = (ApplicationState)value;
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            var applicationState = (ApplicationState) value;
 
-      string applicationStateName = applicationState.ToString( );
+            var applicationStateName = applicationState.ToString();
 
-      return applicationStateName;
+            return applicationStateName;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            var applicationStateName = (string) value;
+
+            var applicationState = (ApplicationState) Enum.Parse(typeof(ApplicationState), applicationStateName);
+
+            return applicationState;
+        }
     }
-
-    public object ConvertBack( object value, Type targetType, object parameter, string language )
-    {
-      string applicationStateName = (string)value;
-
-      ApplicationState applicationState = (ApplicationState)Enum.Parse( typeof( ApplicationState ), applicationStateName );
-
-      return applicationState;
-    }
-  }
 }
