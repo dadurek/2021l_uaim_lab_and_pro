@@ -18,30 +18,32 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Linq;
   using System.Text;
   using System.Threading.Tasks;
+  using Logic.Model.Data;
 
   public partial class Model : IOperations
   {
-    public void LoadNodeList( )
-    {
-      /* AT
-      this.LoadNodesTask( );
-      */
-      Task.Run( ( ) => this.LoadNodesTask( ) );
-    }
-
-    private void LoadNodesTask( )
-    {
-      INetwork networkClient = NetworkClientFactory.GetNetworkClient( );
-
-      try
+      public void LoadMatchList()
       {
-        NodeData[ ] nodes = networkClient.GetNodes( this.SearchText );
+          /* AT
+          this.LoadNodesTask( );
+          */
+          Task.Run(() => this.LoadMatchTask());
+      }
 
-        this.NodeList = nodes.ToList( );
-      }
-      catch( Exception )
+      private void LoadMatchTask()
       {
+          IMatchData networkClient = NetworkClientFactory.GetNetworkClient();
+
+          try
+          {
+              MatchData[] matchList = networkClient.GetMatchSelection();
+
+              this.MatchDataList = matchList.ToList();
+          }
+          catch (Exception)
+          {
+              // ignored
+          }
       }
-    }
   }
 }

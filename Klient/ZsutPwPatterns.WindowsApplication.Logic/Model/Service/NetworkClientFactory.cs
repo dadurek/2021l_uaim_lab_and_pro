@@ -21,11 +21,16 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
   public static class NetworkClientFactory
   {
-    public static INetwork GetNetworkClient( )
+    public static IMatchData GetNetworkClient( )
     {
 #if DEBUG
-      return new FakeNetworkClient( );
+            /*  MD
+             * return new FakeMatchDataClient( );
+            */
+            const string serviceHost = "localhost";
+            const int servicePort = 44328;
 
+            return new NetworkClient(serviceHost, servicePort);
 #else
       const string serviceHost = "localhost";
       const int servicePort = 44328;
@@ -33,6 +38,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
       return new NetworkClient( serviceHost, servicePort );
 
 #endif
-    }
+        }
   }
 }

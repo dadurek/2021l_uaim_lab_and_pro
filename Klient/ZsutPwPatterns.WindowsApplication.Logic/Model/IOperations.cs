@@ -21,6 +21,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
   public interface IOperations
   {
-    void LoadNodeList( );
+    void LoadMatchList( );
   }
 }

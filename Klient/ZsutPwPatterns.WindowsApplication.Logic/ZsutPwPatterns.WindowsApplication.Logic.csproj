@@ -125,6 +125,9 @@
     <Compile Include="Controller\ControllerFactory.cs" />
     <Compile Include="Controller\Controller_Logic.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Model\Data\DoctorDto.cs" />
+    <Compile Include="Model\Data\ExaminationRoomDto.cs" />
+    <Compile Include="Model\Data\MatchData.cs" />
     <Compile Include="Model\Data\NodeData.cs" />
     <Compile Include="Model\Data\PointData.cs" />
     <Compile Include="Model\IData.cs" />
@@ -133,8 +136,8 @@
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Model_Data.cs" />
     <Compile Include="Model\Model_Operations.cs" />
-    <Compile Include="Model\Service\FakeNetworkClient.cs" />
-    <Compile Include="Model\Service\INetwork.cs" />
+    <Compile Include="Model\Service\FakeMatchDataClient.cs" />
+    <Compile Include="Model\Service\IMatchData.cs" />
     <Compile Include="Model\Service\NetworkClient.cs" />
     <Compile Include="Model\Service\NetworkClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

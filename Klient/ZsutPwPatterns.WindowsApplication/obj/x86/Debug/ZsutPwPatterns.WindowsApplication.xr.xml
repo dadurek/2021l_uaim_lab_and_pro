@@ -16,7 +16,7 @@
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="ZsutPw.Patterns.WindowsApplication.Controller.ApplicationStateConverter" />
-    <RootType FullName="ZsutPw.Patterns.WindowsApplication.View.NodeDataConverter" />
+    <RootType FullName="ZsutPw.Patterns.WindowsApplication.View.MatchDataConverter" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -45,10 +45,6 @@
       <RootProperty Name="Label" />
       <RootProperty Name="Command" />
       <RootProperty Name="IsEnabled" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="RenderTransformOrigin" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="HorizontalAlignment" />
@@ -133,7 +129,6 @@
       <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Orientation" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Children" />
     </RootType>
@@ -145,12 +140,6 @@
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="Background" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="Header" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="ZsutPw.Patterns.WindowsApplication.View.MainPage" />
     <RootType FullName="ZsutPw.Patterns.WindowsApplication.View.SubPage" />

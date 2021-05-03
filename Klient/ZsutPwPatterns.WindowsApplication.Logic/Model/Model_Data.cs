@@ -18,43 +18,32 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Linq;
   using System.Text;
   using System.Threading.Tasks;
+  using Logic.Model.Data;
 
   public partial class Model : IData
   {
-    public string SearchText
-    {
-      get { return this.searchText; }
-      set
-      {
-        this.searchText = value;
+        public List<MatchData> MatchDataList
+        {
+            get { return this.roomList; }
+            private set
+            {
+                this.roomList = value;
 
-        this.RaisePropertyChanged( "SearchText" );
-      }
+                this.RaisePropertyChanged("MatchDataList");
+            }
+        }
+        private List<MatchData> roomList = new List<MatchData>();
+
+        public MatchData SelectedMatch
+        {
+            get { return this.selectedRoom; }
+            set
+            {
+                this.selectedRoom = value;
+
+                this.RaisePropertyChanged("SelectedMatch");
+            }
+        }
+        private MatchData selectedRoom;
     }
-    private string searchText;
-
-    public List<NodeData> NodeList
-    {
-      get { return this.nodeList; }
-      private set
-      {
-        this.nodeList = value;
-
-        this.RaisePropertyChanged( "NodeList" );
-      }
-    }
-    private List<NodeData> nodeList = new List<NodeData>( );
-
-    public NodeData SelectedNode
-    {
-      get { return this.selectedNode; }
-      set
-      {
-        this.selectedNode = value;
-
-        this.RaisePropertyChanged( "SelectedNode" );
-      }
-    }
-    private NodeData selectedNode;
-  }
 }

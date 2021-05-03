@@ -18,15 +18,14 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Linq;
   using System.Text;
   using System.Threading.Tasks;
-
   using System.ComponentModel;
+  using Logic.Model.Data;
 
   public interface IData : INotifyPropertyChanged
   {
-    string SearchText { get; set; }
 
-    List<NodeData> NodeList { get; }
+    List<MatchData> MatchDataList { get; }
 
-    NodeData SelectedNode { get; set; }
+    MatchData SelectedMatch { get; set; }
   }
 }

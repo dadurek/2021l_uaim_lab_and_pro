@@ -4,8 +4,8 @@ services:
   doctors:
     build:
       context: ./Doctors
-    ports:
-      - "8082:80"
+#    ports:
+#      - "8082:80"
     depends_on: 
       - "doctors_db"
     environment:
@@ -14,8 +14,8 @@ services:
   rooms:
     build:
       context: ./ExaminationRooms
-    ports:
-      - "8081:80"
+#    ports:
+#      - "8081:80"
     depends_on:
       - "rooms_db"
     environment:
@@ -25,7 +25,7 @@ services:
     build:
       context: ./ExaminationRoomsSelector/App
     ports:
-      - "8080:80"
+      - "44328:80"
     environment:
       EXM_ROOM_SEL_ServiceConfiguration__DoctorUrl: "http://doctors/"
       EXM_ROOM_SEL_ServiceConfiguration__RoomUrl: "http://rooms/"

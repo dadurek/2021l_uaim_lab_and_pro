@@ -30,7 +30,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
 
     ApplicationState CurrentState { get; }
 
-    ICommand SearchNodesCommand { get; }
+    ICommand SearchMatchesCommand { get; }
 
     ICommand ShowListCommand { get; }
 

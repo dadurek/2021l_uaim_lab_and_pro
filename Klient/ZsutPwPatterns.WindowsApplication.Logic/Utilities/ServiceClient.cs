@@ -60,10 +60,12 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
     }
 
     public async Task<string> CallWebService( HttpMethod httpMethod, string callUri )
-    {
-      string httpUri = String.Format( "https://{0}:{1}/{2}", this.serviceHost, this.servicePort, callUri );
+    {/* MD
+      * string httpUri = String.Format( "https://{0}:{1}/{2}", this.serviceHost, this.servicePort, callUri );
+      */
+            string httpUri = String.Format("http://{0}:{1}/{2}", this.serviceHost, this.servicePort, callUri);
 
-      HttpRequestMessage httpRequestMessage = new HttpRequestMessage( httpMethod, httpUri );
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage( httpMethod, httpUri );
 
       httpClient.DefaultRequestHeaders.Add( "Accept", "application/json" );
 

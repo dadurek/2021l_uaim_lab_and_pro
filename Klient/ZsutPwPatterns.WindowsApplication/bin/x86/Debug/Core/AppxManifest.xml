@@ -29,10 +29,16 @@
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Type="include" Match="http://localhost:44328/examination-rooms-selection" WindowsRuntimeAccess="none" />
+      </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
   <Capabilities>
+    <uap:Capability Name="sharedUserCertificates" />
     <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
   </Capabilities>
   <Extensions>
     <Extension Category="windows.activatableClass.inProcessServer">
@@ -45,6 +51,7 @@
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="16.0" />
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Professional 2019" />
     <build:Item Name="OperatingSystem" Version="10.0.19041.1 (WinBuild.160101.0800)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="16.0.31130.442" />
     <build:Item Name="ProjectGUID" Value="{23BB461C-3C8F-490D-A86B-AA6C97DCCA64}" />

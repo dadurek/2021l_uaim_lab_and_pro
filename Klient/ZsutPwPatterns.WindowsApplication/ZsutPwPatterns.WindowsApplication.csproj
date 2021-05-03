@@ -125,7 +125,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Converters\ApplicationStateConverter.cs" />
-    <Compile Include="View\Converters\NodeDataConverter.cs" />
+    <Compile Include="View\Converters\MatchDataConverter.cs" />
     <Compile Include="View\Pages\SubPage.xaml.cs">
       <DependentUpon>SubPage.xaml</DependentUpon>
     </Compile>

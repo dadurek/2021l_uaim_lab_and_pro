@@ -10,14 +10,15 @@
     xmlns:model="using:ZsutPw.Patterns.WindowsApplication.Model"
     xmlns:view="using:ZsutPw.Patterns.WindowsApplication.View"
     xmlns:controller="using:ZsutPw.Patterns.WindowsApplication.Controller"
+    xmlns:data="using:ZsutPw.Patterns.WindowsApplication.Logic.Model.Data"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
         <controller:ApplicationStateConverter x:Key="ApplicationStateConverter" />
-        <view:NodeDataConverter x:Key="NodeDataConverter" />
+        <view:MatchDataConverter x:Key="MatchDataConverter" />
 
-        <DataTemplate x:Key="NodeListViewTemplate"                            >
-            <TextBlock x:ConnectionId='3'                                                                            />
+        <DataTemplate x:Key="MatchListViewTemplate"                            >
+            <TextBlock x:ConnectionId='3'                                                                             />
         </DataTemplate>
     </Page.Resources>
 
@@ -78,19 +79,11 @@
                     <RowDefinition Height="320" />
                 </Grid.RowDefinitions>
 
-                <StackPanel x:ConnectionId='12' x:Name="nodeSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
-                    <TextBox x:ConnectionId='17' x:Name="searchText" Header="Text to search:"                                                    Width="200" VerticalAlignment="Bottom" />
-                    <AppBarButton x:ConnectionId='18' x:Name="searchButton" Icon="Zoom" Label="Search"                                                       VerticalAlignment="Bottom" RenderTransformOrigin="1.216,0.93" Width="92" Height="57" />
-                </StackPanel>
-
-                <StackPanel x:ConnectionId='13' x:Name="nodePanel" Grid.Row="1" Margin="4">
-                    <TextBlock x:ConnectionId='14' x:Name="nodeText" Text="Nodes" Margin="0,4,0,4" />
-                    <ListView x:ConnectionId='15' x:Name="nodeList"                                                         ItemTemplate="{StaticResource NodeListViewTemplate}"                                                              Height="240" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Background="{ThemeResource SystemBaseMediumColor}" />
-                    <CommandBar x:ConnectionId='16' x:Name="nodeCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left">
-                        <AppBarButton Icon="Add" Label="Add" />
-                        <AppBarButton Icon="View" Label="View" />
-                        <AppBarButton Icon="Edit" Label="Edit" />
-                        <AppBarButton Label="Nice App" />
+                <StackPanel x:ConnectionId='12' x:Name="matchPanel" Grid.Row="1" Margin="4">
+                    <TextBlock x:ConnectionId='13' x:Name="matchText" Text="Nodes" Margin="0,4,0,4" />
+                    <ListView x:ConnectionId='14' x:Name="matchList"                                                              ItemTemplate="{StaticResource MatchListViewTemplate}"                                                               Height="240" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Background="{ThemeResource SystemBaseMediumColor}" />
+                    <CommandBar x:ConnectionId='15' x:Name="nodeCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left">
+                        <AppBarButton x:ConnectionId='16' Icon="Add" Label="Search"                                                    />
                     </CommandBar>
                 </StackPanel>
                 

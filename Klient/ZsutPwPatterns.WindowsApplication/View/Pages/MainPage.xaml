@@ -10,14 +10,15 @@
     xmlns:model="using:ZsutPw.Patterns.WindowsApplication.Model"
     xmlns:view="using:ZsutPw.Patterns.WindowsApplication.View"
     xmlns:controller="using:ZsutPw.Patterns.WindowsApplication.Controller"
+    xmlns:data="using:ZsutPw.Patterns.WindowsApplication.Logic.Model.Data"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
         <controller:ApplicationStateConverter x:Key="ApplicationStateConverter" />
-        <view:NodeDataConverter x:Key="NodeDataConverter" />
+        <view:MatchDataConverter x:Key="MatchDataConverter" />
 
-        <DataTemplate x:Key="NodeListViewTemplate" x:DataType="model:NodeData">
-            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource NodeDataConverter}}" />
+        <DataTemplate x:Key="MatchListViewTemplate" x:DataType="data:MatchData">
+            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource MatchDataConverter}}" />
         </DataTemplate>
     </Page.Resources>
 
@@ -78,19 +79,11 @@
                     <RowDefinition Height="320" />
                 </Grid.RowDefinitions>
 
-                <StackPanel x:Name="nodeSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
-                    <TextBox x:Name="searchText" Header="Text to search:" Text="{x:Bind Mode=TwoWay, Path=Model.SearchText}" Width="200" VerticalAlignment="Bottom" />
-                    <AppBarButton x:Name="searchButton" Icon="Zoom" Label="Search" Command="{x:Bind Path=Controller.SearchNodesCommand}" VerticalAlignment="Bottom" RenderTransformOrigin="1.216,0.93" Width="92" Height="57" />
-                </StackPanel>
-
-                <StackPanel x:Name="nodePanel" Grid.Row="1" Margin="4">
-                    <TextBlock x:Name="nodeText" Text="Nodes" Margin="0,4,0,4" />
-                    <ListView x:Name="nodeList" ItemsSource="{x:Bind Mode=OneWay, Path=Model.NodeList}" ItemTemplate="{StaticResource NodeListViewTemplate}" SelectedItem="{x:Bind Mode=TwoWay, Path=Model.SelectedNode}" Height="240" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Background="{ThemeResource SystemBaseMediumColor}" />
+                <StackPanel x:Name="matchPanel" Grid.Row="1" Margin="4">
+                    <TextBlock x:Name="matchText" Text="Nodes" Margin="0,4,0,4" />
+                    <ListView x:Name="matchList" ItemsSource="{x:Bind Mode=OneWay, Path=Model.MatchDataList}" ItemTemplate="{StaticResource MatchListViewTemplate}" SelectedItem="{x:Bind Mode=TwoWay, Path=Model.SelectedMatch}" Height="240" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Background="{ThemeResource SystemBaseMediumColor}" />
                     <CommandBar x:Name="nodeCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left">
-                        <AppBarButton Icon="Add" Label="Add" />
-                        <AppBarButton Icon="View" Label="View" />
-                        <AppBarButton Icon="Edit" Label="Edit" />
-                        <AppBarButton Label="Nice App" />
+                        <AppBarButton Icon="Add" Label="Search"  Command="{x:Bind Controller.SearchMatchesCommand}"/>
                     </CommandBar>
                 </StackPanel>
                 

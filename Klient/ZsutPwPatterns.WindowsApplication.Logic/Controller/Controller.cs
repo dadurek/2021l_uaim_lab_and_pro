@@ -30,7 +30,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
     {
       this.Model = model;
 
-      this.SearchNodesCommand = new ControllerCommand( this.SearchNodes );
+      this.SearchMatchesCommand = new ControllerCommand( this.SearchMatches );
 
       this.ShowListCommand = new ControllerCommand( this.ShowList );
 
