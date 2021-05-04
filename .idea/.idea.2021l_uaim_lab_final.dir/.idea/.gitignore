@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.2021l_uaim_lab_final.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\01149387\RiderProjects\2021l_uaim_lab_final\.idea\.idea.2021l_uaim_lab_final.dir\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
