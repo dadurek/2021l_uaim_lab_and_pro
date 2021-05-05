@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorsData.Web", "DoctorsData.Web\DoctorsData.Web.csproj", "{399BA362-35AA-404A-9D24-4BAC34D97949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorsData.Domain", "DoctorsData.Domain\DoctorsData.Domain.csproj", "{966EBA4D-4409-4466-B34C-5F0C6322A68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorsData.Infrastructure", "DoctorsData.Infrastructure\DoctorsData.Infrastructure.csproj", "{FA5093A7-0AA9-4B0E-B3CE-34BE9FEB2BC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{399BA362-35AA-404A-9D24-4BAC34D97949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{399BA362-35AA-404A-9D24-4BAC34D97949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{399BA362-35AA-404A-9D24-4BAC34D97949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{399BA362-35AA-404A-9D24-4BAC34D97949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966EBA4D-4409-4466-B34C-5F0C6322A68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966EBA4D-4409-4466-B34C-5F0C6322A68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966EBA4D-4409-4466-B34C-5F0C6322A68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966EBA4D-4409-4466-B34C-5F0C6322A68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA5093A7-0AA9-4B0E-B3CE-34BE9FEB2BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA5093A7-0AA9-4B0E-B3CE-34BE9FEB2BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA5093A7-0AA9-4B0E-B3CE-34BE9FEB2BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA5093A7-0AA9-4B0E-B3CE-34BE9FEB2BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
