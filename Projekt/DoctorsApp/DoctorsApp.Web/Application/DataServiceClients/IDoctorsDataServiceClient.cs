@@ -15,5 +15,7 @@
         public Task<DoctorDto> GetDoctorsByPesel(string pesel);
 
         public void AddDoctor(DoctorDto doctorDto);
+
+        public void DeleteDoctor(int id);
     }
 }

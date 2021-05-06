@@ -51,13 +51,13 @@ namespace DoctorsApp.Web.Controllers
             _patientsQueryHandler.AddPatient(patientDto);
         }
         
-        [HttpPost("remove-patient-id")]
+        [HttpDelete("patient-id")]
         public void RemovePatientById(int id)
         {
             _patientsQueryHandler.RemovePatientById(id);
         }
         
-        [HttpPost("remove-patient-pesel")]
+        [HttpDelete("patient-pesel")]
         public void RemovePatientByPesel(string pesel)
         {
             _patientsQueryHandler.RemovePatientByPesel(pesel);
@@ -92,6 +92,12 @@ namespace DoctorsApp.Web.Controllers
         public void AddDoctor(DoctorDto doctorDto)
         {
             _doctorsQueryHandler.AddDoctor(doctorDto);
+        }
+        
+        [HttpDelete("doctor")]
+        public void DeleteDoctor(int id)
+        {
+            _doctorsQueryHandler.DeleteDoctor(id);
         }
 
 

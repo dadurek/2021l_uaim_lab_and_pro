@@ -2,8 +2,7 @@
 services:
 
   doctors-data:
-    build:
-      context: ./DoctorsData
+    image: "dadurex/uaim_lab_doctors_data"
     ports:
       - "8082:80"
     depends_on:
@@ -12,8 +11,7 @@ services:
       DOCTOR_ConnectionStrings__MyConnection: "Server=doctors-db;Database=master;User=sa;Password=zaq1@WSX;"
       
   rooms-data:
-    build:
-      context: ./ExaminationRoomsData
+    image: "dadurex/uaim_lab_rooms_data"
     ports:
       - "8081:80"
     depends_on:
@@ -22,8 +20,7 @@ services:
       EXM_ROOM_ConnectionStrings__MyConnection: "Server=rooms-db;Database=master;User=sa;Password=zaq1@WSX;"
 
   roomselector-app:
-    build:
-      context: ./ExaminationRoomsSelectorApp
+    image: "dadurex/uaim_lab_roomselector_app"
     ports:
       - "44328:80"
     environment:

@@ -38,5 +38,10 @@ namespace DoctorsApp.Web.Application.Queries
         {
             _doctorsDataServiceClient.AddDoctor(doctorDto);
         }
+        
+        public void DeleteDoctor(int id)
+        {
+            _doctorsDataServiceClient.DeleteDoctor(id);
+        }
     }
 }
