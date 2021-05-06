@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsData.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsData.Web", "PatientsData.Web\PatientsData.Web.csproj", "{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsData.Test", "PatientsData.Test\PatientsData.Test.csproj", "{508689F9-C468-4D02-A0EC-A0FAEE8FCA34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{508689F9-C468-4D02-A0EC-A0FAEE8FCA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{508689F9-C468-4D02-A0EC-A0FAEE8FCA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{508689F9-C468-4D02-A0EC-A0FAEE8FCA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{508689F9-C468-4D02-A0EC-A0FAEE8FCA34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

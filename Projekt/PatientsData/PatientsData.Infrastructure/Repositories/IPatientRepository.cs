@@ -11,5 +11,8 @@ namespace PatientsData.Infrastructure.Repositories
         Patient GetByPesel(string pesel);
 
         void AddPatient(Patient patient);
+
+        void RemovePatientById(int id);
+        void RemovePatientByPesel(string pesel);
     }
 }

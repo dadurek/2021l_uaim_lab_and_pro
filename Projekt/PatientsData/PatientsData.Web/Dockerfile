@@ -1,4 +1,3 @@
-
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 
@@ -7,6 +6,7 @@ WORKDIR /src
 COPY ["PatientsData.Web/PatientsData.Web.csproj", "PatientsData.Web/"]
 COPY ["PatientsData.Infrastructure/PatientsData.Infrastructure.csproj", "PatientsData.Infrastructure/"]
 COPY ["PatientsData.Domain/PatientsData.Domain.csproj", "PatientsData.Domain/"]
+
 RUN dotnet restore "PatientsData.Web/PatientsData.Web.csproj"
 COPY . .
 WORKDIR "/src/PatientsData.Web"
@@ -17,5 +17,8 @@ RUN dotnet publish "PatientsData.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+
+COPY ["PatientsData.Web/Resources", "Resources/"]
+
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PatientsData.Web.dll"]

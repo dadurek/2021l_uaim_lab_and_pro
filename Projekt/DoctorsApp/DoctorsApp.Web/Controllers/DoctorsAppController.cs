@@ -50,6 +50,18 @@ namespace DoctorsApp.Web.Controllers
         {
             _patientsQueryHandler.AddPatient(patientDto);
         }
+        
+        [HttpPost("remove-patient-id")]
+        public void RemovePatientById(int id)
+        {
+            _patientsQueryHandler.RemovePatientById(id);
+        }
+        
+        [HttpPost("remove-patient-pesel")]
+        public void RemovePatientByPesel(string pesel)
+        {
+            _patientsQueryHandler.RemovePatientByPesel(pesel);
+        }
 
 
         [HttpGet("doctors")]
@@ -90,9 +102,15 @@ namespace DoctorsApp.Web.Controllers
         }
 
         [HttpGet("doctor-patient-matches")]
-        public async Task<IEnumerable<PatientDoctorDto>> GetBestPatientsByDoctorId()
+        public async Task<IEnumerable<PatientDoctorDto>> GetBestPatientDoctorMatches()
         {
             return await _selectorQueryHandler.GetBestPatientDoctorMatches();
+        }
+        
+        [HttpGet("doctor-patient-matches-with-sex")]
+        public async Task<IEnumerable<PatientDoctorDto>> GetMatchDoctorSexWithPatientSex()
+        {
+            return await _selectorQueryHandler.GetMatchDoctorSexWithPatientSex();
         }
     }
 }

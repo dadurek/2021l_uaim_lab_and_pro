@@ -11,5 +11,7 @@ namespace PatientsData.Web.Application.Queries
         PatientDto GetByPesel(string pesel);
 
         void AddPatient(PatientDto patientDto);
+        void RemovePatientById(int id);
+        void RemovePatientByPesel(string pesel);
     }
 }

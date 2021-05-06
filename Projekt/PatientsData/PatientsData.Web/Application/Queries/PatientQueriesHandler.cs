@@ -40,5 +40,15 @@
             var patient = patientDto.UnMap();
             patientRepository.AddPatient(patient);
         }
+
+        public void RemovePatientById(int id)
+        {
+            patientRepository.RemovePatientById(id);
+        }
+
+        public void RemovePatientByPesel(string pesel)
+        {
+            patientRepository.RemovePatientByPesel(pesel);
+        }
     }
 }
