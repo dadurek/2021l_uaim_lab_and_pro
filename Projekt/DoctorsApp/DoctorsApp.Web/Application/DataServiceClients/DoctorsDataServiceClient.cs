@@ -73,8 +73,16 @@ namespace DoctorsApp.Web.Application.DataServiceClients
             var jsonString = JsonSerializer.Serialize(doctorDto);
             var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
             var client = _clientFactory.CreateClient();
-            var url = $"{_serviceConfiguration.DoctorsDataUrl}/add-doctor";
+            var url = $"{_serviceConfiguration.DoctorsDataUrl}/doctor";
             client.PostAsync(url, content);
+        }
+        
+        public void DeleteDoctor(int id)
+        {
+            var url = $"{_serviceConfiguration.DoctorsDataUrl}/doctor?id="+id;
+            var request = new HttpRequestMessage(HttpMethod.Delete, url);
+            var client = _clientFactory.CreateClient();
+            client.SendAsync(request);
         }
     }
 }

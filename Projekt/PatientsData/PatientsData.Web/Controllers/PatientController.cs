@@ -42,19 +42,19 @@
             return _patientQueriesHandler.GetByPesel(pesel);
         }
 
-        [HttpPost("add-patient")]
+        [HttpPost("patient")]
         public void AddPatient(PatientDto patientDto)
         {
             _patientQueriesHandler.AddPatient(patientDto);
         }
 
-        [HttpPost("remove-patient-id")]
+        [HttpDelete("patient-id")]
         public void RemovePatientById(int id)
         {
             _patientQueriesHandler.RemovePatientById(id);
         }
         
-        [HttpPost("remove-patient-pesel")]
+        [HttpDelete("patient-pesel")]
         public void RemovePatientByPesel(string pesel)
         {
             _patientQueriesHandler.RemovePatientByPesel(pesel);

@@ -72,22 +72,22 @@ namespace DoctorsApp.Web.Application.DataServiceClients
             var jsonString = JsonSerializer.Serialize(patientDto);
             var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
             var client = _clientFactory.CreateClient();
-            var url = $"{_serviceConfiguration.PatientsDataUrl}/add-patient";
+            var url = $"{_serviceConfiguration.PatientsDataUrl}/patient";
             client.PostAsync(url, content);
         }
 
         public async void RemovePatientById(int id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post,
-                $"{_serviceConfiguration.PatientsDataUrl}/remove-patient-id?id=" + id);
+            var request = new HttpRequestMessage(HttpMethod.Delete,
+                $"{_serviceConfiguration.PatientsDataUrl}/patient-id?id=" + id);
             var client = _clientFactory.CreateClient();
             await client.SendAsync(request);
         }
 
         public async void RemovePatientByPesel(string pesel)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post,
-                $"{_serviceConfiguration.PatientsDataUrl}/remove-patient-pesel?pesel=" + pesel);
+            var request = new HttpRequestMessage(HttpMethod.Delete,
+                $"{_serviceConfiguration.PatientsDataUrl}/patient-pesel?pesel=" + pesel);
             var client = _clientFactory.CreateClient();
             await client.SendAsync(request);
         }
