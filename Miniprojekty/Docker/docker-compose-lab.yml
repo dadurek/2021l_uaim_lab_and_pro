@@ -2,28 +2,21 @@ version: "3.9"
 services:
 
   doctors-data:
-    build:
-      context: ../../Laboratorium/DoctorsData
-    ports:
-      - "8082:80"
+    image: dadurex/uaim_lab_doctors_data
     depends_on:
       - "doctors-db"
     environment:
       DOCTOR_ConnectionStrings__MyConnection: "Server=doctors-db;Database=master;User=sa;Password=zaq1@WSX;"
 
   rooms-data:
-    build:
-      context: ../../Laboratorium/ExaminationRoomsData
-    ports:
-      - "8081:80"
+    image: dadurex/uaim_lab_rooms_data
     depends_on:
       - "rooms-db"
     environment:
       EXM_ROOM_ConnectionStrings__MyConnection: "Server=rooms-db;Database=master;User=sa;Password=zaq1@WSX;"
 
   roomselector-app:
-    build:
-      context: ../../Laboratorium/ExaminationRoomsSelectorApp
+    image: dadurex/uaim_lab_roomselector_app
     ports:
       - "44328:80"
     environment:
@@ -35,8 +28,6 @@ services:
     environment:
       SA_PASSWORD: "zaq1@WSX"
       ACCEPT_EULA: "Y"
-    ports:
-      - "1433:1433"
     volumes:
       - ../../Laboratorium/DoctorsData/DoctorsData.Web/Database/init.sql:/init.sql
       - ../../Laboratorium/DoctorsData/DoctorsData.Web/Database/setup.sh:/setup.sh
@@ -46,8 +37,6 @@ services:
   rooms-db:
     image: "mcr.microsoft.com/mssql/server"
     restart: always
-    ports:
-      - "1434:1433"
     volumes:
       - ../../Laboratorium/ExaminationRoomsData/ExaminationRoomsData.Web/Database/init.sql:/init.sql
       - ../../Laboratorium/ExaminationRoomsData/ExaminationRoomsData.Web/Database/setup.sh:/setup.sh
