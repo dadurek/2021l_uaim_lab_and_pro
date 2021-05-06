@@ -36,7 +36,6 @@ services:
 
   rooms-db:
     image: "mcr.microsoft.com/mssql/server"
-    restart: always
     volumes:
       - ../../Laboratorium/ExaminationRoomsData/ExaminationRoomsData.Web/Database/init.sql:/init.sql
       - ../../Laboratorium/ExaminationRoomsData/ExaminationRoomsData.Web/Database/setup.sh:/setup.sh

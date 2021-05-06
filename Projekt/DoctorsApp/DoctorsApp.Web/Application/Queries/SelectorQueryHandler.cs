@@ -33,5 +33,13 @@
             
             return PatientSelector.GetBestPatientDoctorMatches(doctors, patients);
         }
+
+        public async Task<IEnumerable<PatientDoctorDto>> GetMatchDoctorSexWithPatientSex()
+        {
+            var doctors = await  _doctorsDataServiceClient.GetAllDoctors();
+            var patients = await _patientsQueryHandler.GetAllPatients();
+
+            return PatientSelector.GetMatchDoctorSexWithPatientSex(doctors,patients);
+        }
     }
 }

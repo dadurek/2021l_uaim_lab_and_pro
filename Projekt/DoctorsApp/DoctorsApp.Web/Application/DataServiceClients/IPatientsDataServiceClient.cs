@@ -15,5 +15,9 @@
         public Task<PatientDto> GetPatientByPesel(string pesel);
 
         public void AddPatient(PatientDto patientDto);
+        
+        void RemovePatientById(int id);
+        
+        void RemovePatientByPesel(string pesel);
     }
 }

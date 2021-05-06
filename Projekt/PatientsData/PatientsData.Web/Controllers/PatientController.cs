@@ -47,5 +47,18 @@
         {
             _patientQueriesHandler.AddPatient(patientDto);
         }
+
+        [HttpPost("remove-patient-id")]
+        public void RemovePatientById(int id)
+        {
+            _patientQueriesHandler.RemovePatientById(id);
+        }
+        
+        [HttpPost("remove-patient-pesel")]
+        public void RemovePatientByPesel(string pesel)
+        {
+            _patientQueriesHandler.RemovePatientByPesel(pesel);
+        }
+
     }
 }

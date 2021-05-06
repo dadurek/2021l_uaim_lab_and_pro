@@ -75,5 +75,21 @@ namespace DoctorsApp.Web.Application.DataServiceClients
             var url = $"{_serviceConfiguration.PatientsDataUrl}/add-patient";
             client.PostAsync(url, content);
         }
+
+        public async void RemovePatientById(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post,
+                $"{_serviceConfiguration.PatientsDataUrl}/remove-patient-id?id=" + id);
+            var client = _clientFactory.CreateClient();
+            await client.SendAsync(request);
+        }
+
+        public async void RemovePatientByPesel(string pesel)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post,
+                $"{_serviceConfiguration.PatientsDataUrl}/remove-patient-pesel?pesel=" + pesel);
+            var client = _clientFactory.CreateClient();
+            await client.SendAsync(request);
+        }
     }
 }

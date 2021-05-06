@@ -9,5 +9,7 @@
         public Task<IEnumerable<PatientDto>> GetPatientsThatDoctorCanTreat(int id);
 
         public Task<IEnumerable<PatientDoctorDto>> GetBestPatientDoctorMatches();
+
+        public Task<IEnumerable<PatientDoctorDto>> GetMatchDoctorSexWithPatientSex();
     }
 }

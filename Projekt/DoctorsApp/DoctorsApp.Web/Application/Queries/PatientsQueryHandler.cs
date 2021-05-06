@@ -39,5 +39,15 @@
         {
             _patientsDataServiceClient.AddPatient(patientDto);
         }
+
+        public void RemovePatientById(int id)
+        {
+            _patientsDataServiceClient.RemovePatientById(id);
+        }
+
+        public void RemovePatientByPesel(string pesel)
+        {
+            _patientsDataServiceClient.RemovePatientByPesel(pesel);
+        }
     }
 }

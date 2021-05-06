@@ -74,5 +74,49 @@ namespace PatientsData.Infrastructure.Repositories
                 }
             }
         }
+
+        public void RemovePatientById(int id)
+        {
+            lock (PatientLock)
+            {
+                try
+                {
+                    var xmlSerializer = new XmlSerializer(typeof(PatientsList));
+                    if (_patientsList?.Patients == null || _patientsList.Patients.All(p => p.Id != id))
+                        return;
+                    var toRemove = _patientsList.Patients.Find(patient => patient.Id == id);
+                    _patientsList.Patients.Remove(toRemove);
+                    using var writer = new StreamWriter(Path);
+                    xmlSerializer.Serialize(writer, _patientsList);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
+
+        public void RemovePatientByPesel(string pesel)
+        {
+            lock (PatientLock)
+            {
+                try
+                {
+                    var xmlSerializer = new XmlSerializer(typeof(PatientsList));
+                    if (_patientsList?.Patients == null || _patientsList.Patients.All(p => p.Pesel != pesel))
+                        return;
+                    var toRemove = _patientsList.Patients.Find(patient => patient.Pesel == pesel);
+                    _patientsList.Patients.Remove(toRemove);
+                    using var writer = new StreamWriter(Path);
+                    xmlSerializer.Serialize(writer, _patientsList);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
     }
 }
