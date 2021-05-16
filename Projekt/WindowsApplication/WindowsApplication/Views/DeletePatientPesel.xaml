@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="ClientUWP.Views.DeletePatientPesel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controller="using:Controller" d:DataContext="{d:DesignInstance Type=controller:Controller}"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+
+        <RelativePanel>
+
+            <TextBox Margin="5,5,5,5" x:Name="searchText" PlaceholderText="Pesel to delete"
+                     Text="{Binding PatientModel.SearchTextDeletePesel, Mode=TwoWay}" Width="200"
+                     VerticalAlignment="Bottom" TextChanged="Pesel_TextChanged" />
+            <CommandBar Name="commandBar" IsSticky="True" IsOpen="True" OverflowButtonVisibility="Collapsed"
+                        DefaultLabelPosition="Right" Background="Transparent" Width="89"
+                        RelativePanel.RightOf="searchText">
+
+                <AppBarButton x:Name="searchButton" Icon="Delete" Label="Delete"
+                              Command="{Binding ShowDeletePatientPeselCommand}" VerticalAlignment="Bottom" />
+
+            </CommandBar>
+        </RelativePanel>
+
+
+    </Grid>
+</Page>
