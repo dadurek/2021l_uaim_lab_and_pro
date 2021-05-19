@@ -26,6 +26,12 @@ services:
     environment:
       EXM_ROOM_SEL_ServiceConfiguration__DoctorUrl: "http://doctors-data/"
       EXM_ROOM_SEL_ServiceConfiguration__RoomUrl: "http://rooms-data/"
+      
+  web-app:
+    image: "dadurex/uaim_lab_web_app"
+    ports:
+      - "42069:80"
+    
 
   doctors-db:
     image: "mcr.microsoft.com/mssql/server"
