@@ -1,7 +1,8 @@
 ﻿@page "/matches"
 @using Controller
 @using Model
-@using Model.Data 
+@using Model.Data
+@using Syncfusion.Blazor.Navigations
 @inject IController Controller
 @inject IModel Model
 
@@ -16,11 +17,29 @@
 </RadzenListBox>
 
 <RadzenMenu>
-    <RadzenMenuItem Text="Add" Icon="add"/>
-    <RadzenMenuItem Text="View" Icon="pageview"/>
-    <RadzenMenuItem Text="Edit" Icon="edit"/>
+    <RadzenButton Text="Add" Icon="add" Size="ButtonSize.Small" Click="@ToTrue"></RadzenButton>
 </RadzenMenu>
 
 <div style="margin-top: 12px; width: 324px; text-align: center">
-    <RadzenLink Text="ZSUT IT PW home page" Path="https://studia.elka.pw.edu.pl/" Target="_blank"/>
+    <RadzenLink Text="Elka PW home page" Path="https://studia.elka.pw.edu.pl/" Target="_blank"/>
 </div>
+
+<SfDialog Width="230px" @bind-Visible="@IsVisible">
+    <DialogButtons >
+        <RadzenButton Text="Not implemented" Click="@ToFalse" Style="align-content: center"></RadzenButton>
+    </DialogButtons>
+</SfDialog>
+
+@code{
+    private bool IsVisible { get; set; }
+
+    private void ToTrue()
+    {
+        IsVisible = true;
+    }
+
+    private void ToFalse()
+    {
+        IsVisible = false;
+    }
+}
