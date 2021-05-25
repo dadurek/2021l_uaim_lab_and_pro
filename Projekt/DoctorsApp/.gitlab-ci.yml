@@ -23,13 +23,15 @@ build:
   stage: build
   image: mcr.microsoft.com/dotnet/sdk:5.0
   script:
-    - 'echo BUILD'
+    - dotnet restore
+    - dotnet build
 
 test:
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:5.0
   script:
-    - 'echo TEST'
+    - dotnet restore
+    - dotnet test
 
 publish:
   stage: publish
@@ -37,7 +39,9 @@ publish:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   script:
-    - 'echo DOCKER'
+    - 'mkdir -p /kaniko/.docker'
+    - 'echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json'
+    - '/kaniko/executor --dockerfile Dockerfile --destination $DOCTORS_APP_IMAGE:latest'
   only:
     - master
 

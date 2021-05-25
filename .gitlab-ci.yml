@@ -7,15 +7,15 @@ workflow:
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-trigger-patient-data:
-  stage: trigger
-  trigger:
-    include: Projekt/PatientsData/.gitlab-ci.yml
-    strategy: depend
-  rules:
-    - changes:
-        - Projekt/PatientsData/**/*
-        - Miniprojekty/Kubernetes/PatientsData/**/*
+#trigger-patient-data:
+#  stage: trigger
+#  trigger:
+#    include: Projekt/PatientsData/.gitlab-ci.yml
+#    strategy: depend
+#  rules:
+#    - changes:
+#        - Projekt/PatientsData/**/*
+#        - Miniprojekty/Kubernetes/PatientsData/**/*
          
 #trigger-doctors-app:
 #  stage: trigger
@@ -27,12 +27,12 @@ trigger-patient-data:
 #        - Projekt/DoctorsApp/**/*
 #        - Miniprojekty/Kubernetes/DoctorsApp/**/*
 #          
-#trigger-patient-web:
-#  stage: trigger
-#  trigger:
-#    include: Projekt/PatientsWebApp/.gitlab-ci.yml
-#    strategy: depend
-#  rules:
-#    - changes:
-#        - Projekt/PatientsWebApp/**/*
-#        - Miniprojekty/Kubernetes/PatientsWebApp/**/*
+trigger-patient-web:
+  stage: trigger
+  trigger:
+    include: Projekt/PatientsWebApp/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Projekt/PatientsWebApp/**/*
+        - Miniprojekty/Kubernetes/PatientsWebApp/**/*

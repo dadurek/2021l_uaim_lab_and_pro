@@ -23,25 +23,33 @@ build:
   stage: build
   image: mcr.microsoft.com/dotnet/sdk:5.0
   script:
-    - 'echo BUILD'
+    - dotnet restore
+    - dotnet build
 
 test:
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:5.0
   script:
-    - 'echo TEST'
+    - dotnet restore
+    - dotnet test
 
 publish:
   stage: publish
   image:
     name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
+    entrypoint: [ "" ]
   script:
-    - 'echo DOCKER'
+    - 'mkdir -p /kaniko/.docker'
+    - 'echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json'
+    - '/kaniko/executor --dockerfile Dockerfile --destination $PATIENTS_WEB_IMAGE:latest'
   only:
     - master
 
 deploy:
   stage: deploy
-  script: 
-    - 'echo K3S'
+  script:
+    - kubectl config set-cluster k8s --server=https://$KUBE_HOST:5000 --certificate-authority=$KUBE_API_CERT
+    - kubectl config set-credentials k8s-deployer --token=$KUBE_API_TOKEN
+    - kubectl config set-context k8s --cluster k8s --user k8s-deployer
+    - kubectl config use-context k8s
+    - kubectl apply -f deployment.yaml
