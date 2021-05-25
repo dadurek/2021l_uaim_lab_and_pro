@@ -1,0 +1,99 @@
+@page "/about-me"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+@code {
+    bool _value = true;
+
+    void OnChange(bool? value)
+    {
+        if (value != null)
+            _value = (bool) value;
+    }
+}
+
+<RadzenHeading Size="H1" Text="About me by Id"/>
+
+<RadzenSelectBar @bind-Value="@_value" TValue="bool" Change=@(args => OnChange(args))>
+    <Items>
+        <RadzenSelectBarItem Text="Id" Value="true"/>
+        <RadzenSelectBarItem Text="Pesel" Value="false"/>
+    </Items>
+</RadzenSelectBar>
+
+@if (_value)
+{
+    <RadzenButton Icon="refresh" Text="Search" Click="@_controller.GetPatientId" Style="width: 160px"/>
+
+    <RadzenTextBox Name="searchText" @bind-Value="@_model.SearchTextPatientId" Style="width: 160px"/>
+}
+else
+{
+    <RadzenButton Icon="refresh" Text="Search" Click="@_controller.GetPatientPesel" Style="width: 160px"/>
+
+    <RadzenTextBox Name="searchText" @bind-Value="@_model.SearchTextPatientPesel" Style="width: 160px"/>
+}
+
+<RadzenCard Style="width:600px;">
+    @if (_value)
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div>Id:</div>
+                <b>@_model.PatientId.Id</b>
+                <div style="margin-top:20px">Name:</div>
+                <b>@(_model.PatientId.Name)</b>
+                <div style="margin-top:20px">Sex:</div>
+                <b>@(_model.PatientId.Sex)</b>
+                <div style="margin-top:20px">Pesel:</div>
+                <b>@(_model.PatientId.Pesel)</b>
+                <br/>
+            </div>
+
+            <div class="col-md-6">
+                <RadzenGrid Data="_model.PatientId.Conditions" TItem="ConditionData">
+                    <Columns>
+                        <RadzenGridColumn TItem="ConditionData" Property="Type" Title="Type"/>
+                        <RadzenGridColumn TItem="ConditionData" Property="DiagnosisDate" Title="Diagnosis">
+                            <Template Context="diagnosisDate">
+                                @($"{diagnosisDate.DiagnosisDate.Date:dd/MM/yyyy}")
+                            </Template>
+                        </RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div>Id:</div>
+                <b>@_model.PatientPesel.Id</b>
+                <div style="margin-top:20px">Name:</div>
+                <b>@(_model.PatientPesel.Name)</b>
+                <div style="margin-top:20px">Sex:</div>
+                <b>@(_model.PatientPesel.Sex)</b>
+                <div style="margin-top:20px">Pesel:</div>
+                <b>@(_model.PatientPesel.Pesel)</b>
+                <br/>
+            </div>
+
+            <div class="col-md-6">
+                <RadzenGrid Data="_model.PatientPesel.Conditions" TItem="ConditionData">
+                    <Columns>
+                        <RadzenGridColumn TItem="ConditionData" Property="Type" Title="Type"/>
+                        <RadzenGridColumn TItem="ConditionData" Property="DiagnosisDate" Title="Diagnosis">
+                            <Template Context="diagnosisDate">
+                                @($"{diagnosisDate.DiagnosisDate.Date:dd/MM/yyyy}")
+                            </Template>
+                        </RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </div>
+        </div>
+    }
+</RadzenCard>
