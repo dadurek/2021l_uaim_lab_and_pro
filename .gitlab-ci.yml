@@ -1,10 +1,3 @@
-variables:
-  PROJECT_PATH: 'Projekt'
-  PATIENTS_DATA: 'PatientsData'
-  DOCTORS_APP: 'DoctorsApp'
-  PATIENT_WEB: 'PatientsWebApp'
-  KUBERNETES: 'Miniprojekty/Kubernetes'
-
 stages:
   - trigger
 
@@ -17,19 +10,19 @@ workflow:
 trigger-patient-data:
   stage: trigger
   trigger:
-    include: $PROJECT_PATH/$PATIENTS_DATA/.gitlab-ci.yml
+    include: Projekt/PatientsData/.gitlab-ci.yml
     strategy: depend
   rules:
     - changes:
-        - $PROJECT_PATH/$PATIENTS_DATA/**/*
-        - $KUBERNETES/$PATIENTS_DATA/**/*
+        - Projekt/PatientsData/**/*
+        - Miniprojekty/Kubernetes/PatientsData/**/*
          
 trigger-doctors-app:
   stage: trigger
   trigger:
-    include: $PROJECT_PATH/$DOCTORS_APP/.gitlab-ci.yml
+    include: Projekt/DoctorsApp/.gitlab-ci.yml
     strategy: depend
   rules:
     - changes:
-        - $PROJECT_PATH/$DOCTORS_APP/**/*
-        - $KUBERNETES/$DOCTORS_APP/**/*
+        - Projekt/DoctorsApp/**/*
+        - Miniprojekty/Kubernetes/DoctorsApp/**/*
