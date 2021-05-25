@@ -1,7 +1,7 @@
 variables:
   PROJECT_PATH: 'Projekt'
   PATIENTS_DATA: 'PatientsData'
-  DOCTORS_APP: 'DoctorsData'
+  DOCTORS_APP: 'DoctorsApp'
   PATIENT_WEB: 'PatientsWebApp'
   KUBERNETES: 'Miniprojekty/Kubernetes'
 
