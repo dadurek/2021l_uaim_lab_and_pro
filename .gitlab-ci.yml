@@ -17,22 +17,22 @@ trigger-patient-data:
         - Projekt/PatientsData/**/*
         - Miniprojekty/Kubernetes/PatientsData/**/*
          
-trigger-doctors-app:
-  stage: trigger
-  trigger:
-    include: Projekt/DoctorsApp/.gitlab-ci.yml
-    strategy: depend
-  rules:
-    - changes:
-        - Projekt/DoctorsApp/**/*
-        - Miniprojekty/Kubernetes/DoctorsApp/**/*
-          
-trigger-patient-web:
-  stage: trigger
-  trigger:
-    include: Projekt/PatientsWebApp/.gitlab-ci.yml
-    strategy: depend
-  rules:
-    - changes:
-        - Projekt/PatientsWebApp/**/*
-        - Miniprojekty/Kubernetes/PatientsWebApp/**/*
+#trigger-doctors-app:
+#  stage: trigger
+#  trigger:
+#    include: Projekt/DoctorsApp/.gitlab-ci.yml
+#    strategy: depend
+#  rules:
+#    - changes:
+#        - Projekt/DoctorsApp/**/*
+#        - Miniprojekty/Kubernetes/DoctorsApp/**/*
+#          
+#trigger-patient-web:
+#  stage: trigger
+#  trigger:
+#    include: Projekt/PatientsWebApp/.gitlab-ci.yml
+#    strategy: depend
+#  rules:
+#    - changes:
+#        - Projekt/PatientsWebApp/**/*
+#        - Miniprojekty/Kubernetes/PatientsWebApp/**/*
