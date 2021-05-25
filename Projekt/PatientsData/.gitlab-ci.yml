@@ -1,0 +1,46 @@
+variables:
+  OBJECTS_DIRECTORY: 'obj'
+  NUGET_PACKAGES_DIRECTORY: '.nuget'
+  SOURCE_CODE_PATH: 'Projekt/PatientsData'
+
+default:
+  before_script:
+    - cd $SOURCE_CODE_PATH
+
+stages:
+  - build
+  - test
+  - publish
+  - deploy
+
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+build:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet build
+
+test:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  stage: test
+  script: 
+    - dotnet resote 
+    - dotnet test
+
+publish:
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  stage: publish
+  script:
+    - 'mkdir -p /kaniko/.docker'
+    - 'echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json'
+    - '/kaniko/executor --dockerfile Dockerfile --destination $PATIENTS_DATA_IMAGE:latest'
+  only: 
+    - master
