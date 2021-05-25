@@ -1,0 +1,47 @@
+variables:
+  OBJECTS_DIRECTORY: 'obj'
+  NUGET_PACKAGES_DIRECTORY: '.nuget'
+  SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
+
+default:
+  before_script:
+    - cd $SOURCE_CODE_PATH
+
+stages:
+  - build
+  - test
+  - publish
+  - deploy
+
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+build:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  stage: build
+  script:
+    - 'echo BUILD'
+
+test:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  stage: test
+  script:
+    - 'echo TEST'
+
+publish:
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  stage: publish
+  script:
+    - 'echo DOCKER'
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - 'echo K3S'

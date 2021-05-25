@@ -30,7 +30,7 @@ test:
   image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: test
   script: 
-    - dotnet resote 
+    - dotnet restore 
     - dotnet test
 
 publish:
@@ -44,3 +44,8 @@ publish:
     - '/kaniko/executor --dockerfile Dockerfile --destination $PATIENTS_DATA_IMAGE:latest'
   only: 
     - master
+    
+deploy:
+  stage: deploy
+  script:
+    - 'echo K3S'
