@@ -26,3 +26,13 @@ trigger-doctors-app:
     - changes:
         - Projekt/DoctorsApp/**/*
         - Miniprojekty/Kubernetes/DoctorsApp/**/*
+          
+trigger-patient-web:
+  stage: trigger
+  trigger:
+    include: Projekt/PatientsWebApp/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Projekt/PatientsWebApp/**/*
+        - Miniprojekty/Kubernetes/PatientsWebApp/**/*
