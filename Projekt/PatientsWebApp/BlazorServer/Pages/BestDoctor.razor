@@ -1,0 +1,41 @@
+@page "/best-doctor"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+
+<RadzenHeading Size="H1" Text="Best doctor"/>
+
+<RadzenButton Icon="refresh" Text="Search" Click="@_controller.GetBestDoctor" Style="width: 160px"/>
+
+<RadzenTextBox Name="searchText" @bind-Value="@_model.SearchTextBestDoctor" Style="width: 160px"/>
+
+
+<RadzenCard Style="width:600px;" Data>
+    <div class="row">
+        <div class="col-md-6">
+            <div>Id:</div>
+            <b>@_model.DoctorBest.Id</b>
+            <div style="margin-top:20px">Name:</div>
+            <b>@(_model.DoctorBest.Name)</b>
+            <div style="margin-top:20px">Sex:</div>
+            <b>@(_model.DoctorBest.Sex)</b>
+            <br/>
+        </div>
+
+        <div class="col-md-6">
+            <RadzenGrid Data="_model.DoctorBest.Specializations" TItem="SpecializationData">
+                <Columns>
+                    <RadzenGridColumn TItem="SpecializationData" Property="Type" Title="Type"/>
+                    <RadzenGridColumn TItem="SpecializationData" Property="CertificationDate" Title="Certification">
+                        <Template Context="certificationDate">
+                            @($"{certificationDate.CertificationDate.Date:dd/MM/yyyy}")
+                        </Template>
+                    </RadzenGridColumn>
+                </Columns>
+            </RadzenGrid>
+        </div>
+    </div>
+</RadzenCard>
