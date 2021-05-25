@@ -20,24 +20,24 @@ workflow:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 build:
-  image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: build
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   script:
     - dotnet restore
     - dotnet build
 
 test:
-  image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: test
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   script: 
     - dotnet restore 
     - dotnet test
 
 publish:
+  stage: publish
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
-  stage: publish
   script:
     - 'mkdir -p /kaniko/.docker'
     - 'echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json'
