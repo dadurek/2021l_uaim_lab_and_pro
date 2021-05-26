@@ -18,8 +18,9 @@ deploy:
   before_script:
     - 'pwd'
     - 'ls -la'
-    - 'touch ~/.kube/config'
-    - 'echo ${K8S_CONFIG} > ~/.kube/config'
+    - 'export KUBECONFIG=$(mktemp)'
+    - 'echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}'
+
   script:
     - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
     - 'kubectl rollout restart deployment patients-web'
