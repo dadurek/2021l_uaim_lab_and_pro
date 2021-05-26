@@ -19,5 +19,6 @@ deploy:
     - 'echo workingg'
     - 'echo $K8S_CONFIG > $KUBECONFIG'
   script:
-    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
-    - 'kubectl rollout restart deployment patients-web'
+    - 'echo scripts'
+#    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
+#    - 'kubectl rollout restart deployment patients-web'
