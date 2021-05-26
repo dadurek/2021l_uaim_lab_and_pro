@@ -26,7 +26,7 @@ workflow:
 #    - changes:
 #        - Projekt/DoctorsApp/**/*
 #        - Miniprojekty/Kubernetes/DoctorsApp/**/*
-#          
+          
 trigger-patient-web:
   stage: trigger
   trigger:
