@@ -18,4 +18,4 @@ deploy:
     - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
   script:
     - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp"
-    - kubectl rollout restart deployment patients-web-app
+    - kubectl rollout restart deployment patients-web
