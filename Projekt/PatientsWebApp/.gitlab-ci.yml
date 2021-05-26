@@ -12,7 +12,9 @@ stages:
 
 deploy:
   stage: deploy
-  #image: bitnami/kubectl
+  image: 
+    name: bitnami/kubectl
+    entrypoint: [ "" ]
   before_script:
     - 'cat ${K8S_CONFIG}'
     - 'cat ${KUBECONFIG}'
