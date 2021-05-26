@@ -17,6 +17,4 @@ spec:
           image: dadurex/uaim_project_patients_web
           imagePullPolicy: Always
           ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
+            - containerPort: 80
