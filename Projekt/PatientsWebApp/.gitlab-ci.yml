@@ -17,13 +17,12 @@ deploy:
     entrypoint: [ "" ]
   before_script:
     - 'pwd'
-    - 'ls'
     - 'export KUBECONFIG=$(mktemp)'
-    - 'ls'
     - 'cat $K8S_CONFIG'
     - 'cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}'
-    - 'pwd'
-    - 'ls'
+    - 'cat $KUBECONFIG'
+    - 'ls -la'
+    - 'echo $CI_PROJECT_PATH'
   script:
     - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
     - 'kubectl rollout restart deployment patients-web'
