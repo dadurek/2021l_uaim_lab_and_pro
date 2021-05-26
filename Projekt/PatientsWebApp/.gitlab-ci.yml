@@ -16,7 +16,11 @@ deploy:
     name: bitnami/kubectl
     entrypoint: [ "" ]
   before_script:
+    - 'pwd'
+    - 'ls'
     - 'export KUBECONFIG=$(mktemp)'
+    - 'ls'
+    - 'echo ${K8S_CONFIG}'
     - 'echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}'
     - 'pwd'
     - 'ls'
