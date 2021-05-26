@@ -19,7 +19,7 @@ deploy:
     - 'pwd'
     - 'ls -la'
     - 'export KUBECONFIG=$(mktemp)'
-    - 'echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}'
+    - 'echo ${K8S_CONFIG} > ${KUBECONFIG}'
 
   script:
     - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
