@@ -10,11 +10,9 @@ default:
 stages:
   - deploy
 
-deploy:pa:
+deploy:
   stage: deploy
   image: bitnami/kubectl
-  tags:
-    - deployment
   before_script:
     - export KUBECONFIG=$(mktemp)
     - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
