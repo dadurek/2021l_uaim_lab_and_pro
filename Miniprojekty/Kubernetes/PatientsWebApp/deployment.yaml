@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: patients-app
+  name: patients-web
   namespace: uaim
 spec:
   selector:
     matchLabels:
-      app: patients-app
+      app: patients-web
   template:
     metadata:
-      name: patients-app
+      name: patients-web
       labels:
-        app: patients-app
+        app: patients-web
     spec:
       containers:
         - name: app
-          image: roundel/uaim_project_patients-app
+          image: dadurex/uaim_project_patients_web
           imagePullPolicy: Always
           ports:
             - name: http

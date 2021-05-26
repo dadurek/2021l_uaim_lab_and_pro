@@ -10,12 +10,14 @@ default:
 stages:
   - deploy
 
-deploy:
+deploy:pa:
   stage: deploy
   image: bitnami/kubectl
+  tags:
+    - deployment
+  before_script:
+    - export KUBECONFIG=$(mktemp)
+    - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl config set-cluster k8s --server=https://$KUBE_HOST:5000 --certificate-authority=$KUBE_API_CERT
-    - kubectl config set-credentials k8s-deployer --token=$KUBE_API_TOKEN
-    - kubectl config set-context k8s --cluster k8s --user k8s-deployer
-    - kubectl config use-context k8s
     - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp"
+    - kubectl rollout restart deployment patients-web-app

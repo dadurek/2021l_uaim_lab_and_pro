@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: patients-app
+  name: patients-web
   namespace: uaim
 spec:
   selector:
-    app: patients-app
+    app: patients-web
   ports:
     - name: http
       port: 80
