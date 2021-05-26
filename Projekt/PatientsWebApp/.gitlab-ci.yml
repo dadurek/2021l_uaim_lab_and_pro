@@ -8,9 +8,9 @@ default:
     - cd $SOURCE_CODE_PATH
 
 stages:
-  - build
-  - test
-  - publish
+#  - build
+#  - test
+#  - publish
   - deploy
 
 workflow:
@@ -47,9 +47,10 @@ publish:
 
 deploy:
   stage: deploy
+  image: bitnami/kubectl
   script:
     - kubectl config set-cluster k8s --server=https://$KUBE_HOST:5000 --certificate-authority=$KUBE_API_CERT
     - kubectl config set-credentials k8s-deployer --token=$KUBE_API_TOKEN
     - kubectl config set-context k8s --cluster k8s --user k8s-deployer
     - kubectl config use-context k8s
-    - kubectl apply -f deployment.yaml
+    - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp"
