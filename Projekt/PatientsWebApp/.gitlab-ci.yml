@@ -16,10 +16,11 @@ deploy:
     name: bitnami/kubectl
     entrypoint: [ "" ]
   before_script:
-    - 'pwd'
-    - 'ls -la'
     - 'export KUBECONFIG=$(mktemp)'
-    - 'echo ${K8S_CONFIG} > ${KUBECONFIG}'
+    - 'echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}'
+    - 'pwd'
+    - 'ls'
+
 
   script:
     - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
