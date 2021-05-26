@@ -17,7 +17,6 @@ deploy:
     entrypoint: [ "" ]
   before_script:
     - 'pwd'
-    - 'export KUBECONFIG=/etc/kubernetes/kubelet.conf'
     - 'cat $K8S_CONFIG'
     - 'cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}'
     - 'cat $KUBECONFIG'
