@@ -16,8 +16,9 @@ deploy:
     name: bitnami/kubectl
     entrypoint: [ "" ]
   before_script:
-    - 'echo ${K8S_CONFIG}'
+    - 'echo $K8S_CONFIG'
+    - 'echo $KUBECONFIG'
+    - 'echo ${K8S_CONFIG} > $KUBECONFIG'
   script:
-    - 'echo siemaaa'
-#    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
-#    - 'kubectl rollout restart deployment patients-web'
+    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
+    - 'kubectl rollout restart deployment patients-web'
