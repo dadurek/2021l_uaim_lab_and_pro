@@ -6,6 +6,6 @@ spec:
   type: NodePort
   ports:
     - port: 80
-      nodePort: 8000
+      nodePort: 3001
   selector:
     app: doctors-data
