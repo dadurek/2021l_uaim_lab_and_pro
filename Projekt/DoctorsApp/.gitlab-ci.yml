@@ -8,9 +8,6 @@ default:
     - cd $SOURCE_CODE_PATH
 
 stages:
-#  - build
-#  - test
-#  - publish
   - deploy
 
 workflow:
