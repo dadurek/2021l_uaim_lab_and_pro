@@ -26,13 +26,52 @@ workflow:
 #    - changes:
 #        - Projekt/DoctorsApp/**/*
 #        - Miniprojekty/Kubernetes/DoctorsApp/**/*
-          
-trigger-patient-web:
+#          
+#trigger-patient-web:
+#  stage: trigger
+#  trigger:
+#    include: Projekt/PatientsWebApp/.gitlab-ci.yml
+#    strategy: depend
+#  rules:
+#    - changes:
+#        - Projekt/PatientsWebApp/**/*
+#        - Miniprojekty/Kubernetes/PatientsWebApp/**/*
+
+deploy1:
   stage: trigger
-  trigger:
-    include: Projekt/PatientsWebApp/.gitlab-ci.yml
-    strategy: depend
-  rules:
-    - changes:
-        - Projekt/PatientsWebApp/**/*
-        - Miniprojekty/Kubernetes/PatientsWebApp/**/*
+  image:
+    name: bitnami/kubectl
+    entrypoint: [ "" ]
+  before_script:
+    - 'export KUBECONFIG=$(mktemp)'
+    - 'cat $K8S_CONFIG'
+    - 'cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}'
+  script:
+    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsData'
+    - 'kubectl rollout restart deployment patients-data'
+      
+deploy2:
+  stage: trigger
+  image:
+    name: bitnami/kubectl
+    entrypoint: [ "" ]
+  before_script:
+    - 'export KUBECONFIG=$(mktemp)'
+    - 'cat $K8S_CONFIG'
+    - 'cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}'
+  script:
+    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/DoctorsData'
+    - 'kubectl rollout restart deployment doctors-data'
+      
+deploy3:
+  stage: trigger
+  image:
+    name: bitnami/kubectl
+    entrypoint: [ "" ]
+  before_script:
+    - 'export KUBECONFIG=$(mktemp)'
+    - 'cat $K8S_CONFIG'
+    - 'cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}'
+  script:
+    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsApp'
+    - 'kubectl rollout restart deployment patients-app'

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: patients-web
+  name: doctors-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: patients-web
+      app: doctors-app
   template:
     metadata:
       labels:
-        app: patients-web
+        app: doctors-app
     spec:
       containers:
-        - name: patients-web
-          image: dadurex/uaim_project_patients_web
+        - name: doctors-app
+          image: dadurex/uaim_project_doctors_app
           imagePullPolicy: Always
           ports:
             - containerPort: 80
