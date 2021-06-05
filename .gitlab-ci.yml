@@ -52,8 +52,6 @@ deploy-dd 1:2:
     - changes:
         - Projekt/DoctorsData/**/*
         - Miniprojekty/Kubernetes/DoctorsData/**/*
-  only:
-    - master
       
 deploy-pa 2:2:
   stage: deploy-other-group
@@ -70,5 +68,3 @@ deploy-pa 2:2:
     - changes:
         - Projekt/PatientsApp/**/*
         - Miniprojekty/Kubernetes/PatientsApp/**/*
-  only:
-    - master
