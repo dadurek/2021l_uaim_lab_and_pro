@@ -48,6 +48,12 @@ deploy-dd 1:2:
   script:
     - kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/DoctorsData
     - kubectl rollout restart deployment pro-dd-deployment
+  rules:
+    - changes:
+        - Projekt/DoctorsData/**/*
+        - Miniprojekty/Kubernetes/DoctorsData/**/*
+  only:
+    - master
       
 deploy-pa 2:2:
   stage: deploy-other-group
@@ -60,3 +66,9 @@ deploy-pa 2:2:
   script:
     - kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsApp
     - kubectl rollout restart deployment pro-pa-deployment
+  rules:
+    - changes:
+        - Projekt/PatientsApp/**/*
+        - Miniprojekty/Kubernetes/PatientsApp/**/*
+  only:
+    - master
