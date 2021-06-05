@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: pro-dd
-          image: roundel/uaim_lab_doctors-data
+          image: roundel/uaim_project_doctors-data
           imagePullPolicy: Always
           ports:
             - containerPort: 80
