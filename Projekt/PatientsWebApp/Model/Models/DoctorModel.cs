@@ -7,7 +7,7 @@
     using Service;
     using Utilities;
 
-    public partial class Model : PropertyContainerBase, IModel
+    public partial class Model
     {
         private List<DoctorData> _doctorList = new List<DoctorData>();
 
@@ -64,7 +64,7 @@
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     var matchList = networkClient.GetAllDoctors();
@@ -81,7 +81,7 @@
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     var bestDoctor = networkClient.GetBestDoctor(int.Parse(SearchTextBestDoctor));

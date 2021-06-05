@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pro-pa-deployment
+  namespace: gitlab-uaim
+  labels:
+    app: pro-pa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pro-pa
+  template:
+    metadata:
+      labels:
+        app: pro-pa
+    spec:
+      containers:
+        - name: pro-pa
+          image: roundel/uaim_project_patients-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: PAT_APP_ServiceConfiguration__DoctorsDataUrl
+              value: http://pro-dd-service
+            - name: PAT_APP_ServiceConfiguration__PatientsDataUrl
+              value: http://pro-pd-service
