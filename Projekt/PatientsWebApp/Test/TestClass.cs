@@ -11,13 +11,12 @@ namespace Test
 
     public class TestClass
     {
-
         [Fact]
         public void DoctorShouldNotBeNull()
         {
             var mock1 = new Mock<IEventDispatcher>();
             var mock2 = new Mock<ServiceConfiguration>();
-            var ret = new Model(mock1.Object,mock2.Object);
+            var ret = new Model(mock1.Object, mock2.Object);
             ret.Should().NotBeNull();
         }
     }

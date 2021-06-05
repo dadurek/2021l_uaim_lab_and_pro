@@ -6,6 +6,7 @@ namespace Model.Models
     public partial class Model : PropertyContainerBase, IModel
     {
         private readonly ServiceConfiguration _configuration;
+
         public Model(IEventDispatcher dispatcher, ServiceConfiguration configuration) : base(dispatcher)
         {
             _configuration = configuration;

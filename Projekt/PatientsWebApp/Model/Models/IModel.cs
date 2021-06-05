@@ -5,6 +5,5 @@ namespace Model.Models
 
     public interface IModel : IDoctorData, IDoctorOperation, IPatientData, IPatientOperation
     {
-        
     }
 }

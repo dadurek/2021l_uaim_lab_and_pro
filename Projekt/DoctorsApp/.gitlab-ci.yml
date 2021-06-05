@@ -57,7 +57,7 @@ publish:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context . --dockerfile Dockerfile --destination $DOCTORS_APP_IMAGE:latest
+    - /kaniko/executor --cache=true --cache-repo=${DOCTORS_APP_IMAGE}-cache --context . --dockerfile Dockerfile --destination $DOCTORS_APP_IMAGE:latest
   only:
     - master
 
