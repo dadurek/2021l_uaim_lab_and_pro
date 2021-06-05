@@ -1,20 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: doctors-app
+  name: pro-da-deployment
+  namespace: gitlab-uaim
+  labels:
+    app: pro-da
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: doctors-app
+      app: pro-da
   template:
     metadata:
       labels:
-        app: doctors-app
+        app: pro-da
     spec:
       containers:
-        - name: doctors-app
+        - name: pro-da
           image: dadurex/uaim_project_doctors_app
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          env:
+            - name: DOC_APP_ServiceConfiguration__DoctorsDataUrl
+              value: http://pro-dd-service
+            - name: DOC_APP_ServiceConfiguration__PatientsDataUrl
+              value: http://pro-pd-service    

@@ -1,20 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: patients-web
+  name: pro-pw-deployment
+  namespace: gitlab-uaim
+  labels:
+    app: pro-pw
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: patients-web
+      app: pro-pw
   template:
     metadata:
       labels:
-        app: patients-web
+        app: pro-pw
     spec:
       containers:
-        - name: patients-web
+        - name: pro-pw
           image: dadurex/uaim_project_patients_web
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          env:
+            - name: PAT_WEB_ServiceConfiguration__BackendUrl
+              value: "http://pro-pa-service/"

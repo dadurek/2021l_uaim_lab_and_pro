@@ -1,10 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: doctors-app-api
+  name: pro-da-service
+  namespace: gitlab-uaim
 spec:
-  type: NodePort
-  ports:
-    - port: 80
   selector:
-    app: doctors-app
+    app: pro-da
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

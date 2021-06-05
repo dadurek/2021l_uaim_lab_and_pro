@@ -1,19 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: doctors-data
+  name: pro-dd-deployment
+  namespace: gitlab-uaim
+  labels:
+    app: pro-dd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: doctors-data
+      app: pro-dd
   template:
     metadata:
       labels:
-        app: doctors-data
+        app: pro-dd
     spec:
       containers:
-        - name: doctors-data
+        - name: pro-dd
           image: roundel/uaim_lab_doctors-data
           imagePullPolicy: Always
           ports:

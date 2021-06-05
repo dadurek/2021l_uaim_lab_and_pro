@@ -1,27 +1,78 @@
 variables:
   OBJECTS_DIRECTORY: 'obj'
   NUGET_PACKAGES_DIRECTORY: '.nuget'
-  SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
+  SOURCE_CODE_PATH: 'Projekt/PatientsWebApp'
+
+.only-default: &only-default
+  only:
+    - master
+    - merge_requests
+    - develop
+
+cache:
+  key: ${CI_JOB_NAME}
+  paths:
+    - $SOURCE_CODE_PATH/$OBJECTS_DIRECTORY/*/project.assets.json
+    - $SOURCE_CODE_PATH/$OBJECTS_DIRECTORY/*/*.csproj.nuget.*
+    - $SOURCE_CODE_PATH/$NUGET_PACKAGES_DIRECTORY
+  policy: pull-push
 
 default:
   before_script:
     - cd $SOURCE_CODE_PATH
 
 stages:
+  - build
+  - test
+  - publish
   - deploy
+
+build:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  tags:
+    - integration
+  script:
+    - dotnet restore
+    - dotnet build -c Release
+  <<: *only-default
+
+test:
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  tags:
+    - integration
+  script:
+    - dotnet restore
+    - dotnet test
+  <<: *only-default
+
+publish:
+  stage: publish
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  tags:
+    - delivery
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context . --dockerfile Dockerfile --destination $PATIENTS_WEB_IMAGE:latest
+  only:
+    - master
 
 deploy:
   stage: deploy
-  image: 
+  image:
     name: bitnami/kubectl
     entrypoint: [ "" ]
+  tags:
+    - deployment
   before_script:
-    - 'pwd'
-    - 'export KUBECONFIG=$(mktemp)'
-    - 'cat $K8S_CONFIG'
-    - 'cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}'
-    - 'ls -la'
-    - 'echo $CI_PROJECT_PATH'
+    - export KUBECONFIG=$(mktemp)
+    - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
   script:
-    - 'kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsWebApp'
-    - 'kubectl rollout restart deployment patients-web'
+    - kubectl apply -f "Miniprojekty/Kubernetes/PatientsWebApp"
+    - kubectl rollout restart deployment pro-pw-deployment
+  only:
+    - master

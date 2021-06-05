@@ -1,19 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: patients-data
+  name: pro-pd-deployment
+  namespace: gitlab-uaim
+  labels:
+    app: pro-pd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: patients-data
+      app: pro-pd
   template:
     metadata:
       labels:
-        app: patients-data
+        app: pro-pd
     spec:
       containers:
-        - name: patients-data
+        - name: pro-pd
           image: dadurex/uaim_project_patients_data
           imagePullPolicy: Always
           ports:

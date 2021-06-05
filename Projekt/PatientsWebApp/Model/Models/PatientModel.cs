@@ -8,7 +8,7 @@ namespace Model.Models
     using Data;
     using Service;
 
-    public partial class Model : IModel
+    public partial class Model
     {
         private PatientData _patientId = new PatientData();
 
@@ -157,7 +157,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     var id = int.Parse(SearchTextPatientId);
@@ -175,7 +175,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     var patient = networkClient.GetPatientByPesel(SearchTextPatientPesel);
@@ -192,7 +192,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     NewPatient.Conditions = NewConditionList.ToList();
@@ -209,7 +209,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                List<ConditionData> xd = NewConditionList.ToList<ConditionData>();
+                var xd = NewConditionList.ToList();
                 xd.Add(new ConditionData
                 {
                     Type = NewCondition.Type, DiagnosisDate = NewCondition.DiagnosisDate
@@ -223,7 +223,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                List<ConditionData> xd = NewConditionList.ToList<ConditionData>();
+                var xd = NewConditionList.ToList();
                 var index = xd.ToList().FindIndex(x =>
                     x.Type == ConditionDelete.Type && x.DiagnosisDate.Date == ConditionDelete.DiagnosisDate.Date);
                 xd.RemoveAt(index);
@@ -235,7 +235,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     networkClient.DeletePatientById(int.Parse(SearchTextDeletePatientId));
@@ -251,7 +251,7 @@ namespace Model.Models
         {
             var t = Task.Run(() =>
             {
-                var networkClient = NetworkClientFactory.GetNetworkClient();
+                var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
                 try
                 {
                     networkClient.DeletePatientByPesel(SearchTextDeletePatientPesel);

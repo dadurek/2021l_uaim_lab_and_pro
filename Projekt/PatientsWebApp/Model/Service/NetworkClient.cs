@@ -3,61 +3,63 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using Configuration;
     using Data;
     using Utilities;
 
     public class NetworkClient : INetworkClient
     {
-        private readonly ServiceClient serviceClient;
+        private readonly ServiceClient _serviceClient;
 
-        public NetworkClient(string serviceHost, int servicePort)
+        public NetworkClient(ServiceConfiguration configuration)
         {
-            serviceClient = new ServiceClient(serviceHost, servicePort);
+
+            _serviceClient = new ServiceClient(configuration.BackendUrl);
         }
 
         public void AddPatient(PatientData patient)
         {
             var callUri = "patient";
-            _ = serviceClient.CallWebServiceAsync<PatientData>(callUri, patient);
+            _ = _serviceClient.CallWebServiceAsync<PatientData>(callUri, patient);
         }
 
         public void DeletePatientById(int id)
         {
             var callUri = $"patient/{id}";
-            _ = serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Delete, callUri);
+            _ = _serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Delete, callUri);
         }
 
         public void DeletePatientByPesel(string pesel)
         {
             var callUri = $"patient/pesel/{pesel}";
-            _ = serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Delete, callUri);
+            _ = _serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Delete, callUri);
         }
 
         public Task<List<DoctorData>> GetAllDoctors()
         {
             const string callUri = "doctors";
-            var allDoctors = serviceClient.CallWebServiceAsync<List<DoctorData>>(HttpMethod.Get, callUri);
+            var allDoctors = _serviceClient.CallWebServiceAsync<List<DoctorData>>(HttpMethod.Get, callUri);
             return allDoctors;
         }
 
         public Task<DoctorData> GetBestDoctor(int id)
         {
             var callUri = $"patient/{id}/best-doctor";
-            var doctor = serviceClient.CallWebServiceAsync<DoctorData>(HttpMethod.Get, callUri);
+            var doctor = _serviceClient.CallWebServiceAsync<DoctorData>(HttpMethod.Get, callUri);
             return doctor;
         }
 
         public Task<PatientData> GetPatientById(int id)
         {
             var callUri = $"patient/{id}";
-            var patient = serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Get, callUri);
+            var patient = _serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Get, callUri);
             return patient;
         }
 
         public Task<PatientData> GetPatientByPesel(string pesel)
         {
             var callUri = $"patient/pesel/{pesel}";
-            var patient = serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Get, callUri);
+            var patient = _serviceClient.CallWebServiceAsync<PatientData>(HttpMethod.Get, callUri);
             return patient;
         }
     }

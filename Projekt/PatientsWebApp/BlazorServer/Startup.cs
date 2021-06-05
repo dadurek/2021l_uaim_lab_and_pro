@@ -7,6 +7,7 @@ namespace BlazorServer
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Model.Configuration;
     using Model.Models;
     using Syncfusion.Blazor;
     using Syncfusion.Licensing;
@@ -21,7 +22,7 @@ namespace BlazorServer
 
         private IConfiguration Configuration { get; }
 
-        public static void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
@@ -31,6 +32,8 @@ namespace BlazorServer
             services.AddScoped<IController, Controller>();
             
             services.AddSyncfusionBlazor();
+            
+            services.AddSingleton(Configuration.GetSection("ServiceConfiguration").Get<ServiceConfiguration>());
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)

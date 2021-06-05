@@ -10,15 +10,11 @@
     {
         private static readonly HttpClient HttpClient = new HttpClient();
 
-        private readonly string _serviceHost;
-        private readonly ushort _servicePort;
+        private readonly string _serviceUrl;
 
-        public ServiceClient(string serviceHost, int servicePort)
+        public ServiceClient(string serviceUrl)
         {
-            Debug.Assert(!string.IsNullOrEmpty(serviceHost) && servicePort > 0);
-
-            _serviceHost = serviceHost;
-            _servicePort = (ushort) servicePort;
+            _serviceUrl = serviceUrl;
         }
 
         public R CallWebService<R>(HttpMethod httpMethod, string webServiceUri)
@@ -48,7 +44,7 @@
 
         private async Task<string> CallWebService(HttpMethod httpMethod, string callUri)
         {
-            var httpUri = $"http://{_serviceHost}:{_servicePort}/{callUri}";
+            var httpUri = $"{_serviceUrl}{callUri}";
 
             var httpRequestMessage = new HttpRequestMessage(httpMethod, httpUri);
 
@@ -63,7 +59,7 @@
 
         private async Task<string> CallWebServiceWithContent(string callUri, object obj)
         {
-            var httpUri = $"http://{_serviceHost}:{_servicePort}/{callUri}";
+            var httpUri = $"{_serviceUrl}{callUri}";
 
             var jsonString = JsonConvert.SerializeObject(obj);
 

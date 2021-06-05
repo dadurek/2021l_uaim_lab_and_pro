@@ -3,25 +3,39 @@ variables:
   NUGET_PACKAGES_DIRECTORY: '.nuget'
   SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
 
+.only-default: &only-default
+  only:
+    - master
+    - merge_requests
+    - develop
+
+cache:
+  key: ${CI_JOB_NAME}
+  paths:
+    - $SOURCE_CODE_PATH/$OBJECTS_DIRECTORY/*/project.assets.json
+    - $SOURCE_CODE_PATH/$OBJECTS_DIRECTORY/*/*.csproj.nuget.*
+    - $SOURCE_CODE_PATH/$NUGET_PACKAGES_DIRECTORY
+  policy: pull-push
+
 default:
   before_script:
     - cd $SOURCE_CODE_PATH
 
 stages:
+  - build
+  - test
+  - publish
   - deploy
-
-workflow:
-  rules:
-    - if: $CI_MERGE_REQUEST_IID
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 build:
   stage: build
   image: mcr.microsoft.com/dotnet/sdk:5.0
+  tags:
+    - integration
   script:
     - dotnet restore
-    - dotnet build
+    - dotnet build -c Release
+  <<: *only-default
 
 test:
   stage: test
@@ -29,20 +43,36 @@ test:
   script:
     - dotnet restore
     - dotnet test
+  tags:
+    - integration
+  <<: *only-default
 
 publish:
   stage: publish
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
+  tags:
+    - delivery
   script:
-    - 'mkdir -p /kaniko/.docker'
-    - 'echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json'
-    - '/kaniko/executor --dockerfile Dockerfile --destination $DOCTORS_APP_IMAGE:latest'
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context . --dockerfile Dockerfile --destination $DOCTORS_APP_IMAGE:latest
   only:
     - master
 
 deploy:
   stage: deploy
+  image:
+    name: bitnami/kubectl
+    entrypoint: [ "" ]
+  tags:
+    - deployment
+  before_script:
+    - export KUBECONFIG=$(mktemp)
+    - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
   script:
-    - 'echo K3S'
+    - kubectl apply -f "Miniprojekty/Kubernetes/DoctorsApp"
+    - kubectl rollout restart deployment pro-da-deployment
+  only:
+    - master
