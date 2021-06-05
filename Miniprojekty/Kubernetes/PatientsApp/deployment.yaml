@@ -26,3 +26,4 @@ spec:
               value: http://pro-dd-service
             - name: PAT_APP_ServiceConfiguration__PatientsDataUrl
               value: http://pro-pd-service
+              
