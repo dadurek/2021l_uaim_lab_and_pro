@@ -48,7 +48,7 @@ deploy-dd 1:2:
     - export KUBECONFIG=$(mktemp)
     - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/DoctorsData
+    - kubectl apply -f Miniprojekty/Kubernetes/DoctorsData
     - kubectl rollout restart deployment pro-dd-deployment
   rules:
     - changes:
@@ -66,7 +66,7 @@ deploy-pa 2:2:
     - export KUBECONFIG=$(mktemp)
     - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f /builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsApp
+    - kubectl apply -f Miniprojekty/Kubernetes/PatientsApp
     - kubectl rollout restart deployment pro-pa-deployment
   rules:
     - changes:
