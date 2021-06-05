@@ -57,9 +57,9 @@ publish:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context . --dockerfile Dockerfile --destination $PATIENTS_DATA_IMAGE:latest
-  only:
-    - master
+    - /kaniko/executor --cache=true --cache-repo=${PATIENTS_DATA_IMAGE}-cache --context . --dockerfile Dockerfile --destination $PATIENTS_DATA_IMAGE:latest
+#  only:
+#    - master
 
 deploy:
   stage: deploy
@@ -74,5 +74,5 @@ deploy:
   script:
     - kubectl apply -f "Miniprojekty/Kubernetes/PatientsData"
     - kubectl rollout restart deployment pro-pd-deployment
-  only:
-    - master
+#  only:
+#    - master
