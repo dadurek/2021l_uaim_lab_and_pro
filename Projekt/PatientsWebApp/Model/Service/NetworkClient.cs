@@ -13,7 +13,6 @@
 
         public NetworkClient(ServiceConfiguration configuration)
         {
-
             _serviceClient = new ServiceClient(configuration.BackendUrl);
         }
 

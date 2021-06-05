@@ -21,9 +21,9 @@
         Task DeletePatientId();
 
         Task DeletePatientPesel();
-        
+
         Task AddConditionToNewConditionList();
-        
+
         Task DeleteConditionFromNewConditionList();
     }
 }

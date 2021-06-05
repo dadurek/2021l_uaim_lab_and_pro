@@ -11,7 +11,6 @@
             base(dispatcher)
         {
             Model = model;
-
         }
 
         public IModel Model { get; }

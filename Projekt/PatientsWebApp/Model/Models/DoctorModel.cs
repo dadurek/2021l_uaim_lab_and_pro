@@ -17,7 +17,7 @@
         private string _searchTextBestDoctor;
 
         private DoctorData _selectedDoctor = new DoctorData();
-        
+
 
         public string SearchTextBestDoctor
         {
