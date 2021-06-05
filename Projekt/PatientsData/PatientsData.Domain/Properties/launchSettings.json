@@ -1,7 +1,0 @@
-{
-  "profiles": {
-    "PatientsData.Domain": {
-      "commandName": "Executable"
-    }
-  }
-}
