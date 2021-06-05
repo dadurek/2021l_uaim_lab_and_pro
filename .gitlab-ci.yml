@@ -39,6 +39,8 @@ trigger-patient-web:
       
 deploy-dd 1:2:
   stage: deploy-other-group
+  tags:
+    - deployment
   image:
     name: bitnami/kubectl
     entrypoint: [ "" ]
@@ -55,6 +57,8 @@ deploy-dd 1:2:
       
 deploy-pa 2:2:
   stage: deploy-other-group
+  tags:
+    - deployment
   image:
     name: bitnami/kubectl
     entrypoint: [ "" ]
