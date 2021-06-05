@@ -2,9 +2,13 @@
 services:
   doctors-data:
     image: roundel/uaim_project_doctors-data
+    ports:
+      - "5004:80"
 
   patients-data:
     image: dadurex/uaim_project_patients_data
+    ports:
+      - "5000:80"
 
   doctors-app:
     image: dadurex/uaim_project_doctors_app
