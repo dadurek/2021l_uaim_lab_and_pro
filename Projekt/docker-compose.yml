@@ -17,6 +17,8 @@ services:
     environment:
       PAT_APP_ServiceConfiguration__DoctorsDataUrl: "http://doctors-data"
       PAT_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"
+    ports:
+      - "42070:80"
       
   patients-web:
     image: dadurex/uaim_project_patients_web

@@ -1,7 +1,7 @@
 variables:
   OBJECTS_DIRECTORY: 'obj'
   NUGET_PACKAGES_DIRECTORY: '.nuget'
-  SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
+  SOURCE_CODE_PATH: 'Projekt/PatientsWebApp'
 
 .only-default: &only-default
   only:
@@ -40,11 +40,11 @@ build:
 test:
   stage: test
   image: mcr.microsoft.com/dotnet/sdk:5.0
+  tags:
+    - integration
   script:
     - dotnet restore
     - dotnet test
-  tags:
-    - integration
   <<: *only-default
 
 publish:
@@ -57,7 +57,7 @@ publish:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{ $REGISTRY_AUTH }}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context . --dockerfile Dockerfile --destination $DOCTORS_APP_IMAGE:latest
+    - /kaniko/executor --context . --dockerfile Dockerfile --destination $PATIENTS_WEB_IMAGE:latest
   only:
     - master
 
@@ -72,7 +72,7 @@ deploy:
     - export KUBECONFIG=$(mktemp)
     - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f "Miniprojekty/Kubernetes/DoctorsApp"
-    - kubectl rollout restart deployment pro-da-deployment
+    - kubectl apply -f "Miniprojekty/Kubernetes/PatientsWebApp"
+    - kubectl rollout restart deployment pro-pw-deployment
   only:
     - master
