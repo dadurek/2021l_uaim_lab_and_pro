@@ -47,7 +47,6 @@ deploy-dd 1:2:
   before_script:
     - export KUBECONFIG=$(mktemp)
     - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
-    - pwd
   script:
     - kubectl apply -f Miniprojekty/Kubernetes/DoctorsData
     - kubectl rollout restart deployment pro-dd-deployment
@@ -66,7 +65,6 @@ deploy-pa 2:2:
   before_script:
     - export KUBECONFIG=$(mktemp)
     - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
-    - pwd
   script:
     - kubectl apply -f Miniprojekty/Kubernetes/PatientsApp
     - kubectl rollout restart deployment pro-pa-deployment
