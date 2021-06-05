@@ -13,18 +13,19 @@
         if (value != null)
             _value = (bool) value;
     }
+
 }
 
 <RadzenHeading Size="H1" Text="Delete account"/>
 
 @* <RadzenSwitch @bind-Value="@_value" Style="margin-bottom: 20px" Change="@(args => OnChange(args))" /> *@
 
-        <RadzenSelectBar @bind-Value="@_value" TValue="bool" Change=@(args => OnChange(args))>
-            <Items>
-                <RadzenSelectBarItem Text="Id" Value="true" />
-                <RadzenSelectBarItem Text="Pesel" Value="false" />
-            </Items>
-        </RadzenSelectBar>
+<RadzenSelectBar @bind-Value="@_value" TValue="bool" Change=@(args => OnChange(args))>
+    <Items>
+        <RadzenSelectBarItem Text="Id" Value="true"/>
+        <RadzenSelectBarItem Text="Pesel" Value="false"/>
+    </Items>
+</RadzenSelectBar>
 
 <RadzenFieldset Text="Delete account">
     @if (_value)
@@ -52,6 +53,3 @@
         </div>
     }
 </RadzenFieldset>
-
-
-    

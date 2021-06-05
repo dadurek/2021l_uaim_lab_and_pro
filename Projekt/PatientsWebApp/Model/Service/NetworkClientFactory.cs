@@ -7,7 +7,8 @@
         public static INetworkClient GetNetworkClient(ServiceConfiguration configuration)
         {
 #if DEBUG
-            return new FakeNetworkClient();
+            return new NetworkClient(configuration);
+            //return new FakeNetworkClient();
 #else
             return new NetworkClient(configuration);
 #endif

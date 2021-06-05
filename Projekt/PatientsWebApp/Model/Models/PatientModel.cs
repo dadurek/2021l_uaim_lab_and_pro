@@ -34,7 +34,7 @@ namespace Model.Models
         private ObservableCollection<ConditionData> _newConditionList = new ObservableCollection<ConditionData>();
 
         private ConditionData _conditionDelete = new ConditionData();
-        
+
 
         public string SearchTextPatientId
         {
