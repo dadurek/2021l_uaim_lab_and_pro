@@ -21,4 +21,4 @@ spec:
           image: roundel/uaim_project_doctors-data
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 80 
