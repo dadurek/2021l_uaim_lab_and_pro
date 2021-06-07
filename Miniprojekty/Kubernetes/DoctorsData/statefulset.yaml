@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet 
 metadata:
-  name: pro-dd-deployment
+  name: pro-dd-statefulset
   namespace: gitlab-uaim
   labels:
     app: pro-dd
