@@ -25,7 +25,6 @@ spec:
           volumeMounts:
             - name: database
               mountPath: /app/Resources
-              subPath: database.xml
       volumes:
         - name: database
           configMap:

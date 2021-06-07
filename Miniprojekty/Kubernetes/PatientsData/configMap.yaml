@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: pro-pd-cfgmap
 data:
-  file-from-cfgmap: /home/dadurex/Resources/database.xml
+  database.xml: /home/dadurex/Resources/database.xml
+  b: "2"
