@@ -24,7 +24,8 @@ spec:
             - containerPort: 80
           volumeMounts:
             - name: database
-              mountPath: /app/Resources/database.xml
+              mountPath: /app/Resources
+              subPath: database.xml
       volumes:
         - name: database
           configMap:
