@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet 
 metadata:
-  name: pro-dd-deployment
+  name: pro-dd-statefulset
   namespace: gitlab-uaim
   labels:
     app: pro-dd
@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app: pro-dd
+  serviceName: pro-dd-service
   template:
     metadata:
       labels:
@@ -21,4 +22,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-              

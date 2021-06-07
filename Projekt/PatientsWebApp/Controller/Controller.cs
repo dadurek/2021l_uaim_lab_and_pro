@@ -1,7 +1,6 @@
 ﻿namespace Controller
 {
     using System.Threading.Tasks;
-    using System.Windows.Input;
     using Model.Models;
     using Utilities;
 
@@ -32,7 +31,7 @@
 
         public async Task GetBestDoctor()
         {
-            await Task.Run(() => Model.GetBestDoctor());
+            await Task.Run(() => Model.LoadBestDoctor());
         }
 
         public async Task AddPatient()

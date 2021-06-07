@@ -1,17 +1,15 @@
-﻿namespace Model.Models
+namespace Model.Models
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Data;
     using Service;
-    using Utilities;
 
     public partial class Model
     {
         private List<DoctorData> _doctorList = new List<DoctorData>();
-
-
+        
         private DoctorData _doctorBest = new DoctorData();
 
         private string _searchTextBestDoctor;
@@ -77,7 +75,7 @@
             });
         }
 
-        public void GetBestDoctor()
+        public void LoadBestDoctor()
         {
             var t = Task.Run(() =>
             {

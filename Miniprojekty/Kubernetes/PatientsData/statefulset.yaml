@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: pro-pd-deployment
+  name: pro-pd-statefulset
   namespace: gitlab-uaim
   labels:
     app: pro-pd
@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app: pro-pd
+  serviceName: pro-pd-service
   template:
     metadata:
       labels:
