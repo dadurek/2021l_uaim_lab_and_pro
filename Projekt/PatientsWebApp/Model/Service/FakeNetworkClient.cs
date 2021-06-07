@@ -73,7 +73,7 @@ namespace Model.Service
             return Task.FromResult(
                 new DoctorData
                 {
-                    Id = 1, Name = "Marcin", Pesel = "123", Sex = "Male",
+                    Id = id, Name = "Marcin", Pesel = "123", Sex = "Male",
                     Specializations = new List<SpecializationData>
                     {
                         new SpecializationData

@@ -4,6 +4,6 @@
     {
         void LoadDoctorList();
 
-        void GetBestDoctor();
+        void LoadBestDoctor();
     }
 }
