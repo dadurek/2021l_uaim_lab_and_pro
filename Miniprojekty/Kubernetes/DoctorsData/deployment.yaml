@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app: pro-dd
+  serviceName: pro-dd-service
   template:
     metadata:
       labels:

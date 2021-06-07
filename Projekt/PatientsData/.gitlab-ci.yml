@@ -61,7 +61,6 @@ publish:
   only:
     - master
 
-
 deploy:
   stage: deploy
   image:
@@ -75,5 +74,5 @@ deploy:
   script:
     - kubectl apply -f "Miniprojekty/Kubernetes/PatientsData"
     - kubectl rollout restart deployment pro-pd-deployment
-  only:
-    - master
+#  only:
+#    - master
