@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet 
 metadata:
   name: pro-dd-deployment
   namespace: gitlab-uaim
@@ -21,4 +21,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-              
