@@ -26,5 +26,7 @@ services:
       
   patients-web:
     image: dadurex/uaim_project_patients_web
+    environment:
+      WEB_APP_ServiceConfiguration__BackendUrl: "http://patients-app"
     ports:
       - "8080:80"

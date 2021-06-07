@@ -44,7 +44,7 @@
 
         private async Task<string> CallWebService(HttpMethod httpMethod, string callUri)
         {
-            var httpUri = $"{_serviceUrl}{callUri}";
+            var httpUri = $"{_serviceUrl}/{callUri}";
 
             var httpRequestMessage = new HttpRequestMessage(httpMethod, httpUri);
 
@@ -59,7 +59,7 @@
 
         private async Task<string> CallWebServiceWithContent(string callUri, object obj)
         {
-            var httpUri = $"{_serviceUrl}{callUri}";
+            var httpUri = $"{_serviceUrl}/{callUri}";
 
             var jsonString = JsonConvert.SerializeObject(obj);
 

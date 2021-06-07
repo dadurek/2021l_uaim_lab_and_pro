@@ -23,4 +23,4 @@ spec:
             - containerPort: 80
           env:
             - name: PAT_WEB_ServiceConfiguration__BackendUrl
-              value: "http://pro-pa-service/"
+              value: "http://pro-pa-service"
