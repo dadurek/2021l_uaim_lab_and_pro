@@ -22,3 +22,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          volumeMounts:
+            - mountPath: /app/Resources
+      volumes:
+        - name: database
+          configMap:
+            name: pro-pd-cfgmap     

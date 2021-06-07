@@ -73,6 +73,6 @@ deploy:
     - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
   script:
     - kubectl apply -f "Miniprojekty/Kubernetes/PatientsData"
-    - kubectl rollout restart deployment pro-pd-statefulset
+    - kubectl rollout restart statefulset  pro-pd-statefulset
 #  only:
 #    - master

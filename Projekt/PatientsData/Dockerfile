@@ -18,7 +18,7 @@ RUN dotnet publish "PatientsData.Web.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 
-COPY ["PatientsData.Web/Resources", "Resources/"]
+#COPY ["PatientsData.Web/Resources", "Resources/"]
 
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PatientsData.Web.dll"]
