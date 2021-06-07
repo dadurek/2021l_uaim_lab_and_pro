@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: pro-pd-cfgmap
-data:
-  database.xml: /home/dadurex/Resources/database.xml
-  b: "2"
