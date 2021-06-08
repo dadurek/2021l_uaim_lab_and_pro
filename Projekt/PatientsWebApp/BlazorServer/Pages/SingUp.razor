@@ -1,13 +1,13 @@
-@page "/sing-up"
+@page "/sign-up"
 @using Controller
 @using Model.Models
 @using Model.Data
 @inject IController _controller
 @inject IModel _model
 
-<RadzenHeading Size="H1" Text="Sing up"/>
+<RadzenHeading Size="H1" Text="Sign up"/>
 
-<RadzenButton Icon="add" Text="Sing up" Click="@_controller.AddPatient" Style="width: 160px"/>
+<RadzenButton Icon="add" Text="Sign up" Click="@_controller.AddPatient" Style="width: 160px"/>
 
 <RadzenFieldset Text="New account">
     <div class="row" style="padding: 5px">
