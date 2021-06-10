@@ -51,6 +51,7 @@ deploy-dd 1:3:
     - kubectl apply -f Miniprojekty/Kubernetes/DoctorsData
     - kubectl rollout restart statefulset  pro-dd-statefulset
   rules:
+    - if: $CI_COMMIT_BRANCH == "master" 
     - changes:
         - Miniprojekty/Kubernetes/DoctorsData/**/*
 
@@ -68,6 +69,7 @@ deploy-pa 2:3:
     - kubectl apply -f Miniprojekty/Kubernetes/PatientsApp
     - kubectl rollout restart deployment pro-pa-deployment
   rules:
+    - if: $CI_COMMIT_BRANCH == "master" 
     - changes:
         - Miniprojekty/Kubernetes/PatientsApp/**/*
           
@@ -85,6 +87,6 @@ deploy-dw 3:3:
     - kubectl apply -f Miniprojekty/Kubernetes/DoctorsWebApp
     - kubectl rollout restart deployment pro-dw-deployment
   rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: $CI_COMMIT_BRANCH == "master"
     - changes:
         - Miniprojekty/Kubernetes/DoctorsWebApp/**/*
