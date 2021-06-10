@@ -85,5 +85,6 @@ deploy-dw 3:3:
     - kubectl apply -f Miniprojekty/Kubernetes/DoctorsWebApp
     - kubectl rollout restart deployment pro-dw-deployment
   rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
     - changes:
         - Miniprojekty/Kubernetes/DoctorsWebApp/**/*
