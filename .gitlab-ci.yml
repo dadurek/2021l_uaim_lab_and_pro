@@ -53,8 +53,7 @@ deploy-dd 1:3:
   rules:
     - changes:
         - Miniprojekty/Kubernetes/DoctorsData/**/*
-  only: 
-    - master
+    - if: $CI_COMMIT_BRANCH = 'master'
 
 deploy-pa 2:3:
   stage: deploy-other-group
@@ -72,8 +71,7 @@ deploy-pa 2:3:
   rules:
     - changes:
         - Miniprojekty/Kubernetes/PatientsApp/**/*
-  only:
-    - master
+    - if: $CI_COMMIT_BRANCH = 'master'
           
 deploy-dw 3:3:
   stage: deploy-other-group
@@ -91,5 +89,4 @@ deploy-dw 3:3:
   rules:
     - changes:
         - Miniprojekty/Kubernetes/DoctorsWebApp/**/*
-  only:
-    - master
+    - if: $CI_COMMIT_BRANCH = 'master'
