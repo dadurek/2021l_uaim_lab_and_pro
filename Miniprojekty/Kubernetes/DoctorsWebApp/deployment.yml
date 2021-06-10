@@ -23,4 +23,4 @@ spec:
             - containerPort: 80
           env:
             - name: DOC_WEB_ServiceConfiguration__BackendUrl
-              value: "http://pro-da-service"
+              value: "http://pro-da-service" 
