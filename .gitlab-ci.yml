@@ -87,3 +87,4 @@ deploy-dw 3:3:
   rules:
     - changes:
         - Miniprojekty/Kubernetes/DoctorsWebApp/**/*
+    - if: $CI_COMMIT_BRANCH == master
