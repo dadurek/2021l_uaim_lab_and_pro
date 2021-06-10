@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pro-dw-deployment
+  namespace: gitlab-uaim
+  labels:
+    app: pro-dw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pro-dw
+  template:
+    metadata:
+      labels:
+        app: pro-dw
+    spec:
+      containers:
+        - name: pro-dw
+          image: roundel/uaim_project_doctors-web
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: DOC_WEB_ServiceConfiguration__BackendUrl
+              value: "http://pro-da-service"

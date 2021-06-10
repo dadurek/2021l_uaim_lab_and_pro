@@ -37,7 +37,7 @@ trigger-patient-web:
 
 # deploy apps developed by Zdulski & Walusiak
       
-deploy-dd 1:2:
+deploy-dd 1:3:
   stage: deploy-other-group
   tags:
     - deployment
@@ -52,10 +52,11 @@ deploy-dd 1:2:
     - kubectl rollout restart statefulset  pro-dd-statefulset
   rules:
     - changes:
-        - Projekt/DoctorsData/**/*
         - Miniprojekty/Kubernetes/DoctorsData/**/*
-      
-deploy-pa 2:2:
+  only: 
+    - master
+
+deploy-pa 2:3:
   stage: deploy-other-group
   tags:
     - deployment
@@ -70,5 +71,25 @@ deploy-pa 2:2:
     - kubectl rollout restart deployment pro-pa-deployment
   rules:
     - changes:
-        - Projekt/PatientsApp/**/*
         - Miniprojekty/Kubernetes/PatientsApp/**/*
+  only:
+    - master
+          
+deploy-dw 3:3:
+  stage: deploy-other-group
+  tags:
+    - deployment
+  image:
+    name: bitnami/kubectl
+    entrypoint: [ "" ]
+  before_script:
+    - export KUBECONFIG=$(mktemp)
+    - cat $K8S_CONFIG | base64 -d > ${KUBECONFIG}
+  script:
+    - kubectl apply -f Miniprojekty/Kubernetes/DoctorsWebApp
+    - kubectl rollout restart deployment pro-dw-deployment
+  rules:
+    - changes:
+        - Miniprojekty/Kubernetes/DoctorsWebApp/**/*
+  only:
+    - master
