@@ -1,3 +1,5 @@
+# REPO CLONED FROM GITLAB, ONLY IN PRESENTATION PURPOSE
+
 ## Repozytorium stworzone na potrzeby laboratorium przedmiotu UAIM.
 
 Autorzy:
